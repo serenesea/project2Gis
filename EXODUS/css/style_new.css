@@ -1,0 +1,133 @@
+
+.headerbox {
+    height: 100px;
+    background-color: #424242;
+
+}
+
+.header-logo{
+    margin-top: 20px;
+}
+
+.exodus-logo{
+    margin-top: 10px;
+}
+
+[class*="col-"] {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.img {
+    display: block;
+}
+
+.menu-bar{
+    background-color: #757575;
+    height: 25%;
+
+}
+
+.menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.menu li {
+    display: inline;
+}
+
+.menu a {
+    display: inline-block;
+    padding: 0 15px;
+    text-decoration: none;
+    color: white;
+}
+.menu li + li:before {
+    content: " | ";
+    color: white;
+    padding: 0 10px;
+}
+
+.menu a:hover{
+    background-color: #00BCD4;
+    border-bottom: 2px solid white;
+}
+
+.menu a:active{
+    background-color: #00BCD4;
+    border-bottom: 2px solid white;
+}
+
+.adver {
+    padding-top: 10px;
+    margin: 0 auto;
+}
+
+.adverblock {
+    background-color: #424242;
+    width: 100%;
+}
+
+.search-field input {
+    width: 100%;
+    height: 70%;
+    padding: 0;
+    margin: 1%;
+
+}
+
+.search {
+    margin: 0 auto;
+    background-color: #424242;
+
+}
+
+.companies {
+
+    height: 100%;
+    background-color: #757575;
+}
+
+.map {
+    height: 50vh;
+}
+
+.no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.element {
+    width: 100%;
+    height: 70px;
+    background-color: #bfbfbf;
+    border-top: 1px solid white;
+}
+
+.logo {
+    height: 60px;
+    margin-left: 5px;
+}
+
+.company-name {
+    margin-left: 15px;
+    margin-top: 5px;
+    margin-bottom: 0;
+    font-weight: bold;
+}
+
+.company-info {
+    margin-left: 15px;
+    margin-top: 0px;
+    font-size: 10px;
+    line-height: 10px;
+}
+
+.main-div{
+    border: 1px solid white;
+
+}
+

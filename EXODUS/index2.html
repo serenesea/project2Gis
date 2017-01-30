@@ -2,23 +2,205 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
     <title>EXODUS</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="robots" content="noindex, nofollow">
-
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!--<link rel="stylesheet" href="css/style.css">-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css"
-          href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style_new.css">
 
 
-    <script type="text/javascript" href="js/jquery-3.1.1.min.js"></script>
-    <script type="text/javascript" href="js/bootstrap.min.js"></script>
-    <script type="text/javascript" href="js/map.js"></script>
 </head>
 <body>
+
+<!-- Content here -->
+<div class="container">
+
+    <!-- Header -->
+    <div class="row ">
+        <div class="col-2 headerbox ">
+            <div class="row align-items-center justify-content-center">
+                <img src="img/moia_logo.svg" class="header-logo">
+            </div>
+
+        </div>
+
+        <div class="col-8 headerbox">
+
+            <div class="col-12" style="background-color: #424242; height: 75%">
+
+                <div class="row align-items-center justify-content-center">
+                    <img src="img/logo_exodus.svg" class="exodus-logo">
+                </div>
+
+            </div>
+            <div class="col-12 menu-bar">
+                <ul class="menu">
+                    <li><a href="#" aria-selected="true">Home</a></li>
+                    <li><a href="#">Registration</a></li>
+                    <li><a href="#">Rubricator</a></li>
+                    <li><a href="#">Contacts</a></li>
+                    <li><a href="#">Terms</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-2 headerbox">
+            <div class="row align-items-center justify-content-center">
+                <img src="img/jafi_logo.svg" class="header-logo">
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Content -->
+    <!-- Left adverisement block -->
+
+    <div class="row">
+        <div class="col-2 adverblock">
+            <div class="col-11 adver">
+                <img src="img/adver1.png">
+            </div>
+            <div class="col-11 adver">
+                <img src="img/adver2.png">
+            </div>
+            <div class="col-11 adver">
+                <img src="img/adver3.png">
+            </div>
+        </div>
+
+        <!-- Central block -->
+        <div class="col-8 main-div" >
+
+            <!-- News block -->
+            <div class="col-12">
+                <img src="img/news.png">
+            </div>
+
+            <!-- Search panel block -->
+            <div class="col-12">
+
+                <div class="row align-items-center search">
+
+                    <div class="col search-field ">
+                        <input type="text" placeholder="Region"><br>
+                        <input type="text" placeholder="City">
+                    </div>
+
+                    <div class="col search-field ">
+                        <input type="text" placeholder="Class"><br>
+                        <input type="text" placeholder="Name">
+                    </div>
+
+                    <div class="col search-field ">
+                        <input type="text" placeholder="Street"><br>
+                        <input type="text" placeholder="Phone">
+                    </div>
+
+                    <div class="col search-field ">
+                        <input type="text" placeholder="Number">
+                    </div>
+
+                    <div class="col-1 search-field  ">
+                        <a href="#"><img src="img/search_exodus_1.png" style="height: 50px"></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search result block -->
+
+            <div class="col-12 ">
+                <div class="row no-gutters">
+                    <!-- Companies block -->
+                    <div class="col-6">
+                        <div class="companies">
+
+                            <!-- Element start -->
+                            <div class="row element no-gutters align-items-center">
+                                <div class="col-2 ">
+                                    <div>
+                                        <img src="img/logo_dan.png" alt="logo" class="logo">
+                                    </div>
+                                </div>
+                                <div class="col-8">
+                                    <p class="company-name">Company "DAN"</p>
+                                    <p class="company-info">
+                                        Адрес: Бейт-Даган | Сд. Менахем Бегин, 5 <br>
+                                        Телефон: 03 - 9142237 <br>
+                                        Электропочта: info@egged.co.il <br>
+                                        <a href="#">http://www.egged.co.il/</a>
+                                    </p>
+                                </div>
+                                <div class="col align-self-end">
+                                    <a href="#"><i class="fa fa-info-circle"></i></a>
+                                    <a href="#"><i class="fa fa-map-marker"></i></a>
+                                </div>
+                            </div>
+                            <!-- Element end -->
+
+
+                        </div>
+                    </div>
+
+                    <!-- Map block -->
+                    <div class="col-6">
+                        <div class="map" id="map"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Right adverisement block -->
+        <div class="col-2 adverblock">
+            <div class="col-11 adver">
+                <img src="img/adver3.png">
+            </div>
+            <div class="col-11 adver">
+                <img src="img/adver4.png">
+            </div>
+            <div class="col-11 adver">
+                <img src="img/adver5.png">
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<!-- jQuery first, then Tether, then Bootstrap JS. -->
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
+        integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+        integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+        integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+        crossorigin="anonymous"></script>
+<script>
+
+    function initMap() {
+        var uluru = {lat: 56.223143, lng: 16.512782};
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 10,
+            center: uluru
+        });
+        var marker = new google.maps.Marker({
+            position: uluru,
+            map: map
+        });
+    }
+</script>
+
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXT4gsQJyClX3CSR_XBD0J1YEJ0VSbCs4&callback=initMap">
+</script>
 
 </body>
 </html>
