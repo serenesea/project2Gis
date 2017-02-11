@@ -3,174 +3,310 @@
 <head>
     <meta charset="UTF-8">
 
-    <title>EXODUS</title>
+    <title>EXODUS PROJECT</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="robots" content="noindex, nofollow">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
-          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/style_new.css">
+    <link rel="stylesheet" href="css/style_new_for_index_2.css">
 
 
 </head>
 <body>
 
-<!-- Content here -->
-<div class="container">
+<!-- Navbar -->
 
-    <!-- Header -->
-    <div class="row ">
-        <div class="col-2 headerbox ">
-            <div class="row align-items-center justify-content-center">
-                <img src="img/moia_logo.svg" class="header-logo">
-            </div>
 
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#"><img src="img/img2/exodus_logo.png" width="138" height="30"
+                                                  alt="logo"/></a>
+            <a class="navbar-brand" href="#"><img src="img/img2/thlg.png" width="128" height="30" alt="logo2"/></a>
         </div>
 
-        <div class="col-8 headerbox">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="#">Home <span class="sr-only"></span></a></li>
+                <li><a href="#">Registration</a></li>
+                <li><a href="#">Terms and conditions</a></li>
+                <li><a href="#">Rubricator</a></li>
+                <li><a href="#">Contacts</a></li>
+            </ul>
 
-            <div class="col-12" style="background-color: #424242; height: 75%">
-
-                <div class="row align-items-center justify-content-center">
-                    <img src="img/logo_exodus.svg" class="exodus-logo">
-                </div>
-
-            </div>
-            <div class="col-12 menu-bar">
-                <ul class="menu">
-                    <li><a href="#" aria-selected="true">Home</a></li>
-                    <li><a href="#">Registration</a></li>
-                    <li><a href="#">Rubricator</a></li>
-                    <li><a href="#">Contacts</a></li>
-                    <li><a href="#">Terms</a></li>
-                    <li><a href="#">About</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="col-2 headerbox">
-            <div class="row align-items-center justify-content-center">
-                <img src="img/jafi_logo.svg" class="header-logo">
-            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">About project</a></li>
+            </ul>
 
         </div>
     </div>
+</nav>
 
-    <!-- Content -->
-    <!-- Left adverisement block -->
+<!-- Main section -->
 
-    <div class="row">
-        <div class="col-2 adverblock">
-            <div class="col-11 adver">
-                <img src="img/adver1.png">
-            </div>
-            <div class="col-11 adver">
-                <img src="img/adver2.png">
-            </div>
-            <div class="col-11 adver">
-                <img src="img/adver3.png">
+<section>
+    <div class="fixed-left centered">
+        <img src="img/img2/adverdiv2.png" class="img-responsive img-hidden centered">
+        <img src="img/img2/adverdiv2.png" class="img-responsive img-hidden centered">
+        <img src="img/img2/adverdiv2.png" class="img-responsive img-hidden centered">
+        <img src="img/img2/adverdiv2.png" class="img-responsive img-hidden centered">
+    </div>
+    <div class="fixed-right centered">
+        <img src="img/img2/adverdiv2.png" class="img-responsive img-hidden centered">
+        <img src="img/img2/adverdiv2.png" class="img-responsive img-hidden centered">
+        <img src="img/img2/adverdiv2.png" class="img-responsive img-hidden centered">
+        <img src="img/img2/adverdiv2.png" class="img-responsive img-hidden centered">
+    </div>
+
+    <div class="container">
+        <div class="row ">
+            <div class="col-md-12 ">
+                <div class="news ">
+                    <img src="img/img2/news.png" width=100%>
+                </div>
             </div>
         </div>
 
-        <!-- Central block -->
-        <div class="col-8 main-div" >
 
-            <!-- News block -->
-            <div class="col-12">
-                <img src="img/news.png">
-            </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 search">
+                    <div class="row">
+                        <div class="col-md-11">
+                            <div class="row">
 
-            <!-- Search panel block -->
-            <div class="col-12">
 
-                <div class="row align-items-center search">
+                                <div class="col-md-3 ">
+                                    <form role="form ">
 
-                    <div class="col search-field ">
-                        <input type="text" placeholder="Region"><br>
-                        <input type="text" placeholder="City">
-                    </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="region_input"
+                                                   placeholder="region"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="city_input"
+                                                   placeholder="city"/>
+                                        </div>
+                                    </form>
+                                </div>
 
-                    <div class="col search-field ">
-                        <input type="text" placeholder="Class"><br>
-                        <input type="text" placeholder="Name">
-                    </div>
+                                <div class="col-md-3">
+                                    <form role="form">
 
-                    <div class="col search-field ">
-                        <input type="text" placeholder="Street"><br>
-                        <input type="text" placeholder="Phone">
-                    </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="classifier_input"
+                                                   placeholder="classifier"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="company_input"
+                                                   placeholder="company"/>
+                                        </div>
+                                    </form>
+                                </div>
 
-                    <div class="col search-field ">
-                        <input type="text" placeholder="Number">
-                    </div>
+                                <div class="col-md-3">
+                                    <form role="form">
 
-                    <div class="col-1 search-field  ">
-                        <a href="#"><img src="img/search_exodus_1.png" style="height: 50px"></a>
-                    </div>
-                </div>
-            </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="street_input"
+                                                   placeholder="street"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="telephone_input"
+                                                   placeholder="telephone"/>
+                                        </div>
+                                    </form>
+                                </div>
 
-            <!-- Search result block -->
+                                <div class="col-md-3">
+                                    <form role="form">
 
-            <div class="col-12 ">
-                <div class="row no-gutters">
-                    <!-- Companies block -->
-                    <div class="col-6">
-                        <div class="companies">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="house_input"
+                                                   placeholder="house" disabled/>
+                                        </div>
 
-                            <!-- Element start -->
-                            <div class="row element no-gutters align-items-center">
-                                <div class="col-2 ">
-                                    <div>
-                                        <img src="img/logo_dan.png" alt="logo" class="logo">
+                                    </form>
+                                    <div class="map-style">
+                                        <div class="btn-group">
+                                            <a id="default_btn" href="#" class="btn btn-default">Change Map Style</a>
+                                            <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+                                            <ul class="dropdown-menu">
+                                                <li><a id="retro_btn" href="#">Retro</a></li>
+                                                <li><a id="night_btn" href="#">Night</a></li>
+                                                <li><a id="auberg_btn" href="#">Aubergine</a></li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-8">
-                                    <p class="company-name">Company "DAN"</p>
-                                    <p class="company-info">
-                                        Адрес: Бейт-Даган | Сд. Менахем Бегин, 5 <br>
-                                        Телефон: 03 - 9142237 <br>
-                                        Электропочта: info@egged.co.il <br>
-                                        <a href="#">http://www.egged.co.il/</a>
-                                    </p>
-                                </div>
-                                <div class="col align-self-end">
-                                    <a href="#"><i class="fa fa-info-circle"></i></a>
-                                    <a href="#"><i class="fa fa-map-marker"></i></a>
-                                </div>
                             </div>
-                            <!-- Element end -->
+                        </div>
 
+                        <div class="col-md-1 searchbutton">
+
+                            <a href="#"><img src="img/img2/search.png" width="70" height="70" alt="logo"/></a>
 
                         </div>
                     </div>
-
-                    <!-- Map block -->
-                    <div class="col-6">
-                        <div class="map" id="map"></div>
-                    </div>
                 </div>
             </div>
-
         </div>
 
-        <!-- Right adverisement block -->
-        <div class="col-2 adverblock">
-            <div class="col-11 adver">
-                <img src="img/adver3.png">
-            </div>
-            <div class="col-11 adver">
-                <img src="img/adver4.png">
-            </div>
-            <div class="col-11 adver">
-                <img src="img/adver5.png">
+        <div class="container-fluid">
+            <!-- Search result block -->
+
+            <div class="col-md-12 ">
+                <div class="row">
+                    <!-- Companies block -->
+                    <div class="col-md-6 companies">
+                        <div class="col-md-12">
+                            <div>
+                            <img src="img/logo_dan.png" alt="logo" class="logo company-logo" align="left" >
+                            <p class="company-name h3">Company "DAN"</p>
+                                <a href="#"><i class="fa fa-info-circle company-ad-info icons small"></i></a>
+                                <a href="#"><i class="fa fa-map-marker company-ad-info icons small"></i></a>
+                            <p class="company-info h7">
+                            Адрес: Бейт-Даган | Сд. Менахем Бегин, 5 <br>
+                            Телефон: 03 - 9142237 <br>
+                            Электропочта: info@egged.co.il <br>
+                            <a href="#">http://www.egged.co.il/</a>
+                            </p>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div>
+                                <img src="img/logo_dan.png" alt="logo" class="logo company-logo" align="left" >
+                                <p class="company-name h3">Company "DAN"</p>
+                                <a href="#"><i class="fa fa-info-circle company-ad-info icons small"></i></a>
+                                <a href="#"><i class="fa fa-map-marker company-ad-info icons small"></i></a>
+                                <p class="company-info h7">
+                                    Адрес: Бейт-Даган | Сд. Менахем Бегин, 5 <br>
+                                    Телефон: 03 - 9142237 <br>
+                                    Электропочта: info@egged.co.il <br>
+                                    <a href="#">http://www.egged.co.il/</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div>
+                                <img src="img/logo_dan.png" alt="logo" class="logo company-logo" align="left" >
+                                <p class="company-name h3">Company "DAN"</p>
+                                <a href="#"><i class="fa fa-info-circle company-ad-info icons small"></i></a>
+                                <a href="#"><i class="fa fa-map-marker company-ad-info icons small"></i></a>
+                                <p class="company-info h7">
+                                    Адрес: Бейт-Даган | Сд. Менахем Бегин, 5 <br>
+                                    Телефон: 03 - 9142237 <br>
+                                    Электропочта: info@egged.co.il <br>
+                                    <a href="#">http://www.egged.co.il/</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div>
+                                <img src="img/logo_dan.png" alt="logo" class="logo company-logo" align="left" >
+
+                                <p class="company-name h3">Company "DAN"</p>
+                                <a href="#"><i class="fa fa-info-circle company-ad-info icons small"></i></a>
+                                <a href="#"><i class="fa fa-map-marker company-ad-info icons small"></i></a>
+                                <p class="company-info h7">
+                                    Адрес: Бейт-Даган | Сд. Менахем Бегин, 5 <br>
+                                    Телефон: 03 - 9142237 <br>
+                                    Электропочта: info@egged.co.il <br>
+                                    <a href="#">http://www.egged.co.il/</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div>
+                                <img src="img/logo_dan.png" alt="logo" class="logo company-logo" align="left" >
+                                <p class="company-name h3">Company "DAN"</p>
+                                <a href="#"><i class="fa fa-info-circle company-ad-info icons small"></i></a>
+                                <a href="#"><i class="fa fa-map-marker company-ad-info icons small"></i></a>
+                                <p class="company-info h7">
+                                    Адрес: Бейт-Даган | Сд. Менахем Бегин, 5 <br>
+                                    Телефон: 03 - 9142237 <br>
+                                    Электропочта: info@egged.co.il <br>
+                                    <a href="#">http://www.egged.co.il/</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div>
+                                <img src="img/logo_dan.png" alt="logo" class="logo company-logo" align="left" >
+                                <p class="company-name h3">Company "DAN"</p>
+                                <a href="#"><i class="fa fa-info-circle company-ad-info icons small"></i></a>
+                                <a href="#"><i class="fa fa-map-marker company-ad-info icons small"></i></a>
+                                <p class="company-info h7">
+                                    Адрес: Бейт-Даган | Сд. Менахем Бегин, 5 <br>
+                                    Телефон: 03 - 9142237 <br>
+                                    Электропочта: info@egged.co.il <br>
+                                    <a href="#">http://www.egged.co.il/</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div>
+                                <img src="img/logo_dan.png" alt="logo" class="logo company-logo" align="left" >
+                                <p class="company-name h3">Company "DAN"</p>
+                                <a href="#"><i class="fa fa-info-circle company-ad-info icons small"></i></a>
+                                <a href="#"><i class="fa fa-map-marker company-ad-info icons small"></i></a>
+                                <p class="company-info h7">
+                                    Адрес: Бейт-Даган | Сд. Менахем Бегин, 5 <br>
+                                    Телефон: 03 - 9142237 <br>
+                                    Электропочта: info@egged.co.il <br>
+                                    <a href="#">http://www.egged.co.il/</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                        <!--<div class="companies">-->
+
+                            <!--&lt;!&ndash; Element start &ndash;&gt;-->
+                            <!--<div class="row element">-->
+                                <!--<div class="col-md-2 ">-->
+                                    <!--<div>-->
+                                        <!--<img src="img/logo_dan.png" alt="logo" class="logo" >-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <!--<div class="col-md-8">-->
+                                    <!--<p class="company-name">Company "DAN"</p>-->
+                                    <!--<p class="company-info">-->
+                                        <!--Адрес: Бейт-Даган | Сд. Менахем Бегин, 5 <br>-->
+                                        <!--Телефон: 03 - 9142237 <br>-->
+                                        <!--Электропочта: info@egged.co.il <br>-->
+                                        <!--<a href="#">http://www.egged.co.il/</a>-->
+                                    <!--</p>-->
+                                <!--</div>-->
+                                <!--<div class="col-md-2">-->
+                                    <!--<a href="#"><i class="fa fa-info-circle"></i></a>-->
+                                    <!--<a href="#"><i class="fa fa-map-marker"></i></a>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--&lt;!&ndash; Element end &ndash;&gt;-->
+
+
+                        <!--</div>-->
+
+                        <!-- Map block -->
+                        <div class="col-md-6">
+                            <div class="map img-responsive no-gutters" id="map"></div>
+                        </div>
+                    </div>
+
+
+                </div>
             </div>
         </div>
+
 
     </div>
 
 
-</div>
+</section>
 
 
 <!-- jQuery first, then Tether, then Bootstrap JS. -->
@@ -180,27 +316,27 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
         integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
         crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
-        integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
 <script>
 
+    var map;
+    var markers = [];
+
     function initMap() {
-        var uluru = {lat: 56.223143, lng: 16.512782};
-        var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 10,
-            center: uluru
-        });
-        var marker = new google.maps.Marker({
-            position: uluru,
-            map: map
-        });
+        var initLocation = {center: new google.maps.LatLng(32.080126, 34.784199), zoom: 8};
+        map = new google.maps.Map(document.getElementById('map'), initLocation);
+
+        getPoints();
     }
+
 </script>
 
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXT4gsQJyClX3CSR_XBD0J1YEJ0VSbCs4&callback=initMap">
 </script>
+<script src="js/map.js"></script>
 
 </body>
 </html>
