@@ -43,7 +43,7 @@ function clearMarkers() {
 }
 
 //    MAP STYLE
-// var styleDefault = [];
+var styleDefault = [];
 var stylesRetro = [
     {
         "elementType": "geometry",
