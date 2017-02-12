@@ -12,10 +12,17 @@
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style_new_for_index_2.css">
+    <link rel="stylesheet" href="css/style_for_registration.css">
 
+   <!-- <script src="../Libraries/angular_route.js"></script>
+    <script src="../Libraries/angular_resource.js"></script>-->
+    <script src="../Libraries/angular.js"></script>
+    <script src="./js/MyApp.js"></script>
+    <script src="./js/MyAppCtrl.js"></script>
+    <!--<script src="../Libraries/mask.js"></script>-->
 
 </head>
-<body>
+<body ng-app="MyApp" ng-controller="MyAppCtrl">
 
 <!-- Navbar -->
 
@@ -30,15 +37,15 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
             <ul class="nav navbar-nav navbar-left">
-                <li><a href="#">Home <span class="sr-only"></span></a></li>
-                <li><a href="#">Registration</a></li>
-                <li><a href="#">Terms and conditions</a></li>
-                <li><a href="#">Rubricator</a></li>
-                <li><a href="#">Contacts</a></li>
+                <li><a href="#" ng-click="goToView('home')">Home <span class="sr-only"></span></a></li>
+                <li><a href="#" ng-click="goToView('reg')">Registration</a></li>
+                <li><a href="#" ng-click="goToView('terms')">Terms and conditions</a></li>
+                <li><a href="#" ng-click="goToView('cat')">Rubricator</a></li>
+                <li><a href="#" ng-click="goToView('contacts')">Contacts</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">About project</a></li>
+                <li><a href="#" ng-click="goToView('about')">About project</a></li>
             </ul>
 
         </div>
@@ -156,9 +163,22 @@
         </div>
 
         <div class="container-fluid">
+<!--
+            <ng-include src="'home.html'" ng-show="currentView=='home'"></ng-include>
+            -->
+            <ng-include src="'registration.html'" ng-show="currentView=='reg'"></ng-include>
+            <ng-include src="'about.html'" ng-show="currentView=='about'"></ng-include>
+            <ng-include src="'rubricator.html'" ng-show="currentView=='cat'"></ng-include>
+            <ng-include src="'contacts.html'" ng-show="currentView=='contacts'"></ng-include>
+            <ng-include src="'terms.html'" ng-show="currentView=='terms'"></ng-include>
+
+
+
+
             <!-- Search result block -->
 
-            <div class="col-md-12 ">
+
+            <div class="col-md-12 " ng-show="currentView=='home'">
                 <div class="row">
                     <!-- Companies block -->
                     <div class="col-md-6 companies">
@@ -296,7 +316,6 @@
                             <div class="map img-responsive no-gutters" id="map"></div>
                         </div>
                     </div>
-
 
                 </div>
             </div>

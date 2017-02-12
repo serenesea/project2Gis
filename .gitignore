@@ -1,1 +1,4 @@
 /tmp
+/.gitignore
+/img/Thumbs.db
+.idea
