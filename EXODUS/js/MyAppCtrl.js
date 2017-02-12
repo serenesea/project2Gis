@@ -5,6 +5,12 @@
 angular.module("MyApp").controller("MyAppCtrl", function ($scope, $http) {
 
     $scope.currentView="home"
+ /*   $scope.selectedRegion;
+    $scope.selectedCity
+    $scope.selectedStreet;
+    $scope.selectedBld;
+    $scope.selectedCategory;*/
+
 
     $scope.goToView = function(view){
         $scope.currentView=view
@@ -13,6 +19,63 @@ angular.module("MyApp").controller("MyAppCtrl", function ($scope, $http) {
  $scope.key = '';
     $scope.search = function (value) {
         return value.indexOf($scope.key) >= 0;
+    }
+    var con, reg, cit, str, hou, cmn, phn, cat;
+    $scope.companiesRequest = ""
+    $scope.object = {
+        con:String,
+        reg:String/*$scope.selectedRegion.name*/,
+        cit:String/*$scope.selectedCity.name*/,
+        str:String,
+        hou: String,
+        cmn: "com",
+        phn:String,
+        cat:String
+    }
+
+    $scope.getObject = function(selectedRegion, selectedCity, selectedStreet, selectedBld, selectedCategory, phonenumber){
+        console.log("Our object :")
+        cmn=$scope.object.cmn
+        console.log("cmn="+$scope.object.cmn)
+        if(angular.isDefined(selectedCity)){
+            cit = selectedCity.name
+        }else{
+            cit=""
+        }
+        if(angular.isDefined(selectedRegion)){
+            reg=selectedRegion.name
+        }else{
+            reg=""
+        }
+        if(angular.isDefined(selectedStreet)){
+            str=selectedStreet.name
+        }else{
+            str=""
+        }
+        if(angular.isDefined(selectedBld)){
+            hou=selectedBld.name
+        }else{
+            hou=""
+        }
+        if(angular.isDefined(selectedCategory)){
+            cat=selectedCategory.id
+        }else{
+            cat=""
+        }
+        if(angular.isDefined(phonenumber)){
+            phn=phonenumber
+        }else{
+            phn=""
+        }
+        $scope.companiesRequest = "con=&reg="+reg+"&cit="+cit+"&str="+str+"&hou="+hou+"&cmn="+cmn+"&phn="+phn+"&cat="+cat
+        console.log("$scope.companiesRequest :")
+        console.log($scope.companiesRequest)
+
+        $http.get("http://188.166.79.122:8080/exodus/search/companies_names?"+$scope.companiesRequest).then(fulfilled)
+        function fulfilled(response) {
+            console.log(response.data);
+
+        }
     }
 
     var data = {"isoCode": "EN"};
@@ -48,6 +111,8 @@ angular.module("MyApp").controller("MyAppCtrl", function ($scope, $http) {
         console.log($scope.companies)
         console.log("categories :")
         console.log($scope.categories)
+        console.log("category #1 :")
+        console.log($scope.categories[0].name)
 
         function parseRegions(country) {
             var regions = []
@@ -116,16 +181,15 @@ angular.module("MyApp").controller("MyAppCtrl", function ($scope, $http) {
         .then(fulfilledCategories)
 
     function fulfilledCategories(response) {
-        $scope.categories = response.data;
+        $scope.categories = response.data.categories;
 
         }
+/*
     $http.post("http://188.166.79.122:8080/exodus/init/addresses", data, config)
+*/
 
 
 
 
-    $scope.selectedParentItem;
-    $scope.selectedChildItem;
-    $scope.selectedGrandChildItem;
-    $scope.selectedGrandGrandChildItem;
+
 });
