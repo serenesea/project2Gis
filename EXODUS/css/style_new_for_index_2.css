@@ -1,0 +1,206 @@
+
+body {
+    /*background-color: #3e464c;*/
+}
+
+.fixed-left {
+
+    position: fixed;
+    top: 5.2rem;
+    left: 0;
+    bottom: 0;
+    height: 100vh;
+    width: calc((100% - 1140px) / 2);
+
+    background-image: url("../img/img2/left_fix_bkg.jpg");
+
+}
+
+.fixed-right {
+
+    position: fixed;
+    top: 5.2rem;
+    right: 0;
+    bottom: 0;
+    height: 100vh;
+    width: calc((100% - 1140px) / 2);
+
+    background-image: url("../img/img2/right_fix_bkg.jpg");
+
+}
+
+.centered {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.no-gutters, .form {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.img-responsive {
+    width: 70%;
+    padding-top: 8%;
+    height: auto;
+}
+
+@media (max-width: 1320px) {
+    .img-hidden {
+        display: none;
+    }
+}
+
+.news{
+    margin-top: -2rem;
+}
+
+.search {
+    margin-bottom: 0;
+    border-top: 4px solid #03A9F4;
+    border-bottom: 4px solid #03A9F4;
+    background-color: #222222;
+}
+.searchbutton{
+    margin-top: 1.5rem;
+    margin-left: 0;
+}
+
+
+/*causes horizontal scroll*/
+
+/*form {*/
+    /*min-width: 1140px;*/
+/*}*/
+
+.form-group {
+    max-width: 100%
+}
+
+.input-holder {
+
+    max-width: 60%;
+    float: left;
+}
+
+.search input {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 0;
+
+}
+
+.companies{
+
+    /*width: 600px;*/
+    height: 600px;
+    overflow: scroll;
+
+}
+
+
+
+.map{
+    width: 600px;
+    height: 600px;
+
+    margin: 0 auto;
+}
+
+.map .img-responsive {
+    width: 100%;
+
+    height: auto;
+}
+
+/*.full-width {*/
+    /*width: 100vw;*/
+    /*margin-left: -50vw;*/
+    /*left: 50%;*/
+/*}*/
+
+.element {
+    width: 100%;
+    height: 70px;
+    background-color: #bfbfbf;
+    border-top: 1px solid white;
+}
+
+.logo {
+    height: 100px;
+    /*margin-left: 5px;*/
+    margin-right: 15px;
+}
+
+.company-logo{
+    margin-left: -30px;
+
+}
+
+.company-name {
+
+    margin-top: 5px;
+    margin-bottom: 0;
+    font-weight: bold;
+}
+
+.company-info {
+    /*margin-left: 15px;*/
+    margin-top: 0px;
+    /*font-size: 10px;*/
+    line-height: 15px;
+}
+
+.company-ad-info{
+    float: right;
+
+}
+
+.icons {
+    margin-left:5px;
+    margin-right:5px;
+    margin-top: 0;
+}
+
+.icons:hover {
+    opacity:.95;
+    -webkit-transition:all 0.5s ease-out;
+    -moz-transition:all 0.5s ease-out;
+    -ms-transition:all 0.5s ease-out;
+    -o-transition:all 0.5s ease-out;
+    transition:all 0.5s ease-out;
+}
+
+ /*Icon sizing */
+.icons.huge {
+    font-size:60px;
+}
+
+.icons.medium-huge {
+    font-size:50px;
+}
+
+.icons.medium {
+    font-size:40px;
+}
+
+.icons.medium-small {
+    font-size:30px;
+}
+
+.icons.small {
+    font-size:20px;
+}
+
+.icons.tiny {
+    font-size:15px;
+    margin-left:5px;
+    margin-right:5px;
+}
+
+.map-style a, ul, li, span{
+    border-radius: 0; !important;
+
+}
