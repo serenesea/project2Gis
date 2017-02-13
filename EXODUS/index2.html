@@ -19,7 +19,7 @@
     <script src="../Libraries/angular.js"></script>
     <script src="./js/MyApp.js"></script>
     <script src="./js/MyAppCtrl.js"></script>
-    <!--<script src="../Libraries/mask.js"></script>-->
+    <script src="../Libraries/mask.js"></script>
 
 </head>
 <body ng-app="MyApp" ng-controller="MyAppCtrl">
@@ -104,12 +104,32 @@
                                     <form role="form ">
 
                                         <div class="form-group">
-                                            <input type="text" class="form-control" id="region_input"
-                                                   placeholder="region"/>
+                                            <!--<input type="text" class="form-control" id="region_input"
+                                                   placeholder="region"/>-->
+
+                                            <select class="form-control" id="region_input"
+                                                    ng-model="selectedRegion"
+                                                    ng-options="r.name for r in regions"
+                                                    ng-disabled = "selectedCategory"
+                                                    ng-disabled = "selectedName" >
+                                                >
+                                                <option value = "" selected>Regions</option>
+
+                                            </select>
+
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" id="city_input"
-                                                   placeholder="city"/>
+                                            <!--<input type="text" class="form-control" id="city_input"
+                                                   placeholder="city"/>-->
+
+                                            <select class="form-control" id="city_input"
+                                                    ng-model="selectedCity"
+                                                    ng-disabled = "selectedCategory"
+                                                    ng-options="c.name for c in cities | filter:{regionId: selectedRegion.id}:true | orderBy: 'name' | limitTo:50"
+                                            >
+                                                <option value = "" selected>Cities</option>
+                                            </select>
+
                                         </div>
                                     </form>
                                 </div>
@@ -118,8 +138,15 @@
                                     <form role="form">
 
                                         <div class="form-group">
-                                            <input type="text" class="form-control" id="classifier_input"
-                                                   placeholder="classifier"/>
+                                            <!--<input type="text" class="form-control" id="classifier_input"
+                                                   placeholder="classifier"/>-->
+
+                                            <select class="form-control" id="classifier_input"
+                                                    ng-model="selectedCategory"
+                                                    ng-options="cat.name for cat in categories">
+                                                <option value = "" selected>Class</option>
+                                            </select>
+
                                         </div>
                                         <div class="form-group">
                                             <input type="text" class="form-control" id="company_input"
@@ -132,12 +159,21 @@
                                     <form role="form">
 
                                         <div class="form-group">
-                                            <input type="text" class="form-control" id="street_input"
-                                                   placeholder="street"/>
+                                           <!-- <input type="text" class="form-control" id="street_input"
+                                                   placeholder="street"/>-->
+
+                                            <select class="form-control" id="street_input"
+                                                    ng-model="selectedStreet"
+                                                    ng-disabled = "selectedCategory"
+                                                    ng-options="g.name for g in streets | filter:{cityId: selectedCity.id}:true | orderBy: 'name'| limitTo:50">
+                                                <option value = "" selected>Streets</option>
+                                            </select>
+
+
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" id="telephone_input"
-                                                   placeholder="telephone"/>
+                                            <input ng-model="phonenumber" ui-mask="(999) 999-9999"  ui-mask-placeholder ui-mask-placeholder-char="_" type="text" class="form-control" id="telephone_input"
+                                                   placeholder="telephone" />
                                         </div>
                                     </form>
                                 </div>
@@ -146,8 +182,16 @@
                                     <form role="form">
 
                                         <div class="form-group">
-                                            <input type="text" class="form-control" id="house_input"
-                                                   placeholder="house" disabled/>
+                                          <!--  <input type="text" class="form-control" id="house_input"
+                                                   placeholder="house" disabled/>-->
+
+                                            <select class="form-control" id="house_input"
+                                                    ng-model="selectedBld"
+                                                    ng-disabled = "selectedCategory"
+                                                    ng-options="b.name for b in buildings | filter:{streetId: selectedStreet.id}:true | orderBy: 'name'| limitTo:50">
+                                                <option value = "" selected>Numbers</option>
+                                            </select>
+
                                         </div>
 
                                     </form>
@@ -168,7 +212,7 @@
 
                         <div class="col-md-1 searchbutton">
 
-                            <a href="#"><img src="img/img2/search.png" width="70" height="70" alt="logo"/></a>
+                            <a href="#" ng-click = "getObject(selectedRegion, selectedCity, selectedStreet, selectedBld, selectedCategory, phonenumber)"><img src="img/img2/search.png" width="70" height="70" alt="logo"/></a>
 
                         </div>
                     </div>
