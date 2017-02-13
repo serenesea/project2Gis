@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="css/style_for_registration.css">
     <link rel="stylesheet" href="css/stylesheets/framework.css">
     <link rel="stylesheet" href="css/stylesheets/loader.css">
+    <link rel="stylesheet" href="css/ltrRtl.css">
 
     <!--<link rel="stylesheet" href="css/style.css">-->
 
@@ -26,16 +27,22 @@
     <script src="../Libraries/mask.js"></script>
 
     <link rel="shortcut icon" href="favicon.ico">
+    <!-- -------------------------------------------------- -->
+    <script type="text/javascript" src="../Libraries/jquery-2.1.4.min.js" ></script>
+    <script type="text/javascript" src="../Libraries/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script type="text/javascript" src="../Libraries/angular.js" ></script>
+    <script type="text/javascript" src="../Libraries/angular-ui-router.min.js" ></script>
+    <script type="text/javascript" src="../Libraries/angular-animate.js" ></script>
+    <script type="text/javascript" src="../Libraries/swiper.min.js" ></script>
+    <script type="text/javascript" src="../Libraries/jquery.customSelect.min.js" ></script>
+    <script type="text/javascript" src="../Libraries/ui-bootstrap-tpls-0.14.3.js" ></script>
+    <script type="text/javascript" src="js/select-tpls.js"></script>
+    <script type="text/javascript" src="js/LanguageService.js"></script>
 
 </head>
-<body ng-app="MyApp" ng-controller="MyAppCtrl">
-
-
-
-
+<body ng-app="MyApp" ng-controller="MyAppCtrl" ng-init="initApp()" dir="{{lang.dir}}">
 
 <!-- Navbar -->
-
 
 <nav class="navbar navbar-inverse navbar-static-top">
     <div class="container">
@@ -47,22 +54,22 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
             <ul class="nav navbar-nav navbar-left">
-                <li><a href="#" ng-click="goToView('home')">Home <span class="sr-only"></span></a></li>
-                <li><a href="#" ng-click="goToView('reg')">Registration</a></li>
-                <li><a href="#" ng-click="goToView('terms')">Terms and conditions</a></li>
-                <li><a href="#" ng-click="goToView('cat')">Rubricator</a></li>
-                <li><a href="#" ng-click="goToView('contacts')">Contacts</a></li>
-                <li><a href="#" ng-click="goToView('about')">About</a></li>
+                <li><a href="#" ng-click="goToView('home')">{{lang.home}} <span class="sr-only"></span></a></li>
+                <li><a href="#" ng-click="goToView('reg')">{{lang.registration}}</a></li>
+                <li><a href="#" ng-click="goToView('terms')">{{lang.terms}}</a></li>
+                <li><a href="#" ng-click="goToView('cat')">{{lang.rubricator}}</a></li>
+                <li><a href="#" ng-click="goToView('contacts')">{{lang.contacts}}</a></li>
+                <li><a href="#" ng-click="goToView('about')">{{lang.about}}</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Language<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">English</a></li>
-                        <li><a href="#">Русский</a></li>
-                        <li><a href="#">עברית</a></li>
-                        <li><a href="#">Français</a></li>
+                        <li><a href="#" ng-click="changeLang('ENG')"><span >{{langDirective.ENG}}</span><img  src="../EXODUS/img/flag/ENG_small_horiz.png">  English</a></li>
+                        <li><a href="#" ng-click="changeLang('RUS')"><span >{{langDirective.RUS}}</span><img src="../EXODUS/img/flag/RUS_small_horiz.png">  Русский</a></li>
+                        <li><a href="#" ng-click="changeLang('HEB')"><span >{{langDirective.HEB}}</span><img src="../EXODUS/img/flag/HEB_small_horiz.png">  עברית</a></li>
+                        <li><a href="#" ng-click="changeLang('FRA')"><span >{{langDirective.FRA}}</span><img src="../EXODUS/img/flag/FRA_small_horiz.png">  Français</a></li>
                     </ul>   
                 </li>
 
@@ -72,6 +79,8 @@
         </div>
     </div>
 </nav>
+
+
 
 <!-- Main section -->
 
@@ -120,7 +129,7 @@
                                                     ng-disabled = "selectedCategory"
                                                     ng-disabled = "selectedName" >
                                                 >
-                                                <option value = "" selected>Regions</option>
+                                                <option value = "" selected>{{lang.region}}</option>
 
                                             </select>
 
@@ -134,7 +143,7 @@
                                                     ng-disabled = "selectedCategory"
                                                     ng-options="c.name for c in cities | filter:{regionId: selectedRegion.id}:true | orderBy: 'name' | limitTo:50"
                                             >
-                                                <option value = "" selected>Cities</option>
+                                                <option value = "" selected>{{lang.city}}</option>
                                             </select>
 
                                         </div>
@@ -151,13 +160,13 @@
                                             <select class="form-control" id="classifier_input"
                                                     ng-model="selectedCategory"
                                                     ng-options="cat.name for cat in categories">
-                                                <option value = "" selected>Class</option>
+                                                <option value = "" selected>{{lang.category}}</option>
                                             </select>
 
                                         </div>
                                         <div class="form-group">
                                             <input type="text" class="form-control" id="company_input"
-                                                   placeholder="company"/>
+                                                   placeholder={{lang.nameBus}} />
                                         </div>
                                     </form>
                                 </div>
@@ -173,14 +182,14 @@
                                                     ng-model="selectedStreet"
                                                     ng-disabled = "selectedCategory"
                                                     ng-options="g.name for g in streets | filter:{cityId: selectedCity.id}:true | orderBy: 'name'| limitTo:50">
-                                                <option value = "" selected>Streets</option>
+                                                <option value = "" selected>{{lang.nameStreet}}</option>
                                             </select>
 
 
                                         </div>
                                         <div class="form-group">
                                             <input ng-model="phonenumber" ui-mask="(999) 999-9999"  ui-mask-placeholder ui-mask-placeholder-char="_" type="text" class="form-control" id="telephone_input"
-                                                   placeholder="telephone" />
+                                                   placeholder="{{lang.numPhone}}" />
                                         </div>
                                     </form>
                                 </div>
@@ -196,7 +205,7 @@
                                                     ng-model="selectedBld"
                                                     ng-disabled = "selectedCategory"
                                                     ng-options="b.name for b in buildings | filter:{streetId: selectedStreet.id}:true | orderBy: 'name'| limitTo:50">
-                                                <option value = "" selected>Numbers</option>
+                                                <option value = "" selected>{{lang.numHome}}</option>
                                             </select>
 
                                         </div>

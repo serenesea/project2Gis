@@ -1,8 +1,6 @@
-/**
- * Created by Антонина on 31.01.2017.
- */
 
-angular.module("MyApp").controller("MyAppCtrl", function ($scope, $http) {
+
+angular.module("MyApp").controller("MyAppCtrl", function ($scope, $rootScope, LanguageService,$http) {
 
     $scope.currentView="home"
  /*   $scope.selectedRegion;
@@ -14,6 +12,48 @@ angular.module("MyApp").controller("MyAppCtrl", function ($scope, $http) {
 
     $scope.goToView = function(view){
         $scope.currentView=view
+    }
+
+    $rootScope.language = 'ENG';
+
+    $scope.lang = LanguageService[$rootScope.language];
+
+    $scope.changeLang = function(lang){
+        //console.log("URA");
+        $rootScope.language = lang;
+        // scope.langDirective = LanguageService[$rootScope.language].lang;
+    }
+    $scope.$watch(function () {
+        return $rootScope.language ;
+    },function (newValue, oldValue) {
+        var applyFn = function(){
+            $scope.lang = LanguageService[$rootScope.language];
+            initMenuItems();
+        }
+        if ($scope.$$phase) {
+            applyFn();
+        } else {
+            $scope.$apply(applyFn);
+        }
+    }, true);
+
+
+    var initMenuItems = function () {
+        // var elem = angular.element(document.querySelector("body"));
+        // if(elem.prop("dir") == "ltr") {
+        //
+        //     elem.children().children().addClass("my_float_ltr");
+        //     if(elem.children().children().hasClass("my_float_rtl")) {
+        //         elem.children().children().removeClass("my_float_rtl");
+        //     }
+        // } else {
+        //
+        //     elem.children().children().addClass("my_float_rtl");
+        //     if(elem.children().children().hasClass("my_float_ltr")) {
+        //         elem.children().children().removeClass("my_float_ltr");
+        //     }
+        //
+        // }
     }
 
  $scope.key = '';
