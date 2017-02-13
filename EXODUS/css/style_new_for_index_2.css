@@ -3,6 +3,25 @@ body {
     /*background-color: #3e464c;*/
 }
 
+hr {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #03A9F4 -moz-use-text-color -moz-use-text-color;
+    border-image: none;
+    border-style: solid none none;
+    border-width: 1px 0 0;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+hr {
+    box-sizing: content-box;
+    height: 0;
+}
+
+
+
 .fixed-left {
 
     position: fixed;
@@ -96,21 +115,22 @@ body {
      margin-bottom: 0.5rem;
      border-radius: 0;
 
- }*
+ }
 
 .companies{
 
     /*width: 600px;*/
     height: 70vh;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
 
 }
 
 .main{
     height: 70vh;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
+    background-color: #d8d7d3;
 }
 
 .map{
@@ -169,6 +189,10 @@ body {
 
 }
 
+.company-block{
+    background-color: white;
+}
+
 .icons {
     margin-left:5px;
     margin-right:5px;
@@ -216,11 +240,68 @@ body {
 
 }
 
-.footer {
-    bottom: 0;
+footer {
+    position: fixed;
+    bottom: 0px;
     width: 100%;
-    height: 40px;
+    height: 25px;
+    border-top: 2px solid #03A9F4;
     background-color: #222222;
+    color: #03A9F4;
 
 }
+
+
+
+.employee-avatar {
+    text-align:center;
+    position:relative;
+    margin-top:10px;
+    margin-bottom:5px;
+    border:0px solid #1a1a1a;
+    width:130px;
+    height:130px;
+    -webkit-border-radius:5%;
+    border-radius:5%;
+}
+
+.employee {
+    text-align: center;
+    padding:10px 10px 10px;
+    background:transparent;
+    border:1px solid #d7d7d7;
+    -webkit-border-radius:0px;
+    border-radius:0px;
+}
+
+.employee:hover {
+    border:1px solid #03A9F4;
+    border-radius:0px;
+    -webkit-border-radius:0px;
+    background:#f0f0f0;
+    -webkit-transition:all 0.8s ease;
+    -moz-transition:all 0.8s ease;
+    -ms-transition:all 0.8s ease;
+    -o-transition:all 0.8s ease;
+    transition:all 0.8s ease;
+}
+
+.bold {
+    font-weight:700;
+}
+
+.margin-shift-up {
+    margin-top:-15px;
+}
+
+
+.separator-line-small {
+    display:inline-block;
+    width:40px;
+    height:1.5px;
+    background:#03A9F4;
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
 

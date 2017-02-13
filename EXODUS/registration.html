@@ -1,89 +1,151 @@
 <!-- Registration block -->
 
-<div class="col-xs-12 scrollable regPlace" ng-show="currentView=='reg';">
-        <form class="form-horizontal" id="row3col2form" action="server.js" method="post">
-            <div class="form-group center-block">
-                <div class="form-group col-xs-3">
-                    <img src="../EXODUS/img/flag/flagRusSmall.png" class="img-responsive iconCountry" style="text-align: center">
-                    <input type="text" placeholder="company name" class="form-control input-sm"
-                           name="comNameRus"><br>
-                    <input type="text" placeholder="address" class="form-control input-sm"
-                           name="addressRus"><br>
-                    <input type="text" placeholder="phone" class="form-control input-sm"
-                           name="phoneRus"><br>
-                    <input type="text" placeholder="website" class="form-control input-sm"
-                           name="webRus"><br>
-                    <input type="text" placeholder="company email" class="form-control input-sm"
-                           name="comEmailRus"><br>
-                    <input type="text" placeholder="area business" class="form-control input-sm"
-                           name="areaRus"><br>
-                </div>
-                <div class="form-group col-xs-3">
-                    <img src="../EXODUS/img/flag/flagEngSmall.png" class="img-responsive iconCountry" style="text-align: center">
-                    <input type="text" placeholder="company name" class="form-control input-sm"
-                           name="comNameEng"><br>
-                    <input type="text" placeholder="address" class="form-control input-sm"
-                           name="addressEng"><br>
-                    <input type="text" placeholder="phone" class="form-control input-sm"
-                           name="phoneEng"><br>
-                    <input type="text" placeholder="website" class="form-control input-sm"
-                           name="webEng"><br>
-                    <input type="text" placeholder="company email" class="form-control input-sm"
-                           name="comEmailEng"><br>
-                    <input type="text" placeholder="area business" class="form-control input-sm"
-                           name="areaEng"><br>
-                </div>
-                <div class="form-group col-xs-3">
-                    <img src="../EXODUS/img/flag/flagFraSmall.png" class="img-responsive iconCountry" style="text-align: center">
-                    <input type="text" placeholder="company name" class="form-control input-sm"
-                           name="comNameFra"><br>
-                    <input type="text" placeholder="address" class="form-control input-sm"
-                           name="addressFra"><br>
-                    <input type="text" placeholder="phone" class="form-control input-sm"
-                           name="phoneFra"><br>
-                    <input type="text" placeholder="website" class="form-control input-sm"
-                           name="webFra"><br>
-                    <input type="text" placeholder="company email" class="form-control input-sm"
-                           name="comEmailFra"><br>
-                    <input type="text" placeholder="area business" class="form-control input-sm"
-                           name="areaFra"><br>
-                </div>
-                <div class="form-group col-xs-3" dir="rtl">
-                    <img src="../EXODUS/img/flag/flagHebSmall.png" class="img-responsive iconCountryRtl" style="text-align: center">
-                    <input type="text" placeholder="company name" class="form-control input-sm"
-                           name="comNameHeb"><br>
-                    <input type="text" placeholder="address" class="form-control input-sm"
-                           name="addressHeb"><br>
-                    <input type="text" placeholder="phone" class="form-control input-sm"
-                           name="phoneHeb"><br>
-                    <input type="text" placeholder="website" class="form-control input-sm"
-                           name="webHeb"><br>
-                    <input type="text" placeholder="company email" class="form-control input-sm"
-                           name="comEmailHeb"><br>
-                    <input type="text" placeholder="area business" class="form-control input-sm"
-                           name="areaHeb"><br>
-                </div>
-            </div>
-            <br>
-            <div class="form-group">
-                <div class="form-group col-xs-3"></div>
-                <div class="form-group col-xs-3">
-                    <input type="text" placeholder="your name" class="form-control input-sm"
-                           name="userName"><br>
-                    <input type="text" placeholder="your email" class="form-control input-sm"
-                           name="userEmail"><br>
-                    <input type="text" placeholder="your phone" class="form-control input-sm"
-                           name="userPhone"><br>
-                </div>
-                <div class="form-group col-xs-6" id="row2col2bottom">
-                    <button type="submit" class="btn btn-default" id="btnSub">Submit</button>
+<div class="col-md-12 scrollable regPlace" ng-show="currentView=='reg';">
 
-                    <input type="checkbox" id="transleteCheck" for="btnSub" style="margin-left: 2vw" checked>
-                    <label for="transleteCheck" ><small>Order translate</small></label>
 
+    <div class="row">
+        <div class="col-md-12" style="text-align: center">
+            <h2>Registration of your company</h2>
+            <h5>Here you can register your company in our system. You can fill the field only in one language, others
+                will be translated automatically.</h5>
+        </div>
+
+
+    </div>
+
+
+    <div class="row">
+        <form id="row3col2form" action="server.js" method="post">
+
+            <div class="col-md-12">
+
+                <div class="col-md-3">
+                    <img src="../EXODUS/img/flag/Russia.png" alt="Russian"
+                         class="img-responsive iconCountry img-center"
+                         style="text-align: center">
+                    <hr>
+
+                    <div class="form-group">
+                        <input type="text" placeholder="company name" class="form-control input-sm"
+                               name="comNameRus">
+                        <input type="text" placeholder="address" class="form-control input-sm"
+                               name="addressRus">
+                        <input type="text" placeholder="phone" class="form-control input-sm"
+                               name="phoneRus">
+                        <input type="text" placeholder="website" class="form-control input-sm"
+                               name="webRus">
+                        <input type="text" placeholder="company email" class="form-control input-sm"
+                               name="comEmailRus">
+                        <input type="text" placeholder="area business" class="form-control input-sm"
+                               name="areaRus">
+                    </div>
                 </div>
+
+                <div class="col-md-3">
+                    <img src="../EXODUS/img/flag/United-Kingdom.png" alt="English"
+                         class="img-responsive iconCountry img-center"
+                         style="text-align: center">
+                    <hr>
+
+                    <div class="form-group">
+                        <input type="text" placeholder="company name" class="form-control input-sm"
+                               name="comNameEng">
+                        <input type="text" placeholder="address" class="form-control input-sm"
+                               name="addressEng">
+                        <input type="text" placeholder="phone" class="form-control input-sm"
+                               name="phoneEng">
+                        <input type="text" placeholder="website" class="form-control input-sm"
+                               name="webEng">
+                        <input type="text" placeholder="company email" class="form-control input-sm"
+                               name="comEmailEng">
+                        <input type="text" placeholder="area business" class="form-control input-sm"
+                               name="areaEng">
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <img src="../EXODUS/img/flag/France.png" alt="French"
+                         class="img-responsive iconCountry img-center"
+                         style="text-align: center">
+                    <hr>
+
+                    <div class="form-group">
+                        <input type="text" placeholder="company name" class="form-control input-sm"
+                               name="comNameFra">
+                        <input type="text" placeholder="address" class="form-control input-sm"
+                               name="addressFra">
+                        <input type="text" placeholder="phone" class="form-control input-sm"
+                               name="phoneFra">
+                        <input type="text" placeholder="website" class="form-control input-sm"
+                               name="webFra">
+                        <input type="text" placeholder="company email" class="form-control input-sm"
+                               name="comEmailFra">
+                        <input type="text" placeholder="area business" class="form-control input-sm"
+                               name="areaFra">
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <img src="../EXODUS/img/flag/Israel.png" alt="Hebrew"
+                         class="img-responsive iconCountry img-center"
+                         style="text-align: center">
+                    <hr>
+
+                    <div class="form-group">
+                        <input type="text" placeholder="company name" class="form-control input-sm"
+                               name="comNameHeb" style="direction: rtl">
+                        <input type="text" placeholder="address" class="form-control input-sm"
+                               name="addressHeb" style="direction: rtl">
+                        <input type="text" placeholder="phone" class="form-control input-sm"
+                               name="phoneHeb" style="direction: rtl">
+                        <input type="text" placeholder="website" class="form-control input-sm"
+                               name="webHeb" style="direction: rtl">
+                        <input type="text" placeholder="company email" class="form-control input-sm"
+                               name="comEmailHeb" style="direction: rtl">
+                        <input type="text" placeholder="area business" class="form-control input-sm"
+                               name="areaHeb" style="direction: rtl">
+                    </div>
+                </div>
+
             </div>
         </form>
     </div>
+    <hr>
+
+    <div class="row">
+
+        <div class="col-md-12" style="text-align: center">
+            <h5>Please enter your private information. It will be seen only by our administrator. If it is necessary -
+                click "Order translate".</h5>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-3"></div>
+            <div class="col-md-3">
+                <input type="text" placeholder="your name" class="form-control input-sm"
+                       name="userName">
+                <input type="email" placeholder="your email" class="form-control input-sm"
+                       name="userEmail">
+                <input type="tel" placeholder="your phone" class="form-control input-sm"
+                       name="userPhone">
+            </div>
+
+            <div class="form-group col-md-6" id="row2col2bottom">
+                <button type="submit" class="btn btn-primary btn-lg" id="btnSub">Submit</button>
+                <br>
+                <div class="checkbox" id="translateCheck" for="btnSub" checked>
+                    <label for="translateCheck">
+                        <input type="checkbox"> Order translate
+
+                    </label>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
 </div>
+
 <!-- End of Registration block -->
