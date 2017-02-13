@@ -95,16 +95,21 @@ body {
 .companies{
 
     /*width: 600px;*/
-    height: 600px;
+    height: 70vh;
     overflow: scroll;
+    scrollbar-base-color: #ffffff;
 
 }
 
-
+.main{
+    height: 70vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
 
 .map{
     width: 600px;
-    height: 600px;
+    height: 70vh;
 
     margin: 0 auto;
 }
@@ -204,3 +209,12 @@ body {
     border-radius: 0; !important;
 
 }
+
+.footer {
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    background-color: #222222;
+
+}
+

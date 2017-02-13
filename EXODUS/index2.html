@@ -24,12 +24,16 @@
 </head>
 <body ng-app="MyApp" ng-controller="MyAppCtrl">
 
+
+
+
+
 <!-- Navbar -->
 
 
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse navbar-static-top">
     <div class="container">
-        <div class="navbar-header">
+        <div class="navbar-header ">
             <a class="navbar-brand" href="#"><img src="img/img2/exodus_logo.png" width="138" height="30"
                                                   alt="logo"/></a>
             <a class="navbar-brand" href="#"><img src="img/img2/thlg.png" width="128" height="30" alt="logo2"/></a>
@@ -172,10 +176,10 @@
             </div>
         </div>
 
-        <div class="container-fluid">
-<!--
+        <div class="container-fluid main">
+
             <ng-include src="'home.html'" ng-show="currentView=='home'"></ng-include>
-            -->
+
             <ng-include src="'registration.html'" ng-show="currentView=='reg'"></ng-include>
             <ng-include src="'about.html'" ng-show="currentView=='about'"></ng-include>
             <ng-include src="'rubricator.html'" ng-show="currentView=='cat'"></ng-include>
@@ -331,13 +335,16 @@
             </div>
         </div>
 
-
-
-
     </div>
 
 
+
+
 </section>
+
+
+
+
 
 
 <!-- jQuery first, then Tether, then Bootstrap JS. -->
