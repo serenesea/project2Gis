@@ -96,8 +96,8 @@ body {
 
     /*width: 600px;*/
     height: 70vh;
-    overflow: scroll;
-    scrollbar-base-color: #ffffff;
+    overflow-y: scroll;
+    overflow-x: hidden;
 
 }
 
