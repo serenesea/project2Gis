@@ -30,7 +30,6 @@
     <!-- -------------------------------------------------- -->
     <script type="text/javascript" src="../Libraries/jquery-2.1.4.min.js" ></script>
     <script type="text/javascript" src="../Libraries/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script type="text/javascript" src="../Libraries/angular.js" ></script>
     <script type="text/javascript" src="../Libraries/angular-ui-router.min.js" ></script>
     <script type="text/javascript" src="../Libraries/angular-animate.js" ></script>
     <script type="text/javascript" src="../Libraries/swiper.min.js" ></script>
@@ -166,6 +165,7 @@
                                         </div>
                                         <div class="form-group">
                                             <input type="text" class="form-control" id="company_input"
+                                                   ng-model="company"
                                                    placeholder={{lang.nameBus}} />
                                         </div>
                                     </form>
@@ -228,7 +228,10 @@
 
                         <div class="col-md-1 searchbutton">
 
-                            <a href="#" ng-click = "getObject(selectedRegion, selectedCity, selectedStreet, selectedBld, selectedCategory, phonenumber)"><img src="img/img2/search.png" width="70" height="70" alt="logo"/></a>
+                            <!--<a href="#" ng-click = "getObject(selectedRegion, selectedCity, selectedStreet, selectedBld,
+                            selectedCategory, company, phonenumber)"><img src="img/img2/search.png" width="70" height="70" alt="logo"/></a>-->
+                            <a href="#" ng-click = "getCompList(selectedRegion, selectedCity, selectedStreet, selectedBld,
+                            selectedCategory, company, phonenumber)"><img src="img/img2/search.png" width="70" height="70" alt="logo"/>
 
                         </div>
                     </div>
@@ -238,7 +241,9 @@
 
         <div class="container-fluid main">
 
+<!--
             <ng-include src="'home.html'" ng-show="currentView=='home'"></ng-include>
+-->
 
             <ng-include src="'registration.html'" ng-show="currentView=='reg'"></ng-include>
             <ng-include src="'about.html'" ng-show="currentView=='about'"></ng-include>
@@ -256,6 +261,23 @@
                 <div class="row company-block">
                     <!-- Companies block -->
                     <div class="col-md-6 companies ">
+
+                        <div ng-model="companiesRes" ng-repeat="item in companies" class="col-md-12 ">
+                            <div class="">
+                                <img src="img/logo_dan.png" alt="logo" class="logo company-logo" align="left" >
+                                <p class="company-name h3">{{item.name}}<!--Company "DAN"--></p>
+                                <a href="#"><i class="fa fa-info-circle company-ad-info icons small"></i></a>
+                                <a href="#"><i class="fa fa-map-marker company-ad-info icons small"></i></a>
+                                <p class="company-info h7">
+                                    Адрес: {{item.address}}<!--Бейт-Даган | Сд. Менахем Бегин, 5--> <br>
+                                    Телефон: {{item.tel}}<!--03 - 9142237--> <br>
+                                    Электропочта: {{item.email}}<!--info@egged.co.il--> <br>
+                                    <a href="#">{{item.web}}<!--http://www.egged.co.il/--></a><br>
+                                    Категории: <a href="#">{{item.categories}}</a>
+                                </p>
+                            </div>
+                        </div>
+
                         <div class="col-md-12 ">
                             <div class="">
                             <img src="img/logo_dan.png" alt="logo" class="logo company-logo" align="left" >

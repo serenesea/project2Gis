@@ -9,6 +9,17 @@ angular.module("MyApp").controller("MyAppCtrl", function ($scope, $rootScope, La
     $scope.selectedBld;
     $scope.selectedCategory;*/
 
+   /* $scope.companies = [
+        {name: "Eged", category: ["transport","bus"], address: "Tel-Aviv, Yaffo", street: "Street of Tel-Aviv", tel:"054-243-64-95", email: "eged@gmail,com", web:"eged.co.il"},
+        {name: "Taxishka", category: "transport", address: "Netania", street: "Street of Netania",tel:"054-000-64-95", email: "taxishka@mail,com", web:"taxishka.co.il"},
+        {name: "Eged-Center", category: "transport", address: "Jerusalem", street: "Street of Jerusalem",tel:"054-001-64-95", email: "eged@gmail,com", web:"eged.co.il"},
+        {name: "Maccabi", category: "medicine", address: "Ашкелон", street: "Street of Ashkelon",tel:"053-240-64-95", email: "macabi@macabi.co.il", web:"macabi.co.il"},
+        {name: "Clalit", category: "medicine", address: "Ашкелон", street: "Street of Ashkelon",tel:"053-240-64-00", email: "clalit@clalit.co.il", web:"clalit.co.il"},
+        {name:"Leumi", category: "banking", address: "Jerusalem", street: "Street of Jerusalem",tel:"054-241-61-91", email: "leumi@leumi,co.il", web:"leumi.co.il"},
+        {name: "Misrad Klita", category: "services", address: "Netania", street: "Street of Netania",tel:"053-290-60-98", email: "klita@gmail,com", web:"klita.co.il"},
+        {name: "Cofix", category: "catering", address: "Petah-Tikva", street: "Street of Petakh-Tikva",tel:"054-243-94-12", email: "cofix@cofix,com", web:"cofix.co.il"},
+
+    ]*/
 
     $scope.goToView = function(view){
         $scope.currentView=view
@@ -73,10 +84,18 @@ angular.module("MyApp").controller("MyAppCtrl", function ($scope, $rootScope, La
         cat:String
     }
 
-    $scope.getObject = function(selectedRegion, selectedCity, selectedStreet, selectedBld, selectedCategory, phonenumber){
+    $scope.getObject = function(selectedRegion, selectedCity, selectedStreet, selectedBld, selectedCategory, company, phonenumber){
         console.log("Our object :")
-        cmn=$scope.object.cmn
-        console.log("cmn="+$scope.object.cmn)
+      /*  cmn=$scope.object.cmn
+        console.log("cmn="+$scope.object.cmn)*/
+        if(angular.isDefined(company)){
+           /* if(company.toString().length>=3){
+                console.log("Request is sent")
+            }*/
+            cmn = company
+        }else{
+            cmn=""
+        }
         if(angular.isDefined(selectedCity)){
             cit = selectedCity.name
         }else{
@@ -111,13 +130,50 @@ angular.module("MyApp").controller("MyAppCtrl", function ($scope, $rootScope, La
         console.log("$scope.companiesRequest :")
         console.log($scope.companiesRequest)
 
-        $http.get("http://188.166.79.122:8080/exodus/search/companies_names?"+$scope.companiesRequest).then(fulfilled)
-        function fulfilled(response) {
-            console.log(response.data);
-
+        $http.get("http://188.166.79.122:8080/exodus/search/companies_names?"+$scope.companiesRequest).then(getCompNamesList)
+        function getCompNamesList(response) {
+            var companiesList = [];
+            var companies = response.data.companies;
+            for (var i in companies) {
+                var companyNames = companies[i].companyNames
+                for(var j in companyNames){
+                    companiesList.push(companyNames[j].name)
+                }
+            }
+            console.log("List of companies names: ")
+            console.log(companiesList)
         }
     }
 
+
+    $scope.getCompList = function(selectedRegion, selectedCity, selectedStreet, selectedBld,selectedCategory, company, phonenumber){
+    $http.get("http://188.166.79.122:8080/exodus/search/companies?cmn=comp&cat=1&cat=4&reg=center").then(getSearchResult)
+        function getSearchResult(response) {
+            $scope.items = response.data;
+            var companies = $scope.items.companies;
+            $scope.companies = parseCompList(companies)
+            function parseCompList(companies){
+                var compArr = [];
+                for (i in companies){
+                    var names = companies[i].companyNames;
+                        compArr[i] = {
+                            id: companies[i].id,
+                            name: companies[i].companyNames[0].name,
+                            address: companies[i].addresses[0].city+", "+companies[i].addresses[0].street+", "+companies[i].addresses[0].house,
+                            category: "",
+                            tel: "none",
+                            email:"none",
+                            web:"none"
+                        }
+                }
+                console.log("compArr")
+                console.log(compArr)
+                return compArr;
+                }
+        console.log("List search :")
+            console.log(response.data.companies)
+        }
+    }
     var data = {"isoCode": "EN"};
     var config = {
         headers: {
@@ -152,7 +208,9 @@ angular.module("MyApp").controller("MyAppCtrl", function ($scope, $rootScope, La
         console.log("categories :")
         console.log($scope.categories)
         console.log("category #1 :")
+/*
         console.log($scope.categories[0].name)
+*/
 
         function parseRegions(country) {
             var regions = []
