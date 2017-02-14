@@ -151,7 +151,7 @@ angular.module("MyApp").controller("MyAppCtrl", function ($scope, $rootScope, La
         function getSearchResult(response) {
             $scope.items = response.data;
             var companies = $scope.items.companies;
-            $scope.companies = parseCompList(companies)
+            $scope.companiesArr = parseCompList(companies)
             function parseCompList(companies){
                 var compArr = [];
                 for (i in companies){
@@ -160,7 +160,7 @@ angular.module("MyApp").controller("MyAppCtrl", function ($scope, $rootScope, La
                             id: companies[i].id,
                             name: companies[i].companyNames[0].name,
                             address: companies[i].addresses[0].city+", "+companies[i].addresses[0].street+", "+companies[i].addresses[0].house,
-                            category: "",
+                            categories: "",
                             tel: "none",
                             email:"none",
                             web:"none"
@@ -173,6 +173,59 @@ angular.module("MyApp").controller("MyAppCtrl", function ($scope, $rootScope, La
         console.log("List search :")
             console.log(response.data.companies)
         }
+    }
+
+var data1 = {"isoCode":"en","fromRecord":"1","numberOfRecords":"100"}
+
+    $http.post("http://188.166.79.122:8080/exodus/company/pagination", data1, config)
+        .then(fulfilledInitRes)
+    function fulfilledInitRes(response){
+        $scope.items = response.data;
+        var companies = $scope.items.companies
+        $scope.companiesArr = [];
+        for(var i in companies){
+            var addresses = companies[i].addresses;
+            var categories = companies[i].categories
+
+
+            for( var j in addresses){
+                var categoriesList=","
+                for (var l in categories){
+                    var categoryLocales = categories[l].categoryLocales
+                    for (var n in categoryLocales){
+                        categoriesList=categoriesList+ categoryLocales[n].name
+                    }
+                }
+                $scope.companiesArr[i]={
+                    name: companies[i].companyNames[0].name,
+                    id:companies[i].id,
+                    web: companies[i].webpage,
+                    address:addresses[j].city+", "+addresses[j].street+", "+addresses[j].house,
+                    categories: categoriesList,
+                    phone: addresses[j].phone
+                }
+                var name = companies[i].companyNames[0].name;
+                var id = companies[i].id;
+                var web = companies[i].webpage;
+                var addressId = addresses[j].id
+                var country = addresses[j].country
+                var region = addresses[j].region
+                var city = addresses[j].city
+                var street = addresses[j].street
+                var house = addresses[j].house
+                var additionalInfo = addresses[j].additionalInfo
+                var email = addresses[j].email
+                var workingTime = addresses[j].workingTime
+                var longitude = addresses[j].longitude
+                var latitude = addresses[j].latitude
+                var phone = addresses[j].phone
+                var address = city+", "+street+", "+house
+            }
+
+        }
+        console.log("!!!!!companiesArr:")
+        console.log($scope.companiesArr)
+
     }
     var data = {"isoCode": "EN"};
     var config = {
@@ -207,7 +260,9 @@ angular.module("MyApp").controller("MyAppCtrl", function ($scope, $rootScope, La
         console.log($scope.companies)
         console.log("categories :")
         console.log($scope.categories)
+/*
         console.log("category #1 :")
+*/
 /*
         console.log($scope.categories[0].name)
 */
@@ -282,12 +337,6 @@ angular.module("MyApp").controller("MyAppCtrl", function ($scope, $rootScope, La
         $scope.categories = response.data.categories;
 
         }
-/*
-    $http.post("http://188.166.79.122:8080/exodus/init/addresses", data, config)
-*/
-
-
-
 
 
 });

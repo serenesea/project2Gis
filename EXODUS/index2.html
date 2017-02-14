@@ -125,9 +125,9 @@
                                             <select class="form-control" id="region_input"
                                                     ng-model="selectedRegion"
                                                     ng-options="r.name for r in regions"
-                                                    ng-disabled = "selectedCategory"
-                                                    ng-disabled = "selectedName" >
-                                                >
+
+                                                     >
+
                                                 <option value = "" selected>{{lang.region}}</option>
 
                                             </select>
@@ -139,7 +139,6 @@
 
                                             <select class="form-control" id="city_input"
                                                     ng-model="selectedCity"
-                                                    ng-disabled = "selectedCategory"
                                                     ng-options="c.name for c in cities | filter:{regionId: selectedRegion.id}:true | orderBy: 'name' | limitTo:50"
                                             >
                                                 <option value = "" selected>{{lang.city}}</option>
@@ -180,7 +179,6 @@
 
                                             <select class="form-control" id="street_input"
                                                     ng-model="selectedStreet"
-                                                    ng-disabled = "selectedCategory"
                                                     ng-options="g.name for g in streets | filter:{cityId: selectedCity.id}:true | orderBy: 'name'| limitTo:50">
                                                 <option value = "" selected>{{lang.nameStreet}}</option>
                                             </select>
@@ -203,7 +201,6 @@
 
                                             <select class="form-control" id="house_input"
                                                     ng-model="selectedBld"
-                                                    ng-disabled = "selectedCategory"
                                                     ng-options="b.name for b in buildings | filter:{streetId: selectedStreet.id}:true | orderBy: 'name'| limitTo:50">
                                                 <option value = "" selected>{{lang.numHome}}</option>
                                             </select>
@@ -231,7 +228,7 @@
                             <!--<a href="#" ng-click = "getObject(selectedRegion, selectedCity, selectedStreet, selectedBld,
                             selectedCategory, company, phonenumber)"><img src="img/img2/search.png" width="70" height="70" alt="logo"/></a>-->
                             <a href="#" ng-click = "getCompList(selectedRegion, selectedCity, selectedStreet, selectedBld,
-                            selectedCategory, company, phonenumber)"><img src="img/img2/search.png" width="70" height="70" alt="logo"/>
+                            selectedCategory, company, phonenumber)"><img src="img/img2/search.png" width="70" height="70" alt="logo"></a>
 
                         </div>
                     </div>
@@ -262,21 +259,23 @@
                     <!-- Companies block -->
                     <div class="col-md-6 companies ">
 
-                        <div ng-model="companiesRes" ng-repeat="item in companies" class="col-md-12 ">
+
+                        <div ng-model="companiesRes" ng-repeat="item in companiesArr" class="col-md-12 ">
                             <div class="">
                                 <img src="img/logo_dan.png" alt="logo" class="logo company-logo" align="left" >
-                                <p class="company-name h3">{{item.name}}<!--Company "DAN"--></p>
+                                <p class="company-name h3">{{item.name}}</p>
                                 <a href="#"><i class="fa fa-info-circle company-ad-info icons small"></i></a>
                                 <a href="#"><i class="fa fa-map-marker company-ad-info icons small"></i></a>
                                 <p class="company-info h7">
-                                    Адрес: {{item.address}}<!--Бейт-Даган | Сд. Менахем Бегин, 5--> <br>
-                                    Телефон: {{item.tel}}<!--03 - 9142237--> <br>
-                                    Электропочта: {{item.email}}<!--info@egged.co.il--> <br>
-                                    <a href="#">{{item.web}}<!--http://www.egged.co.il/--></a><br>
+                                    Адрес: {{item.address}}<br>
+                                    Телефон: {{item.tel}} <br>
+                                    Электропочта: {{item.email}} <br>
+                                    <a href="#">{{item.web}}</a><br>
                                     Категории: <a href="#">{{item.categories}}</a>
                                 </p>
                             </div>
                         </div>
+
 
                         <div class="col-md-12 ">
                             <div class="">
@@ -292,6 +291,7 @@
                             </p>
                             </div>
                         </div>
+
                         <div class="col-md-12">
                             <div>
                                 <img src="img/logo_dan.png" alt="logo" class="logo company-logo" align="left" >
