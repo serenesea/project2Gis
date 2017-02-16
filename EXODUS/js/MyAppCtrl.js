@@ -71,80 +71,168 @@ angular.module("MyApp").controller("MyAppCtrl", function ($scope, $rootScope, La
     $scope.search = function (value) {
         return value.indexOf($scope.key) >= 0;
     }
+
+
+    ///////////////////////////////////////////////
+    // GETTING COMPANIES NAMES LIST INTO FILTER FIELD
+
+    $scope.keyUpFunc = function (selectedRegion, selectedCity, selectedStreet, selectedBld, selectedCategory, phonenumber, company) {
+        var regionName, cityName, categoryId, companyName, streetName, phone, bld;
+        if (angular.isDefined(selectedRegion)) {
+            regionName = selectedRegion.name;
+        }else {regionName=""}
+        if (angular.isDefined(selectedCity)) {
+            cityName = selectedCity.name;
+        }else{cityName=""}
+        if (angular.isDefined(selectedCategory)) {
+            categoryId = selectedCategory.id;
+        }else{categoryId=""}
+        if (angular.isDefined(company)) {
+            companyName = company;
+        }else{companyName=""}
+        if (angular.isDefined(selectedStreet)) {
+            streetName = selectedStreet.name;
+        }else{streetName=""}
+        if (angular.isDefined(phonenumber)) {
+            phone = phonenumber;
+        }else{phone=""}
+        if (angular.isDefined(selectedBld)) {
+            bld = selectedBld.name;
+        }else{bld=""}
+
+
+        /*if ($scope.regionName.length > 2) {$scope.obj.region = $scope.regionName}
+         if ($scope.cityName.length > 1) {$scope.obj.city = $scope.cityName}
+         if ($scope.classifierName.length > 1) {$scope.obj.classifier = $scope.classifierName}*/
+        if (companyName.length > 2) {
+            $scope.obj = {
+                company: companyName,
+                region: regionName,
+                city: cityName,
+                categoryId: categoryId,
+                street: streetName,
+                phone: phone,
+                house: bld
+            }
+            $scope.companiesRequest = "con=&reg=" + regionName + "&cit=" + cityName + "&str=" + streetName + "&hou=" + bld +
+                "&cmn=" + company + "&phn=" + phone + "&cat=" + categoryId
+            if ($scope.companiesRequest[$scope.companiesRequest.length-1]=="="){
+                $scope.companiesRequest.slice(0,-1)
+            }
+            $http.get("http://188.166.79.122:8080/exodus/search/companies_names?" + $scope.companiesRequest).then(getCompNamesList)
+            function getCompNamesList(response) {
+                var companiesList = [];
+                var companies = response.data.companies;
+                for (var i in companies) {
+                    var companyNames = companies[i].companyNames
+                    for (var j in companyNames) {
+                        companiesList.push(companyNames[j].name)
+                    }
+                }
+                console.log("List of companies names: ")
+                console.log(companiesList)
+            }
+
+            /*  if ($scope.streetName.length > 1) {$scope.obj.street = $scope.streetName}
+             if ($scope.phoneNum.length > 1) {$scope.obj.phone = $scope.phoneNum}
+             if ($scope.houseNum.length > 1) {$scope.obj.hpuse = $scope.houseNum}*/
+
+                console.log("Object $scope.obj");
+                console.log($scope.obj);
+            console.log($scope.companiesRequest)
+        }
+
+    }
     var con, reg, cit, str, hou, cmn, phn, cat;
+/*
     $scope.companiesRequest = ""
-    $scope.object = {
+*/
+    /*$scope.object = {
         con:String,
-        reg:String/*$scope.selectedRegion.name*/,
-        cit:String/*$scope.selectedCity.name*/,
+        reg:String/!*$scope.selectedRegion.name*!/,
+        cit:String/!*$scope.selectedCity.name*!/,
         str:String,
         hou: String,
         cmn: "com",
         phn:String,
         cat:String
-    }
-
-    $scope.getObject = function(selectedRegion, selectedCity, selectedStreet, selectedBld, selectedCategory, company, phonenumber){
+    }*/
+   /* $scope.keyUpFunk = function(selectedRegion, selectedCity, selectedStreet, selectedBld, selectedCategory, company, phonenumber) {
         console.log("Our object :")
-      /*  cmn=$scope.object.cmn
-        console.log("cmn="+$scope.object.cmn)*/
-        if(angular.isDefined(company)){
-           /* if(company.toString().length>=3){
-                console.log("Request is sent")
-            }*/
+        /!*  cmn=$scope.object.cmn
+         console.log("cmn="+$scope.object.cmn)*!/
+        if (angular.isDefined(company)) {
             cmn = company
-        }else{
-            cmn=""
+        } else {
+            cmn = ""
         }
-        if(angular.isDefined(selectedCity)){
+        if (angular.isDefined(selectedCity)) {
             cit = selectedCity.name
-        }else{
-            cit=""
+        } else {
+            cit = ""
         }
-        if(angular.isDefined(selectedRegion)){
-            reg=selectedRegion.name
-        }else{
-            reg=""
+        if (angular.isDefined(selectedRegion)) {
+            reg = selectedRegion.name
+        } else {
+            reg = ""
         }
-        if(angular.isDefined(selectedStreet)){
-            str=selectedStreet.name
-        }else{
-            str=""
+        if (angular.isDefined(selectedStreet)) {
+            str = selectedStreet.name
+        } else {
+            str = ""
         }
-        if(angular.isDefined(selectedBld)){
-            hou=selectedBld.name
-        }else{
-            hou=""
+        if (angular.isDefined(selectedBld)) {
+            hou = selectedBld.name
+        } else {
+            hou = ""
         }
-        if(angular.isDefined(selectedCategory)){
-            cat=selectedCategory.id
-        }else{
-            cat=""
+        if (angular.isDefined(selectedCategory)) {
+            cat = selectedCategory.id
+        } else {
+            cat = ""
         }
-        if(angular.isDefined(phonenumber)){
-            phn=phonenumber
-        }else{
-            phn=""
+        if (angular.isDefined(phonenumber)) {
+            phn = phonenumber
+        } else {
+            phn = ""
         }
-        $scope.companiesRequest = "con=&reg="+reg+"&cit="+cit+"&str="+str+"&hou="+hou+"&cmn="+cmn+"&phn="+phn+"&cat="+cat
-        console.log("$scope.companiesRequest :")
-        console.log($scope.companiesRequest)
-
-        $http.get("http://188.166.79.122:8080/exodus/search/companies_names?"+$scope.companiesRequest).then(getCompNamesList)
-        function getCompNamesList(response) {
-            var companiesList = [];
-            var companies = response.data.companies;
-            for (var i in companies) {
-                var companyNames = companies[i].companyNames
-                for(var j in companyNames){
-                    companiesList.push(companyNames[j].name)
-                }
+        console.log( "con=&reg=" + reg + "&cit=" + cit + "&str=" + str + "&hou=" + hou + "&cmn=" + cmn + "&phn=" + phn + "&cat=" + cat)
+        if (cmn.length > 2) {
+            $scope.obj = {
+                company: cmn,
+                region: reg,
+                city: cit,
+                classifier: cat,
+                street: str,
+                phone: phn,
+                house: hou
             }
-            console.log("List of companies names: ")
-            console.log(companiesList)
-        }
-    }
+            console.log($scope.obj);
 
+            $scope.companiesRequest = "con=&reg=" + reg + "&cit=" + cit + "&str=" + str + "&hou=" + hou + "&cmn=" + cmn + "&phn=" + phn + "&cat=" + cat
+            console.log("$scope.companiesRequest :")
+            console.log($scope.companiesRequest)
+
+            $http.get("http://188.166.79.122:8080/exodus/search/companies_names?" + $scope.companiesRequest).then(getCompNamesList)
+            function getCompNamesList(response) {
+                var companiesList = [];
+                var companies = response.data.companies;
+                for (var i in companies) {
+                    var companyNames = companies[i].companyNames
+                    for (var j in companyNames) {
+                        companiesList.push(companyNames[j].name)
+                    }
+                }
+                console.log("List of companies names: ")
+                console.log(companiesList)
+            }
+        }
+    }*/
+
+
+
+   ///////////////////////////////////////////
+    //SEARCHING COMPANIES BY PUSHING SEARCH-BTN
 
     $scope.getCompList = function(selectedRegion, selectedCity, selectedStreet, selectedBld,selectedCategory, company, phonenumber){
     $http.get("http://188.166.79.122:8080/exodus/search/companies?cmn=comp&cat=1&cat=4&reg=center").then(getSearchResult)
@@ -156,6 +244,7 @@ angular.module("MyApp").controller("MyAppCtrl", function ($scope, $rootScope, La
                 var compArr = [];
                 for (i in companies){
                     var names = companies[i].companyNames;
+
                         compArr[i] = {
                             id: companies[i].id,
                             name: companies[i].companyNames[0].name,
@@ -175,13 +264,17 @@ angular.module("MyApp").controller("MyAppCtrl", function ($scope, $rootScope, La
         }
     }
 
+    ///////////////////////////////////////////////
+    // UPLOADING INITIAL 100 COMPANIES
 var data1 = {"isoCode":"en","fromRecord":"1","numberOfRecords":"100"}
 
     $http.post("http://188.166.79.122:8080/exodus/company/pagination", data1, config)
         .then(fulfilledInitRes)
     function fulfilledInitRes(response){
         $scope.items = response.data;
-        var companies = $scope.items.companies
+        var companies = $scope.items.companies;
+        console.log("!!!companies")
+        console.log(companies)
         $scope.companiesArr = [];
         for(var i in companies){
             var addresses = companies[i].addresses;
@@ -189,22 +282,26 @@ var data1 = {"isoCode":"en","fromRecord":"1","numberOfRecords":"100"}
 
 
             for( var j in addresses){
-                var categoriesList=","
+                var categoriesList=""
                 for (var l in categories){
                     var categoryLocales = categories[l].categoryLocales
                     for (var n in categoryLocales){
-                        categoriesList=categoriesList+ categoryLocales[n].name
+                        categoriesList=categoriesList+ categoryLocales[n].name+"|"
                     }
                 }
                 $scope.companiesArr[i]={
+/*
                     name: companies[i].companyNames[0].name,
+*/
                     id:companies[i].id,
                     web: companies[i].webpage,
                     address:addresses[j].city+", "+addresses[j].street+", "+addresses[j].house,
                     categories: categoriesList,
                     phone: addresses[j].phone
                 }
+/*
                 var name = companies[i].companyNames[0].name;
+*/
                 var id = companies[i].id;
                 var web = companies[i].webpage;
                 var addressId = addresses[j].id
@@ -227,6 +324,11 @@ var data1 = {"isoCode":"en","fromRecord":"1","numberOfRecords":"100"}
         console.log($scope.companiesArr)
 
     }
+
+
+    //////////////////////////////////////////////////////////
+/*     UPLOADING FILTERS "address"    */
+
     var data = {"isoCode": "EN"};
     var config = {
         headers: {
@@ -330,6 +432,8 @@ var data1 = {"isoCode":"en","fromRecord":"1","numberOfRecords":"100"}
             return buildings;
         }
     }
+
+
     $http.post("http://188.166.79.122:8080/exodus/init/categories", data, config)
         .then(fulfilledCategories)
 
