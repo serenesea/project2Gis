@@ -26,7 +26,7 @@
     <script src="./js/MyAppCtrl.js"></script>
     <script src="../Libraries/mask.js"></script>
     <script src="./js/select.js"></script>
-    <link rel="stylesheet" href="./js/select.css">
+    <link rel="stylesheet" href="./css/select.css">
     <script src="./js/uiSelectCtrl.js"></script>
 
 
@@ -152,7 +152,7 @@
                 <div class="col-md-12 search">
                     <div class="row">
                         <div class="col-md-11">
-                            <div class="row">
+                            <div class="row" ng-controller="UiSelectCtrl as ctrl">
 
 
                                 <div class="col-md-3 ">
@@ -162,44 +162,107 @@
                                             <!--<input type="text" class="form-control" id="region_input"
                                                    placeholder="region"/>-->
 
-                                            <select class="form-control" id="region_input"
+                                           <!-- <select class="form-control" id="region_input"
                                                     ng-model="selectedRegion"
                                                     ng-options="r.name for r in regions"
 
                                                      >
 
-                                                <option value = "" selected></option>
+                                                <option ng-bind="lang.region" value = "" selected></option>
 
-                                            </select>
+                                            </select>-->
+
+
+                                            <div class="input-group">
+
+                                                <ui-select ng-model="ctrl.region.selected" theme="selectize" ng-disabled="ctrl.disabled"
+                                                           title="Choose a region">
+                                                    <ui-select-match placeholder="Select or search a region...">{{$select.selected.name}}</ui-select-match>
+                                                    <ui-select-choices repeat="region in ctrl.regions | filter: $select.search ">
+                                                        <span ng-bind-html="region.name | highlight: $select.search"></span>
+                                                        <!--
+                                                                                                                    <small ng-bind-html="city.region | highlight: $select.search"></small>
+                                                        -->
+                                                    </ui-select-choices>
+                                                </ui-select>
+
+                                                <span class="input-group-btn">
+                                                        <button type="button" ng-click="ctrl.region.selected = undefined" class="btn btn-default">
+                                                            <span class="glyphicon glyphicon-remove"></span>
+                                                        </button>
+                                                    </span>
+
 
                                         </div>
+                                            </div>
                                         <div class="form-group">
                                             <!--<input type="text" class="form-control" id="city_input"
                                                    placeholder="city"/>-->
 
-                                            <select class="form-control" id="city_input"
+                                           <!-- <select class="form-control" id="city_input"
                                                     ng-model="selectedCity"
                                                     ng-options="c.name for c in cities | filter:{regionId: selectedRegion.id}:true | orderBy: 'name' | limitTo:50"
                                             >
                                                 <option ng-bind="lang.city" value = "" selected></option>
-                                            </select>
+                                            </select>-->
+                                                <div class="input-group">
+
+                                                    <ui-select ng-model="ctrl.city.selected" theme="selectize" ng-disabled="ctrl.disabled"
+                                                               title="Choose a city">
+                                                        <ui-select-match placeholder="Select or search a city...">{{$select.selected.name}}</ui-select-match>
+                                                        <ui-select-choices repeat="city in ctrl.cities | filter: $select.search | filter:{regionId: ctrl.region.selected.id}:true">
+                                                            <span ng-bind-html="city.name | highlight: $select.search"></span>
+<!--
+                                                            <small ng-bind-html="city.region | highlight: $select.search"></small>
+-->
+                                                        </ui-select-choices>
+                                                    </ui-select>
+
+                                                    <span class="input-group-btn">
+                                                        <button type="button" ng-click="ctrl.city.selected = undefined" class="btn btn-default">
+                                                            <span class="glyphicon glyphicon-remove"></span>
+                                                        </button>
+                                                    </span>
+
+                                                </div>
 
                                         </div>
                                     </form>
                                 </div>
 
-                                <div class="col-md-3">
+                                <div class="col-sm-3">
                                     <form role="form">
 
                                         <div class="form-group">
                                             <!--<input type="text" class="form-control" id="classifier_input"
                                                    placeholder="classifier"/>-->
 
-                                            <select class="form-control" id="classifier_input"
+                                            <!--<select class="form-control" id="classifier_input"
                                                     ng-model="selectedCategory"
                                                     ng-options="cat.name for cat in categories">
                                                 <option ng-bind="lang.category" value = "" selected ></option>
-                                            </select>
+                                            </select>-->
+
+                                            <div class="input-group">
+
+                                                <ui-select ng-model="ctrl.category.selected" theme="selectize" ng-disabled="ctrl.disabled"
+                                                           title="Choose a category">
+                                                    <ui-select-match placeholder="Select or search a caategory...">{{$select.selected.name}}</ui-select-match>
+                                                    <ui-select-choices repeat="category in ctrl.categories | filter: $select.search">
+                                                        <span ng-bind-html="category.name | highlight: $select.search"></span>
+                                                        <!--
+                                                                                                                    <small ng-bind-html="city.region | highlight: $select.search"></small>
+                                                        -->
+                                                    </ui-select-choices>
+                                                </ui-select>
+
+                                                <span class="input-group-btn">
+                                                        <button type="button" ng-click="ctrl.category.selected = undefined" class="btn btn-default">
+                                                            <span class="glyphicon glyphicon-remove"></span>
+                                                        </button>
+                                                </span>
+
+                                            </div>
 
                                         </div>
                                        <!-- <div class="form-group">
@@ -209,20 +272,27 @@
                                                    ng-init=""
                                                    placeholder={{lang.nameBus}} />
                                         </div>-->
-                                        <div class="ng-cloak form-group" ng-controller="UiSelectCtrl as ctrl">
-                                        <ui-select ng-model="ctrl.person.selected" theme="select2" ng-disabled="ctrl.disabled"
-                                                   style="min-width: 100px;" title="Choose a person">
-                                            <ui-select-match placeholder="Select a person in the list or search his name/age...">{{$select.selected.name}}</ui-select-match>
-                                            <ui-select-choices repeat="person in ctrl.people | propsFilter: {name: $select.search, age: $select.search}"
-                                                               position='down'>
-                                                <div ng-bind-html="person.name | highlight: $select.search"></div>
-                                                <small>
-                                                    email: {{person.email}}
-                                                    age: <span ng-bind-html="''+person.age | highlight: $select.search"></span>
-                                                </small>
-                                            </ui-select-choices>
-                                        </ui-select>
-                                        </div>
+                                        <div class="form-group" >
+                                            <div class="input-group">
+
+                                                <ui-select ng-model="ctrl.company.selected" theme="selectize">
+                                                    <ui-select-match placeholder="Company...">{{$select.selected.name}}</ui-select-match>
+                                                    <ui-select-choices repeat="item in ctrl.companies | filter: $select.search">
+                                                        <span ng-bind-html="item.name | highlight: $select.search"></span>
+<!--
+                                                        <small ng-bind-html="item.email | highlight: $select.search"></small>
+-->
+                                                    </ui-select-choices>
+                                                </ui-select>
+
+                                                <span class="input-group-btn">
+                                                    <button type="button" ng-click="ctrl.company.selected = undefined" class="btn btn-default">
+                                                         <span class="glyphicon glyphicon-remove"></span>
+                                                    </button>
+                                                </span>
+
+                                            </div>
+                                            </div>
 
                                     </form>
                                 </div>
@@ -234,18 +304,42 @@
                                            <!-- <input type="text" class="form-control" id="street_input"
                                                    placeholder="street"/>-->
 
-                                            <select class="form-control" id="street_input"
+                                           <!-- <select class="form-control" id="street_input"
                                                     ng-model="selectedStreet"
                                                     ng-options="g.name for g in streets | filter:{cityId: selectedCity.id}:true | orderBy: 'name'| limitTo:50">
-                                                <option value = "" selected>{{lang.nameStreet}}</option>
-                                            </select>
+                                                <option ng-bind="lang.nameStreet" value = "" selected></option>
+                                            </select>-->
 
+
+                                            <div class="input-group">
+
+                                                <ui-select ng-model="ctrl.street.selected" theme="selectize" ng-disabled="ctrl.disabled"
+                                                           title="Choose a street">
+                                                    <ui-select-match placeholder="Select or search a street...">{{$select.selected.name}}</ui-select-match>
+                                                    <ui-select-choices repeat="street in ctrl.streets | filter: $select.search | filter:{cityId: ctrl.city.selected.id}:true">
+                                                        <span ng-bind-html="street.name | highlight: $select.search"></span>
+                                                        <!--
+                                                                                                                    <small ng-bind-html="city.region | highlight: $select.search"></small>
+                                                        -->
+                                                    </ui-select-choices>
+                                                </ui-select>
+
+                                                <span class="input-group-btn">
+                                                        <button type="button" ng-click="ctrl.street.selected = undefined" class="btn btn-default">
+                                                            <span class="glyphicon glyphicon-remove"></span>
+                                                        </button>
+                                                    </span>
+
+                                            </div>
 
                                         </div>
                                         <div class="form-group">
-                                            <input ng-model="phonenumber" ui-mask="(999) 999-9999"  ui-mask-placeholder ui-mask-placeholder-char="_" type="text" class="form-control" id="telephone_input"
-                                                   placeholder="{{lang.numPhone}}" />
+                                            <input ng-bind="lang.numPhone" ng-model="phonenumber" ui-mask="(999) 999-9999"  ui-mask-placeholder ui-mask-placeholder-char="_" type="text" class="form-control" id="telephone_input"
+                                                   placeholder="" />
                                         </div>
+
+
+
                                     </form>
                                 </div>
 
@@ -256,11 +350,32 @@
                                           <!--  <input type="text" class="form-control" id="house_input"
                                                    placeholder="house" disabled/>-->
 
-                                            <select class="form-control" id="house_input"
+                                           <!-- <select class="form-control" id="house_input"
                                                     ng-model="selectedBld"
                                                     ng-options="b.name for b in buildings | filter:{streetId: selectedStreet.id}:true | orderBy: 'name'| limitTo:50">
-                                                <option value = "" selected>{{lang.numHome}}</option>
-                                            </select>
+                                                <option ng-bind="lang.numHome" value = "" selected></option>
+                                            </select>-->
+
+
+                                            <div class="input-group">
+
+                                                <ui-select ng-model="ctrl.building.selected" theme="selectize">
+                                                    <ui-select-match placeholder="Select or search building...">{{$select.selected.name}}</ui-select-match>
+                                                    <ui-select-choices repeat="item in ctrl.buildings | filter: $select.search | filter:{streetId: ctrl.street.selected.id}:true">
+                                                        <span ng-bind-html="item.name | highlight: $select.search"></span>
+                                                        <!--
+                                                                                                                <small ng-bind-html="item.email | highlight: $select.search"></small>
+                                                        -->
+                                                    </ui-select-choices>
+                                                </ui-select>
+
+                                                <span class="input-group-btn">
+                                                    <button type="button" ng-click="ctrl.building.selected = undefined" class="btn btn-default">
+                                                         <span class="glyphicon glyphicon-remove"></span>
+                                                    </button>
+                                                </span>
+
+                                            </div>
 
                                         </div>
 
@@ -320,7 +435,7 @@
                         <div ng-model="companiesRes" ng-repeat="item in companiesArr" class="col-md-12 ">
                             <div class="">
                                 <img src="img/logo_dan.png" alt="logo" class="logo company-logo" align="left" >
-                                <p class="company-name h3">{{item.name}}</p>
+                                <p ng-bind="item.name" class="company-name h3"></p>
                                 <a href="#"><i class="fa fa-info-circle company-ad-info icons small"></i></a>
                                 <a href="#"><i class="fa fa-map-marker company-ad-info icons small"></i></a>
                                 <p class="company-info h7">

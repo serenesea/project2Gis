@@ -48,9 +48,9 @@ angular.module("MyApp").controller('UiSelectCtrl', function ($scope, $http, $tim
   vm.disabled = undefined;
   vm.searchEnabled = undefined;
 
-  vm.setInputFocus = function (){
-    $scope.$broadcast('UiSelectDemo1');
-  };
+  // vm.setInputFocus = function (){
+  //   $scope.$broadcast('UiSelectDemo1');
+  // };
 
   vm.enable = function() {
     vm.disabled = false;
@@ -71,34 +71,36 @@ angular.module("MyApp").controller('UiSelectCtrl', function ($scope, $http, $tim
   vm.clear = function() {
     vm.person.selected = undefined;
     vm.address.selected = undefined;
-    vm.country.selected = undefined;
+    vm.city.selected = undefined;
+    vm.company=undefined;
   };
 
-  vm.someGroupFn = function (item){
+  // vm.someGroupFn = function (item){
+  //
+  //   if (item.name[0] >= 'A' && item.name[0] <= 'M')
+  //       return 'From A - M';
+  //
+  //   if (item.name[0] >= 'N' && item.name[0] <= 'Z')
+  //       return 'From N - Z';
+  //
+  // };
 
-    if (item.name[0] >= 'A' && item.name[0] <= 'M')
-        return 'From A - M';
-
-    if (item.name[0] >= 'N' && item.name[0] <= 'Z')
-        return 'From N - Z';
-
-  };
-
-  vm.firstLetterGroupFn = function (item){
+  /*vm.firstLetterGroupFn = function (item){
       return item.name[0];
-  };
+  };*/
 
-  vm.reverseOrderFilterFn = function(groups) {
-    return groups.reverse();
-  };
+  // vm.reverseOrderFilterFn = function(groups) {
+  //   return groups.reverse();
+  // };
 
-  vm.personAsync = {selected : "wladimir@email.com"};
-  vm.peopleAsync = [];
+  /*vm.personAsync = {selected : "wladimir@email.com"};
+  vm.peopleAsync = [];*/
 
   $timeout(function(){
    vm.peopleAsync = [
-        { name: 'Adam',      email: 'adam@email.com',      age: 12, country: 'United States' },
-        { name: 'Amalie',    email: 'amalie@email.com',    age: 12, country: 'Argentina' },
+        { name: 'Ashdod',      region: 'South',      streets: ['Eli-Cohen','Bar Kokhba']},
+        { name: 'Tel-aviv',    region: 'Center',    streets: ['Herzel']},
+        { name: 'Yaffo',    region: 'Center',    streets: ['Herzel']},
         { name: 'Estefanía', email: 'estefania@email.com', age: 21, country: 'Argentina' },
         { name: 'Adrian',    email: 'adrian@email.com',    age: 21, country: 'Ecuador' },
         { name: 'Wladimir',  email: 'wladimir@email.com',  age: 30, country: 'Ecuador' },
@@ -156,9 +158,9 @@ angular.module("MyApp").controller('UiSelectCtrl', function ($scope, $http, $tim
   //vm.person.selected = vm.person.selectedValue;
 
   vm.people = [
-    { name: 'Adam',      email: 'adam@email.com',      age: 12, country: 'United States' },
-    { name: 'Amalie',    email: 'amalie@email.com',    age: 12, country: 'Argentina' },
-    { name: 'Estefanía', email: 'estefania@email.com', age: 21, country: 'Argentina' },
+    { name: 'Ashdod',      region: 'South',      streets: ['Eli-Cohen','Bar Kokhba']},
+    { name: 'Tel-aviv',    region: 'Center',    streets: ['Herzel']},
+    { name: 'Yaffo',    region: 'Center',    streets: ['Herzel']},
     { name: 'Adrian',    email: 'adrian@email.com',    age: 21, country: 'Ecuador' },
     { name: 'Wladimir',  email: 'wladimir@email.com',  age: 30, country: 'Ecuador' },
     { name: 'Samantha',  email: 'samantha@email.com',  age: 30, country: 'United States' },
@@ -217,9 +219,15 @@ angular.module("MyApp").controller('UiSelectCtrl', function ($scope, $http, $tim
     }
   }
 
-  vm.country = {};
-  vm.countries = [ // Taken from https://gist.github.com/unceus/6501985
-    {name: 'Afghanistan', code: 'AF'},
+  vm.city = {};
+  vm.category = {};
+  vm.company = {};
+  vm.street = {};
+ /* vm.cities = [ // Taken from https://gist.github.com/unceus/6501985
+    {name: 'Ashdod', region: 'South'},
+    {name: 'Tel-aviv', region: 'Center'},
+    {name: 'Yaffo', region: 'Center'},
+   /!* {name: 'Afghanistan', code: 'AF'},
     {name: 'Åland Islands', code: 'AX'},
     {name: 'Albania', code: 'AL'},
     {name: 'Algeria', code: 'DZ'},
@@ -461,6 +469,118 @@ angular.module("MyApp").controller('UiSelectCtrl', function ($scope, $http, $tim
     {name: 'Western Sahara', code: 'EH'},
     {name: 'Yemen', code: 'YE'},
     {name: 'Zambia', code: 'ZM'},
-    {name: 'Zimbabwe', code: 'ZW'}
-  ];
+    {name: 'Zimbabwe', code: 'ZW'}*!/
+  ];*/
+  /*var data = {"isoCode": "EN"};
+  var config = {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+
+  $http.post("http://188.166.79.122:8080/exodus/init/addresses", data, config)
+      .then(fulfilled)
+
+  function fulfilled(response) {
+
+    vm.items = response.data;
+    var country = vm.items.addresses[0];
+    vm.regions = parseRegions(country);
+    vm.cities = parseCities(country);
+    vm.streets = parseStreets(country);
+    vm.buildings = parseBld(country);
+
+    console.log("country :")
+    console.log(country)
+    console.log("regions :")
+    console.log(vm.regions)
+    console.log("cities :")
+    console.log(vm.cities)
+    console.log("streets :")
+    console.log(vm.streets)
+    console.log("blds :")
+    console.log(vm.buildings)
+    console.log("companies :")
+    console.log(vm.companies)
+    console.log("categories :")
+    console.log(vm.categories)
+    /!*
+     console.log("category #1 :")
+     *!/
+    /!*
+     console.log($scope.categories[0].name)
+     *!/
+
+    function parseRegions(country) {
+      var regions = []
+      for (var i in country.regions) {
+        var region = country.regions[i].region;
+        regions.push({"id": "" + i, "name": region});
+      }
+      return regions;
+    }
+    function parseCities(country) {
+      var cities=[]
+      var id =0;
+      var regionId = 0;
+      for (var i in country.regions) {
+        var region = country.regions[i];
+        for (var j in region.cities) {
+          var city = region.cities[j];
+          cities.push({"id": ""+id, "name": city.city, "regionId":""+regionId});
+          id++;
+        }
+        regionId++;
+      }
+      return cities;
+    }
+    function parseStreets(country) {
+      var streets=[]
+      var id =0;
+      var cityId = 0;
+      for (var i in country.regions) {
+        var region = country.regions[i];
+        for (var j in region.cities) {
+          var city = region.cities[j];
+          for (var k in city.streets) {
+            var street = city.streets[k];
+            streets.push({"id": "" + id, "name": street.street, "cityId": "" + cityId});
+            id++;
+          }
+          cityId++;
+        }
+      }
+      return streets;
+    }
+    function parseBld(country) {
+      var buildings=[]
+      var id =0;
+      var streetId = 0;
+      for (var i in country.regions) {
+        var region = country.regions[i];
+        for (var j in region.cities) {
+          var city = region.cities[j];
+          for (var k in city.streets) {
+            var street = city.streets[k];
+            for (var l in street.houses) {
+              var bld = street.houses[l]
+              buildings.push({"id": "" + l, "name": bld, "streetId": "" + streetId});
+              id++;
+            }
+            streetId++;
+          }
+        }
+      }
+      return buildings;
+    }
+  }
+
+  $http.post("http://188.166.79.122:8080/exodus/init/categories", data, config)
+      .then(fulfilledCategories)
+
+  function fulfilledCategories(response) {
+    vm.categories = response.data.categories;
+
+  }*/
+
 });
