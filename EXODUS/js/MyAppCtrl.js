@@ -2,7 +2,7 @@
 
 angular.module("MyApp").controller("MyAppCtrl", function ($scope, $rootScope, LanguageService,$http) {
 
-    $scope.currentView="home"
+    $scope.currentView="home";
  /*   $scope.selectedRegion;
     $scope.selectedCity
     $scope.selectedStreet;
@@ -50,21 +50,48 @@ angular.module("MyApp").controller("MyAppCtrl", function ($scope, $rootScope, La
 
 
     var initMenuItems = function () {
-        // var elem = angular.element(document.querySelector("body"));
-        // if(elem.prop("dir") == "ltr") {
-        //
+        var elem = angular.element(document.querySelector("body"));
+        var elemHeader = angular.element(document.querySelector(".elemHeader"));
+        var elemNavLeft = angular.element(document.querySelector(".navbarLeft"));
+        var elemNavRight = angular.element(document.querySelector(".navbarRight"));
+        var elemDivLtrRtl = angular.element(document.querySelector("div.ltrRtl"));
+        var elemDivCompanies = angular.element(document.querySelector(".elemDivCompanies"));
+        if(elem.prop("dir") == "rtl") {
+            elemHeader.addClass("my_float_rtl");
+            if(elemHeader.hasClass("my_float_ltr")) elemHeader.removeClass("my_float_ltr");
+            elemNavLeft.addClass("navbar-right");
+            elemNavLeft.addClass("my_float_rtl");
+            if(elemNavLeft.hasClass("navbar-left")) elemNavLeft.removeClass("navbar-left");
+            if(elemNavLeft.hasClass("my_float_ltr")) elemNavLeft.removeClass("my_float_ltr");
+            elemNavRight.addClass("navbar-left");
+            if(elemNavRight.hasClass("navbar-right")) elemNavLeft.removeClass("navbar-right");
+            elemDivCompanies.addClass("my_float_rtl");
+            if(elemDivCompanies.hasClass("my_float_ltr")) elemDivCompanies.removeClass("my_float_ltr");
+            elemDivLtrRtl.children().addClass("my_float_rtl");
+            if(elemDivLtrRtl.children().hasClass("my_float_ltr")) elemDivLtrRtl.children().removeClass("my_float_ltr");
         //     elem.children().children().addClass("my_float_ltr");
         //     if(elem.children().children().hasClass("my_float_rtl")) {
         //         elem.children().children().removeClass("my_float_rtl");
         //     }
-        // } else {
-        //
+        } else {
+            elemHeader.addClass("my_float_ltr");
+            if(elemHeader.hasClass("my_float_rtl")) elemHeader.removeClass("my_float_rtl");
+            elemNavLeft.addClass("navbar-left");
+            elemNavLeft.addClass("my_float_ltr");
+            if(elemNavLeft.hasClass("navbar-right")) elemNavLeft.removeClass("navbar-right");
+            if(elemNavLeft.hasClass("my_float_rtl")) elemNavLeft.removeClass("my_float_rtl");
+            elemNavRight.addClass("navbar-right");
+            if(elemNavRight.hasClass("navbar-left")) elemNavLeft.removeClass("navbar-left");
+            elemDivCompanies.addClass("my_float_ltr");
+            if(elemDivCompanies.hasClass("my_float_rtl")) elemDivCompanies.removeClass("my_float_rtl");
+            elemDivLtrRtl.children().addClass("my_float_ltr");
+            if(elemDivLtrRtl.children().hasClass("my_float_rtl")) elemDivLtrRtl.children().removeClass("my_float_rtl");
         //     elem.children().children().addClass("my_float_rtl");
         //     if(elem.children().children().hasClass("my_float_ltr")) {
         //         elem.children().children().removeClass("my_float_ltr");
         //     }
-        //
-        // }
+
+        }
     }
 
  $scope.key = '';
@@ -85,7 +112,7 @@ angular.module("MyApp").controller("MyAppCtrl", function ($scope, $rootScope, La
     }
 
     $scope.getObject = function(selectedRegion, selectedCity, selectedStreet, selectedBld, selectedCategory, company, phonenumber){
-        console.log("Our object :")
+        //console.log("Our object :")
       /*  cmn=$scope.object.cmn
         console.log("cmn="+$scope.object.cmn)*/
         if(angular.isDefined(company)){
@@ -127,8 +154,8 @@ angular.module("MyApp").controller("MyAppCtrl", function ($scope, $rootScope, La
             phn=""
         }
         $scope.companiesRequest = "con=&reg="+reg+"&cit="+cit+"&str="+str+"&hou="+hou+"&cmn="+cmn+"&phn="+phn+"&cat="+cat
-        console.log("$scope.companiesRequest :")
-        console.log($scope.companiesRequest)
+        //console.log("$scope.companiesRequest :")
+        //console.log($scope.companiesRequest)
 
         $http.get("http://188.166.79.122:8080/exodus/search/companies_names?"+$scope.companiesRequest).then(getCompNamesList)
         function getCompNamesList(response) {
@@ -140,8 +167,8 @@ angular.module("MyApp").controller("MyAppCtrl", function ($scope, $rootScope, La
                     companiesList.push(companyNames[j].name)
                 }
             }
-            console.log("List of companies names: ")
-            console.log(companiesList)
+        //    console.log("List of companies names: ")
+        //    console.log(companiesList)
         }
     }
 
@@ -151,10 +178,10 @@ angular.module("MyApp").controller("MyAppCtrl", function ($scope, $rootScope, La
         function getSearchResult(response) {
             $scope.items = response.data;
             var companies = $scope.items.companies;
-            $scope.companiesArr = parseCompList(companies)
+            $scope.companiesArr = parseCompList(companies);
             function parseCompList(companies){
                 var compArr = [];
-                for (i in companies){
+                for (var i in companies){
                     var names = companies[i].companyNames;
                         compArr[i] = {
                             id: companies[i].id,
@@ -166,12 +193,12 @@ angular.module("MyApp").controller("MyAppCtrl", function ($scope, $rootScope, La
                             web:"none"
                         }
                 }
-                console.log("compArr")
-                console.log(compArr)
+        //        console.log("compArr");
+        //        console.log(compArr);
                 return compArr;
                 }
-        console.log("List search :")
-            console.log(response.data.companies)
+        //console.log("List search :");
+        //    console.log(response.data.companies)
         }
     }
 
@@ -223,8 +250,8 @@ var data1 = {"isoCode":"en","fromRecord":"1","numberOfRecords":"100"}
             }
 
         }
-        console.log("!!!!!companiesArr:")
-        console.log($scope.companiesArr)
+        //console.log("!!!!!companiesArr:");
+        //console.log($scope.companiesArr);
 
     }
     var data = {"isoCode": "EN"};
@@ -235,7 +262,7 @@ var data1 = {"isoCode":"en","fromRecord":"1","numberOfRecords":"100"}
     }
 
     $http.post("http://188.166.79.122:8080/exodus/init/addresses", data, config)
-        .then(fulfilled)
+        .then(fulfilled);
 
     function fulfilled(response) {
 
@@ -246,20 +273,20 @@ var data1 = {"isoCode":"en","fromRecord":"1","numberOfRecords":"100"}
         $scope.streets = parseStreets(country);
         $scope.buildings = parseBld(country);
 
-        console.log("country :")
-        console.log(country)
-        console.log("regions :")
-        console.log($scope.regions)
-        console.log("cities :")
-        console.log($scope.cities)
-        console.log("streets :")
-        console.log($scope.streets)
-        console.log("blds :")
-        console.log($scope.buildings)
-        console.log("companies :")
-        console.log($scope.companies)
-        console.log("categories :")
-        console.log($scope.categories)
+        // console.log("country :");
+        // console.log(country);
+        // console.log("regions :");
+        // console.log($scope.regions);
+        // console.log("cities :");
+        // console.log($scope.cities);
+        // console.log("streets :");
+        // console.log($scope.streets);
+        // console.log("blds :");
+        // console.log($scope.buildings);
+        // console.log("companies :");
+        // console.log($scope.companies);
+        // console.log("categories :");
+        // console.log($scope.categories);
 /*
         console.log("category #1 :")
 */
