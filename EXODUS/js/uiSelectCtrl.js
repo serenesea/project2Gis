@@ -10,7 +10,8 @@ var app = angular.module('demo', ['ngSanitize', 'ui.select']);
  * performs an AND between 'name: $select.search' and 'age: $select.search'.
  * We want to perform an OR.
  */
-angular.module("MyApp").filter('propsFilter', function() {
+angular.module("MyApp")
+    .filter('propsFilter', function() {
   return function(items, props) {
     var out = [];
 
@@ -40,9 +41,9 @@ angular.module("MyApp").filter('propsFilter', function() {
 
     return out;
   };
-});
+})
 
-angular.module("MyApp").controller('UiSelectCtrl', function ($scope, $http, $timeout, $interval) {
+angular.module("MyApp").controller('UiSelectCtrl', function ($scope, $http, $timeout, $interval, startsWithFilter) {
   var vm = this;
 
   vm.disabled = undefined;
@@ -471,7 +472,10 @@ angular.module("MyApp").controller('UiSelectCtrl', function ($scope, $http, $tim
     {name: 'Zambia', code: 'ZM'},
     {name: 'Zimbabwe', code: 'ZW'}*!/
   ];*/
-  /*var data = {"isoCode": "EN"};
+
+
+
+  var data = {"isoCode": "EN"};
   var config = {
     headers: {
       'Content-Type': 'application/json'
@@ -504,12 +508,12 @@ angular.module("MyApp").controller('UiSelectCtrl', function ($scope, $http, $tim
     console.log(vm.companies)
     console.log("categories :")
     console.log(vm.categories)
-    /!*
+    /*
      console.log("category #1 :")
-     *!/
-    /!*
+     */
+    /*
      console.log($scope.categories[0].name)
-     *!/
+     */
 
     function parseRegions(country) {
       var regions = []
@@ -544,7 +548,7 @@ angular.module("MyApp").controller('UiSelectCtrl', function ($scope, $http, $tim
           var city = region.cities[j];
           for (var k in city.streets) {
             var street = city.streets[k];
-            streets.push({"id": "" + id, "name": street.street, "cityId": "" + cityId});
+            streets.push({"id": "" + id, "name": street.street, "city": ""+city.city,"cityId": "" + cityId, "regionId":""+i});
             id++;
           }
           cityId++;
@@ -581,6 +585,8 @@ angular.module("MyApp").controller('UiSelectCtrl', function ($scope, $http, $tim
   function fulfilledCategories(response) {
     vm.categories = response.data.categories;
 
-  }*/
+  }
+
+
 
 });

@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="css/stylesheets/font-awesome.min.css">
+
     <link rel="stylesheet" href="css/style_new_for_index_2.css">
     <link rel="stylesheet" href="css/style_for_registration.css">
     <link rel="stylesheet" href="css/stylesheets/framework.css">
@@ -29,6 +30,7 @@
     <link rel="stylesheet" href="./css/select.css">
     <script src="./js/uiSelectCtrl.js"></script>
 
+    <script src="./js/startsWith.js"></script>
 
     <link rel="shortcut icon" href="favicon.ico">
     <!-- -------------------------------------------------- -->
@@ -46,6 +48,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-sanitize.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.4.5/select2.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/css/selectize.default.css">
+    <script src="https://use.fontawesome.com/33d1981042.js"></script>
 
     <script>
         document.createElement('ui-select');
@@ -149,16 +152,16 @@
 
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-12 search">
+                <div class="col-md-12 search" ng-controller="UiSelectCtrl as ctrl">
                     <div class="row">
                         <div class="col-md-11">
-                            <div class="row" ng-controller="UiSelectCtrl as ctrl">
+                            <div class="row" >
 
 
                                 <div class="col-md-3 ">
-                                    <form role="form ">
+                                    <form role="form " >
 
-                                        <div class="form-group">
+                                        <div class="form-group" >
                                             <!--<input type="text" class="form-control" id="region_input"
                                                    placeholder="region"/>-->
 
@@ -178,7 +181,7 @@
                                                 <ui-select ng-model="ctrl.region.selected" theme="selectize" ng-disabled="ctrl.disabled"
                                                            title="Choose a region">
                                                     <ui-select-match placeholder="Select or search a region...">{{$select.selected.name}}</ui-select-match>
-                                                    <ui-select-choices repeat="region in ctrl.regions | filter: $select.search ">
+                                                    <ui-select-choices repeat="region in ctrl.regions | startsWith: $select.search ">
                                                         <span ng-bind-html="region.name | highlight: $select.search"></span>
                                                         <!--
                                                                                                                     <small ng-bind-html="city.region | highlight: $select.search"></small>
@@ -190,11 +193,11 @@
                                                         <button type="button" ng-click="ctrl.region.selected = undefined" class="btn btn-default">
                                                             <span class="glyphicon glyphicon-remove"></span>
                                                         </button>
-                                                    </span>
+                                                </span>
 
 
-                                        </div>
                                             </div>
+                                        </div>
                                         <div class="form-group">
                                             <!--<input type="text" class="form-control" id="city_input"
                                                    placeholder="city"/>-->
@@ -207,10 +210,10 @@
                                             </select>-->
                                                 <div class="input-group">
 
-                                                    <ui-select ng-model="ctrl.city.selected" theme="selectize" ng-disabled="ctrl.disabled"
+                                                    <ui-select multiple ng-model="ctrl.city.selected" theme="bootstrap" close-on-select="true" ng-disabled="ctrl.disabled"
                                                                title="Choose a city">
-                                                        <ui-select-match placeholder="Select or search a city...">{{$select.selected.name}}</ui-select-match>
-                                                        <ui-select-choices repeat="city in ctrl.cities | filter: $select.search | filter:{regionId: ctrl.region.selected.id}:true">
+                                                        <ui-select-match placeholder="Select or search a city...">{{$item.name}}</ui-select-match>
+                                                        <ui-select-choices repeat="city in ctrl.cities |filter:$select.search | filter:{regionId: ctrl.region.selected.id}:true | orderBy:'name'">
                                                             <span ng-bind-html="city.name | highlight: $select.search"></span>
 <!--
                                                             <small ng-bind-html="city.region | highlight: $select.search"></small>
@@ -245,10 +248,11 @@
 
                                             <div class="input-group">
 
-                                                <ui-select ng-model="ctrl.category.selected" theme="selectize" ng-disabled="ctrl.disabled"
+                                                <ui-select multiple ng-model="ctrl.category.selected" theme="bootstrap"  close-on-select="false" ng-disabled="ctrl.disabled"
                                                            title="Choose a category">
-                                                    <ui-select-match placeholder="Select or search a caategory...">{{$select.selected.name}}</ui-select-match>
-                                                    <ui-select-choices repeat="category in ctrl.categories | filter: $select.search">
+                                                    <ui-select-match placeholder="Select or search category...">{{$item.name}}</ui-select-match>
+                                                    <ui-select-choices repeat="category in ctrl.categories | filter: $select.search "
+                                                                       position="down">
                                                         <span ng-bind-html="category.name | highlight: $select.search"></span>
                                                         <!--
                                                                                                                     <small ng-bind-html="city.region | highlight: $select.search"></small>
@@ -260,15 +264,15 @@
                                                         <button type="button" ng-click="ctrl.category.selected = undefined" class="btn btn-default">
                                                             <span class="glyphicon glyphicon-remove"></span>
                                                         </button>
-                                                </span>
+                                                    </span>
 
                                             </div>
 
                                         </div>
-                                       <!-- <div class="form-group">
+                                        <!--<div class="form-group">
                                             <input type="text" class="form-control" id="company_input"
                                                    ng-model="company"
-                                                   ng-keyup="keyUpFunc(selectedRegion, selectedCity, selectedStreet, selectedBld, selectedCategory, phonenumber, company)"
+                                                   ng-keyup="keyUpFunc(ctrl.region.selected, ctrl.city.selected, ctrl.street.selected, ctrl.building.selected, ctrl.category.selected, phonenumber, company)"
                                                    ng-init=""
                                                    placeholder={{lang.nameBus}} />
                                         </div>-->
@@ -277,12 +281,26 @@
 
                                                 <ui-select ng-model="ctrl.company.selected" theme="selectize">
                                                     <ui-select-match placeholder="Company...">{{$select.selected.name}}</ui-select-match>
-                                                    <ui-select-choices repeat="item in ctrl.companies | filter: $select.search">
+
+                                                    <ui-select-choices
+                                                            minimum-input-length="3"
+                                                            refresh="checkTitle($select.search)"
+                                                            ng-keyup="keyUpFunc(ctrl.region.selected, ctrl.city.selected, ctrl.street.selected, ctrl.building.selected, ctrl.category.selected, phonenumber, ctrl.company.selected)""
+
+                                                            refresh-delay="1000"
+                                                            repeat="item in (companiesList | filter: $select.search | limitTo: limitTitleSearch) track by item.id"
+                                                            ng-keyup="keyUpFunc(ctrl.region.selected, ctrl.city.selected, ctrl.street.selected,
+                                                        ctrl.building.selected, ctrl.category.selected, phonenumber, ctrl.company.selected)"
+
+                                                    >
                                                         <span ng-bind-html="item.name | highlight: $select.search"></span>
 <!--
                                                         <small ng-bind-html="item.email | highlight: $select.search"></small>
 -->
                                                     </ui-select-choices>
+                                                    <!--<ui-select-no-choice>
+                                                        Type at least 3 chars for options to load
+                                                    </ui-select-no-choice>-->
                                                 </ui-select>
 
                                                 <span class="input-group-btn">
@@ -292,7 +310,7 @@
                                                 </span>
 
                                             </div>
-                                            </div>
+                                        </div>
 
                                     </form>
                                 </div>
@@ -300,7 +318,7 @@
                                 <div class="col-md-3">
                                     <form role="form">
 
-                                        <div class="form-group">
+                                        <div class="form-group" >
                                            <!-- <input type="text" class="form-control" id="street_input"
                                                    placeholder="street"/>-->
 
@@ -316,11 +334,9 @@
                                                 <ui-select ng-model="ctrl.street.selected" theme="selectize" ng-disabled="ctrl.disabled"
                                                            title="Choose a street">
                                                     <ui-select-match placeholder="Select or search a street...">{{$select.selected.name}}</ui-select-match>
-                                                    <ui-select-choices repeat="street in ctrl.streets | filter: $select.search | filter:{cityId: ctrl.city.selected.id}:true">
+                                                    <ui-select-choices repeat="street in ctrl.streets | filter: $select.search | filter:{cityId: ctrl.city.selected.id}:true | filter:{regionId: ctrl.region.selected.id}:true  ">
                                                         <span ng-bind-html="street.name | highlight: $select.search"></span>
-                                                        <!--
-                                                                                                                    <small ng-bind-html="city.region | highlight: $select.search"></small>
-                                                        -->
+                                                        <small ng-bind-html="street.city | highlight: $select.search" style="color:red"></small>
                                                     </ui-select-choices>
                                                 </ui-select>
 
@@ -328,13 +344,13 @@
                                                         <button type="button" ng-click="ctrl.street.selected = undefined" class="btn btn-default">
                                                             <span class="glyphicon glyphicon-remove"></span>
                                                         </button>
-                                                    </span>
+                                                </span>
 
                                             </div>
 
                                         </div>
                                         <div class="form-group">
-                                            <input ng-bind="lang.numPhone" ng-model="phonenumber" ui-mask="(999) 999-9999"  ui-mask-placeholder ui-mask-placeholder-char="_" type="text" class="form-control" id="telephone_input"
+                                            <input ng-bind="lang.numPhone" ng-model="ctrl.phone.selected" ui-mask="(999) 999-9999"  ui-mask-placeholder ui-mask-placeholder-char="_" type="text" class="form-control" id="telephone_input"
                                                    placeholder="" />
                                         </div>
 
@@ -359,21 +375,32 @@
 
                                             <div class="input-group">
 
-                                                <ui-select ng-model="ctrl.building.selected" theme="selectize">
-                                                    <ui-select-match placeholder="Select or search building...">{{$select.selected.name}}</ui-select-match>
-                                                    <ui-select-choices repeat="item in ctrl.buildings | filter: $select.search | filter:{streetId: ctrl.street.selected.id}:true">
+                                                <ui-select multiple ng-model="ctrl.building.selected" theme="bootstrap" close-on-select="true" ng-disabled="!ctrl.street.selected">
+                                                    <ui-select-match placeholder="Select or search building...">{{$item.name}}</ui-select-match>
+                                                    <ui-select-choices repeat="item in ctrl.buildings | filter: $select.search | filter:{streetId: ctrl.street.selected.id}:true" value = "" selected>
                                                         <span ng-bind-html="item.name | highlight: $select.search"></span>
-                                                        <!--
-                                                                                                                <small ng-bind-html="item.email | highlight: $select.search"></small>
-                                                        -->
+                                                        <small ng-bind-html="item.city | highlight: $select.search"></small>
                                                     </ui-select-choices>
                                                 </ui-select>
+
+
 
                                                 <span class="input-group-btn">
                                                     <button type="button" ng-click="ctrl.building.selected = undefined" class="btn btn-default">
                                                          <span class="glyphicon glyphicon-remove"></span>
                                                     </button>
                                                 </span>
+
+                                               <!-- <ui-select multiple ng-model="ctrl.city.selected" theme="bootstrap" close-on-select="true" ng-disabled="ctrl.disabled"
+                                                           title="Choose a city">
+                                                    <ui-select-match placeholder="Select or search a city...">{{$item.name}}</ui-select-match>
+                                                    <ui-select-choices repeat="city in ctrl.cities |filter:$select.search | filter:{regionId: ctrl.region.selected.id}:true | orderBy:'name'">
+                                                        <span ng-bind-html="city.name | highlight: $select.search"></span>
+                                                        &lt;!&ndash;
+                                                                                                                    <small ng-bind-html="city.region | highlight: $select.search"></small>
+                                                        &ndash;&gt;
+                                                    </ui-select-choices>
+                                                </ui-select>-->
 
                                             </div>
 
@@ -399,8 +426,8 @@
 
                             <!--<a href="#" ng-click = "getObject(selectedRegion, selectedCity, selectedStreet, selectedBld,
                             selectedCategory, company, phonenumber)"><img src="img/img2/search.png" width="70" height="70" alt="logo"/></a>-->
-                            <a href="#" ng-click = "getCompList(selectedRegion, selectedCity, selectedStreet, selectedBld,
-                            selectedCategory, company, phonenumber)"><img src="img/img2/search.png" width="70" height="70" alt="logo"></a>
+                            <a href="#" ng-click = "getSearchResult(ctrl.region.selected, ctrl.city.selected, ctrl.street.selected, ctrl.building.selected,
+                            ctrl.category.selected, ctrl.phone.selected, ctrl.company.selected)"><img src="img/img2/search.png" width="70" height="70" alt="logo"></a>
 
                         </div>
                     </div>
@@ -431,40 +458,28 @@
                     <!-- Companies block -->
                     <div class="col-md-6 companies ">
 
-
-                        <div ng-model="companiesRes" ng-repeat="item in companiesArr" class="col-md-12 ">
+                        <div class="col-md-12 " ng-model="companiesRes" ng-repeat="item in companiesArr">
                             <div class="">
-                                <img src="img/logo_dan.png" alt="logo" class="logo company-logo" align="left" >
-                                <p ng-bind="item.name" class="company-name h3"></p>
-                                <a href="#"><i class="fa fa-info-circle company-ad-info icons small"></i></a>
-                                <a href="#"><i class="fa fa-map-marker company-ad-info icons small"></i></a>
-                                <p class="company-info h7">
-                                    Адрес: {{item.address}}<br>
+                                <div class="col-md-2">
+                                    <img src="http://188.166.79.122:8080/exodus/company/logo_image/get_by_id?isoCode=en&companyId={{item.id}}" alt="logo" class="logo company-logo" align="left" >
+                                </div>
+                                <div class="col-md-10">
+                                    <p ng-bind="item.name" class="company-name h3"></p>
+                                    <a href="#" style="color:brown">{{item.categories}}</a>
+                                    <a href="#"><i class="fa fa-info-circle company-ad-info icons small"></i></a>
+                                    <a href="#"><i class="fa fa-map-marker company-ad-info icons small"></i></a>
+                                    <p class="company-info h7">
+                                    Адрес: <a href="#" ng-click="getMarker(item.position)">{{item.address}}</a> <br>
                                     Телефон: {{item.tel}} <br>
                                     Электропочта: {{item.email}} <br>
-                                    <a href="#">{{item.web}}</a><br>
-                                    Категории: <a href="#">{{item.categories}}</a>
-                                </p>
+                                    <a href="http:\\www.{{item.web}}">http:\\www.{{item.web}}</a><br>
+
+                                    </p>
+                                </div>
                             </div>
                         </div>
 
-
-                        <div class="col-md-12 ">
-                            <div class="">
-                            <img src="img/logo_dan.png" alt="logo" class="logo company-logo" align="left" >
-                            <p class="company-name h3">Company "DAN"</p>
-                                <a href="#"><i class="fa fa-info-circle company-ad-info icons small"></i></a>
-                                <a href="#"><i class="fa fa-map-marker company-ad-info icons small"></i></a>
-                            <p class="company-info h7">
-                            Адрес: Бейт-Даган | Сд. Менахем Бегин, 5 <br>
-                            Телефон: 03 - 9142237 <br>
-                            Электропочта: info@egged.co.il <br>
-                            <a href="#">http://www.egged.co.il/</a>
-                            </p>
-                            </div>
-                        </div>
-
-                        <div class="col-md-12">
+                       <!-- <div class="col-md-12">
                             <div>
                                 <img src="img/logo_dan.png" alt="logo" class="logo company-logo" align="left" >
                                 <p class="company-name h3">Company "DAN"</p>
@@ -548,36 +563,8 @@
                                     <a href="#">http://www.egged.co.il/</a>
                                 </p>
                             </div>
-                        </div>
+                        </div>-->
                     </div>
-
-                        <!--<div class="companies">-->
-
-                            <!--&lt;!&ndash; Element start &ndash;&gt;-->
-                            <!--<div class="row element">-->
-                                <!--<div class="col-md-2 ">-->
-                                    <!--<div>-->
-                                        <!--<img src="img/logo_dan.png" alt="logo" class="logo" >-->
-                                    <!--</div>-->
-                                <!--</div>-->
-                                <!--<div class="col-md-8">-->
-                                    <!--<p class="company-name">Company "DAN"</p>-->
-                                    <!--<p class="company-info">-->
-                                        <!--Адрес: Бейт-Даган | Сд. Менахем Бегин, 5 <br>-->
-                                        <!--Телефон: 03 - 9142237 <br>-->
-                                        <!--Электропочта: info@egged.co.il <br>-->
-                                        <!--<a href="#">http://www.egged.co.il/</a>-->
-                                    <!--</p>-->
-                                <!--</div>-->
-                                <!--<div class="col-md-2">-->
-                                    <!--<a href="#"><i class="fa fa-info-circle"></i></a>-->
-                                    <!--<a href="#"><i class="fa fa-map-marker"></i></a>-->
-                                <!--</div>-->
-                            <!--</div>-->
-                            <!--&lt;!&ndash; Element end &ndash;&gt;-->
-
-
-                        <!--</div>-->
 
                         <!-- Map block -->
                         <div class="col-md-6">
@@ -590,9 +577,6 @@
         </div>
 
     </div>
-
-
-
 
 </section>
 
@@ -634,6 +618,19 @@
 
         getPoints();
     }
+
+
+    function getMarker(position){
+        console.log("Get marker")
+        map.getMarker();
+    }/*{
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(lat,lng),
+            map: map,                            // Карта на которую нужно добавить маркер
+            title: item.name // (Необязательно) Текст выводимый в момент наведения на маркер
+        })*/
+        console.log("Marker")
+
 
 </script>
 
