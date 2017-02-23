@@ -35,11 +35,11 @@ angular.module("MyApp").controller("MyAppCtrl", function ($scope, $rootScope, La
         // scope.langDirective = LanguageService[$rootScope.language].lang;
     }
     $scope.$watch(function () {
+        initMenuItems();
         return $rootScope.language ;
     },function (newValue, oldValue) {
         var applyFn = function(){
             $scope.lang = LanguageService[$rootScope.language];
-            initMenuItems();
         }
         if ($scope.$$phase) {
             applyFn();
@@ -50,13 +50,17 @@ angular.module("MyApp").controller("MyAppCtrl", function ($scope, $rootScope, La
 
 
     var initMenuItems = function () {
+        //console.log("URA!");
         var elem = angular.element(document.querySelector("body"));
         var elemHeader = angular.element(document.querySelector(".elemHeader"));
         var elemNavLeft = angular.element(document.querySelector(".navbarLeft"));
         var elemNavRight = angular.element(document.querySelector(".navbarRight"));
         var elemDivLtrRtl = angular.element(document.querySelector("div.ltrRtl"));
         var elemDivCompanies = angular.element(document.querySelector(".elemDivCompanies"));
+        //alert("!!!" + elem.prop("dir"));
+        //console.log("URA!");
         if(elem.prop("dir") == "rtl") {
+            //alert("!!" + elem.prop("dir"));
             elemHeader.addClass("my_float_rtl");
             if(elemHeader.hasClass("my_float_ltr")) elemHeader.removeClass("my_float_ltr");
             elemNavLeft.addClass("navbar-right");
@@ -74,6 +78,7 @@ angular.module("MyApp").controller("MyAppCtrl", function ($scope, $rootScope, La
         //         elem.children().children().removeClass("my_float_rtl");
         //     }
         } else {
+            //alert("!!!!" + elem.prop("dir"));
             elemHeader.addClass("my_float_ltr");
             if(elemHeader.hasClass("my_float_rtl")) elemHeader.removeClass("my_float_rtl");
             elemNavLeft.addClass("navbar-left");
