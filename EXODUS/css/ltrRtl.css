@@ -1,6 +1,6 @@
-.my_float_ltr {
+.my_float_rtl {
     float: right;
 }
-.my_float_rtl {
+.my_float_ltr {
     float: left;
 }

@@ -12,10 +12,16 @@
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="css/stylesheets/font-awesome.min.css">
 
+<!--<<<<<<< HEAD
     <link rel="stylesheet" href="css/style_new_for_index_2.css">
     <link rel="stylesheet" href="css/style_for_registration.css">
+=======
+
+>>>>>>> 39a6896bca4072c59ff147a5d02bc11a99805067-->
     <link rel="stylesheet" href="css/stylesheets/framework.css">
     <link rel="stylesheet" href="css/stylesheets/loader.css">
+    <link rel="stylesheet" href="css/style_new_for_index_2.css">
+    <link rel="stylesheet" href="css/style_for_registration.css">
     <link rel="stylesheet" href="css/ltrRtl.css">
 
     <!--<link rel="stylesheet" href="css/style.css">-->
@@ -23,8 +29,8 @@
    <!-- <script src="../Libraries/angular_route.js"></script>
     <script src="../Libraries/angular_resource.js"></script>-->
     <script src="../Libraries/angular.js"></script>
-    <script src="./js/MyApp.js"></script>
-    <script src="./js/MyAppCtrl.js"></script>
+    <script src="../EXODUS/js/MyApp.js"></script>
+    <script src="../EXODUS/js/MyAppCtrl.js"></script>
     <script src="../Libraries/mask.js"></script>
     <script src="./js/select.js"></script>
     <link rel="stylesheet" href="./css/select.css">
@@ -43,6 +49,7 @@
     <script type="text/javascript" src="../Libraries/ui-bootstrap-tpls-0.14.3.js" ></script>
     <script type="text/javascript" src="js/select-tpls.js"></script>
     <script type="text/javascript" src="js/LanguageService.js"></script>
+    <!--<script type="text/javascript" src="js/geoScript.js"></script>-->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/2.2.0/es5-shim.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-sanitize.js"></script>
@@ -84,32 +91,34 @@
         }
     </style>
 </head>
-<body ng-app="MyApp" ng-controller="MyAppCtrl" ng-init="initApp()" dir="{{lang.dir}}">
-
+<body style="padding-top: 70px" ng-app="MyApp" ng-controller="MyAppCtrl" ng-init="initApp()" dir="{{lang.dir}}">
+<!-- style="padding-top: 70px" -->
 <!-- Navbar -->
 
-<nav class="navbar navbar-inverse navbar-static-top">
+<nav class="navbar navbar-inverse navbar-fixed-top navbar-static-top">                     <!-- navbar-fixed-top -->
     <div class="container">
-        <div class="navbar-header ">
+        <div class="navbar-header elemHeader">                                                             <!-- my_float_ltr-->
             <a class="navbar-brand" href="#"><img src="img/img2/exodus_logo.png" width="138" height="30"
-                                                  alt="logo"/></a>
-            <a class="navbar-brand" href="#"><img src="img/img2/thlg.png" width="128" height="30" alt="logo2"/></a>
+                                                  alt="logo" style="float: inherit"/></a>                             <!-- my_float_ltr-->
+            <a class="navbar-brand" href="#"><img src="img/img2/thlg.png" width="128" height="30" alt="logo2"
+                                                  style="float: inherit"/></a>
+                                                                                                <!-- my_float_ltr-->
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
-            <ul class="nav navbar-nav navbar-left">
-                <li><a href="#" ng-click="goToView('home')">{{lang.home}} <span class="sr-only"></span></a></li>
-                <li><a href="#" ng-click="goToView('reg')">{{lang.registration}}</a></li>
-                <li><a href="#" ng-click="goToView('terms')">{{lang.terms}}</a></li>
-                <li><a href="#" ng-click="goToView('cat')">{{lang.rubricator}}</a></li>
-                <li><a href="#" ng-click="goToView('contacts')">{{lang.contacts}}</a></li>
-                <li><a href="#" ng-click="goToView('about')">{{lang.about}}</a></li>
+            <ul class="nav navbar-nav navbar-left navbarLeft">                     <!-- navbar-right; style="margin-right: 10px" style="float: right"-->                               <!--navbar-right-->
+                <li style="float: inherit"><a href="#" ng-click="goToView('home')">{{lang.home}} <span class="sr-only"></span></a></li>
+                <li style="float: inherit"><a href="#" ng-click="goToView('reg')">{{lang.registration}}</a></li>
+                <li style="float: inherit"><a href="#" ng-click="goToView('terms')">{{lang.terms}}</a></li>
+                <li style="float: inherit"><a href="#" ng-click="goToView('cat')">{{lang.rubricator}}</a></li>
+                <li style="float: inherit"><a href="#" ng-click="goToView('contacts')">{{lang.contacts}}</a></li>
+                <li style="float: inherit"><a href="#" ng-click="goToView('about')">{{lang.about}}</a></li>
             </ul>
 
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right navbarRight">                                       <!-- navbar-left -->
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Language<span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
+                    <ul class="dropdown-menu" role="menu">                         <!-- style="text-align: right"-->
                         <li><a href="#" ng-click="changeLang('ENG')"><span >{{langDirective.ENG}}</span><img  src="../EXODUS/img/flag/ENG_small_horiz.png">  English</a></li>
                         <li><a href="#" ng-click="changeLang('RUS')"><span >{{langDirective.RUS}}</span><img src="../EXODUS/img/flag/RUS_small_horiz.png">  Русский</a></li>
                         <li><a href="#" ng-click="changeLang('HEB')"><span >{{langDirective.HEB}}</span><img src="../EXODUS/img/flag/HEB_small_horiz.png">  עברית</a></li>
@@ -157,11 +166,19 @@
                 <div class="col-md-12 search" ng-controller="UiSelectCtrl as ctrl">
                     <div class="row">
                         <div class="col-md-11">
+<!--<<<<<<< HEAD
                             <div class="row" >
 
 
                                 <div class="col-md-3 ">
                                     <form role="form " >
+=======-->
+                            <div class="row ltrRtl">
+
+
+                                <div class="col-md-3 ">                                    <!-- my_float_ltr -->
+                                    <form role="form ">
+<!--&gt;>>>>>> 39a6896bca4072c59ff147a5d02bc11a99805067-->
 
                                         <div class="form-group" >
                                             <!--<input type="text" class="form-control" id="region_input"
@@ -235,7 +252,11 @@
                                     </form>
                                 </div>
 
+<!--<<<<<<< HEAD-->
                                 <div class="col-sm-3">
+<!--=======
+                                <div class="col-md-3 ">
+>>>>>>> 39a6896bca4072c59ff147a5d02bc11a99805067-->
                                     <form role="form">
 
                                         <div class="form-group">
@@ -319,7 +340,7 @@
                                     </form>
                                 </div>
 
-                                <div class="col-md-3">
+                                <div class="col-md-3 ">
                                     <form role="form">
                                         <div class="form-group" >
                                             <div class="input-group">
@@ -348,7 +369,7 @@
                                     </form>
                                 </div>
 
-                                <div class="col-md-3">
+                                <div class="col-md-3 ">
                                     <form role="form">
 
                                         <div class="form-group">
@@ -400,10 +421,10 @@
                                         <div class="btn-group">
                                             <a id="default_btn" href="#" class="btn btn-dark">Change Map Style</a>
                                             <a href="#" class="btn btn-dark dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
-                                            <ul class="dropdown-menu dark">
-                                                <li><a id="retro_btn" href="#">Retro</a></li>
-                                                <li><a id="night_btn" href="#">Night</a></li>
-                                                <li><a id="auberg_btn" href="#">Aubergine</a></li>
+                                            <ul class="dropdown-menu dark" role="menu" aria-labelledby="dropdownMenu">
+                                                <li><a id="retro_btn" href="#">Retro's view</a></li>
+                                                <li><a id="night_btn" href="#">Night's view</a></li>
+                                                <li><a id="auberg_btn" href="#">Aubergine's view</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -424,7 +445,7 @@
             </div>
         </div>
 
-        <div class="container-fluid main">
+        <div class="container-fluid main ">
 
 <!--
             <ng-include src="'home.html'" ng-show="currentView=='home'"></ng-include>
@@ -443,9 +464,10 @@
 
 
             <div class="col-md-12 " ng-show="currentView=='home'">
-                <div class="row company-block">
+                <div class="row company-block ">
                     <!-- Companies block -->
-                    <div class="col-md-6 companies ">
+<!--<<<<<<< HEAD-->
+                    <div class="col-md-6 companies elemDivCompanies">
 
                         <div class="col-md-12 " ng-model="searchDescription" ></div>
                         <div class="col-md-12 " ng-model="companiesRes" ng-repeat="item in companiesArr">
@@ -469,13 +491,46 @@
                                         <span ng-repeat="cat in item.categories" ng-click="sendRequestOnCategory(cat)">
                                             {{cat.name}} /
                                         </span><br>
-                                        Address: <a href="#" ng-click="getMarker(item.position)">{{item.address}}</a> <br>
+                                        Address: <span href="#" onclick="isMarker(this.innerText)">{{item.address}}</span> <br>
                                         Phone: {{item.tel}} <br>
                                         E-mail: {{item.email}} <br>
                                         <a href="http:\\www.{{item.web}}">http:\\www.{{item.web}}</a><br>
 
                                     </p>
                                 </div>
+<!--=======
+                    <div class="col-md-6 companies elemDivCompanies">                         &lt;!&ndash; my_float_ltr &ndash;&gt;
+
+                        <div ng-model="companiesRes" ng-repeat="item in companiesArr" class="col-md-12 ">
+                            <div class="">
+                                <img src="img/logo_dan.png" alt="logo" class="logo company-logo" align="left" >
+                                <p class="company-name h3">{{item.name}}</p>
+                                <a href="#"><i class="fa fa-info-circle company-ad-info icons small"></i></a>
+                                <a href="#"><i class="fa fa-map-marker company-ad-info icons small"></i></a>
+                                <p class="company-info h7">
+                                    Адрес: <span onclick="isMarker(this.innerText)"> {{item.address}}</span><br>
+                                    Телефон: {{item.tel}} <br>
+                                    Электропочта: {{item.email}} <br>
+                                    <a href="#">{{item.web}}</a><br>
+                                    Категории: <a href="#">{{item.categories}}</a>
+                                </p>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-12 ">
+                            <div class="">
+                            <img src="img/logo_dan.png" alt="logo" class="logo company-logo" align="left" >
+                            <p class="company-name h3">Company "DAN"</p>
+                                <a href="#"><i class="fa fa-info-circle company-ad-info icons small"></i></a>
+                                <a href="#"><i class="fa fa-map-marker company-ad-info icons small"></i></a>
+                            <p class="company-info h7">
+                            Адрес: Бейт-Даган | Сд. Менахем Бегин, 5 <br>
+                            Телефон: 03 - 9142237 <br>
+                            Электропочта: info@egged.co.il <br>
+                            <a href="#">http://www.egged.co.il/</a>
+                            </p>
+>>>>>>> 39a6896bca4072c59ff147a5d02bc11a99805067-->
                             </div>
                         </div>
 
@@ -609,15 +664,24 @@
         crossorigin="anonymous"></script>
 <script>
 
-    var map;
-    var markers = [];
+//    var map;
+//    var markers = [];
+//
+//    function initMap() {
+//        var initLocation = {center: new google.maps.LatLng(32.080126, 34.784199), zoom: 8};
+//        map = new google.maps.Map(document.getElementById('map'), initLocation);
+//
+//        getPoints();
+//    }
 
-    function initMap() {
-        var initLocation = {center: new google.maps.LatLng(32.080126, 34.784199), zoom: 8};
-        map = new google.maps.Map(document.getElementById('map'), initLocation);
+//    function isMarker(address) {
+//        //console.log("!!!URA!!!" + address);
+//        clearMarkers();
+//        geocoder = new google.maps.Geocoder();
+//        addOneMarkerWithTimeout(address, 300);
+//    }
 
-        getPoints();
-    }
+//    google.maps.event.addDomListener(window, 'load', initMap);
 
 /*{
         var marker = new google.maps.Marker({
@@ -633,7 +697,8 @@
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXT4gsQJyClX3CSR_XBD0J1YEJ0VSbCs4&callback=initMap"        >
 </script>
-<script src="js/map.js"></script>
+<!--<script src="js/map.js"></script>-->
+<script type="text/javascript" src="js/geoScript.js"></script>
 
 
 <script type="text/javascript" src="js/navigation.js"></script>
