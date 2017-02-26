@@ -20,25 +20,49 @@
             <div class="col-md-12">
 
                 <div class="col-md-3">
+
+
                     <img src="../EXODUS/img/flag/Russia.png" alt="Russian"
                          class="img-responsive iconCountry img-center"
                          style="text-align: center">
                     <hr>
 
-                    <div class="form-group">
-                        <input type="text" placeholder="company name" class="form-control input-sm"
-                               name="comNameRus">
-                        <input type="text" placeholder="address" class="form-control input-sm"
-                               name="addressRus">
-                        <input type="text" placeholder="phone" class="form-control input-sm"
-                               name="phoneRus">
-                        <input type="text" placeholder="website" class="form-control input-sm"
-                               name="webRus">
-                        <input type="text" placeholder="company email" class="form-control input-sm"
-                               name="comEmailRus">
-                        <input type="text" placeholder="area business" class="form-control input-sm"
-                               name="areaRus">
-                    </div>
+
+                        <div class="form-group">
+
+                            <input type="text" placeholder="company name" class="form-control input-sm"
+                                   name="comNameRus">
+                            <div class="row">
+                                <div class="col-sm-9">
+                                <input type="text" placeholder="region" class="form-control input-sm"
+                                       name="addressRus" aria-describedby="basic-addon2">
+                                <input type="text" placeholder="city" class="form-control input-sm"
+                                       name="addressRus" aria-describedby="basic-addon2">
+                                <input type="text" placeholder="street" class="form-control input-sm"
+                                       name="addressRus" aria-describedby="basic-addon2">
+                                <input type="text" placeholder="building" class="form-control input-sm"
+                                       name="addressRus" aria-describedby="basic-addon2">
+                                <input type="text" placeholder="office" class="form-control input-sm"
+                                       name="addressRus" aria-describedby="basic-addon2">
+                                </div>
+                                <div class="col-sm-3">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button" ng-click="addAddress()">+</button>
+                                </span>
+                                </div>
+
+                            </div>
+
+                            <input type="text" placeholder="phone" class="form-control input-sm"
+                                   name="phoneRus">
+                            <input type="url" placeholder="website" class="form-control input-sm"
+                                   name="webRus">
+                            <input type="email" placeholder="company email" class="form-control input-sm"
+                                   name="comEmailRus">
+                            <input type="text" placeholder="area business" class="form-control input-sm"
+                                   name="areaRus">
+                            <input type="file" name="f">
+                        </div>
                 </div>
 
                 <div class="col-md-3">
@@ -110,6 +134,7 @@
             </div>
         </form>
     </div>
+
     <hr>
 
     <div class="row">
@@ -120,8 +145,25 @@
         </div>
 
 
+
+
+
         <div class="form-group">
             <div class="col-md-3"></div>
+
+            <!--<div class=" col-md-3">
+            <form novalidate  class=" css-form">
+                <label>Name: <input type="text" ng-model="user.name" placeholder="your name" class="form-control input-sm"
+                                    name="userName" required /></label><br />
+                <label>E-mail: <input type="email" ng-model="user.email" placeholder="your email" class="form-control input-sm"
+                                      name="userEmail" required /></label><br />
+                <label>Phone: <input type="phone" ng-model="user.phone" placeholder="your phone" class="form-control input-sm"
+                                      name="userPhone" required /></label><br />
+               &lt;!&ndash; <input type="submit" ng-click="update(user)" value="Save" />&ndash;&gt;
+            </form>
+            </div>-->
+
+
             <div class="col-md-3">
                 <input type="text" placeholder="your name" class="form-control input-sm"
                        name="userName">

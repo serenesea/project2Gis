@@ -159,9 +159,6 @@ angular.module("MyApp").controller('UiSelectCtrl', function ($scope, $http, $tim
   //vm.person.selected = vm.person.selectedValue;
 
   vm.people = [
-    { name: 'Ashdod',      region: 'South',      streets: ['Eli-Cohen','Bar Kokhba']},
-    { name: 'Tel-aviv',    region: 'Center',    streets: ['Herzel']},
-    { name: 'Yaffo',    region: 'Center',    streets: ['Herzel']},
     { name: 'Adrian',    email: 'adrian@email.com',    age: 21, country: 'Ecuador' },
     { name: 'Wladimir',  email: 'wladimir@email.com',  age: 30, country: 'Ecuador' },
     { name: 'Samantha',  email: 'samantha@email.com',  age: 30, country: 'United States' },
@@ -212,6 +209,29 @@ angular.module("MyApp").controller('UiSelectCtrl', function ($scope, $http, $tim
       vm.addresses = response.data.results;
     });
   };
+    vm.company = {};
+    vm.refreshCompany = function(company) {
+        if (company.length > 2){
+            return $http.get(
+                'http://188.166.79.122:8080/exodus//search/companies_names?cmn=comp&isc=en&reg=center&cit=tel-aviv'
+            ).then(function (response) {
+                var result = response.data.companies;
+                vm.companies = []
+                for (var i in result) {
+                    var companyNames = result[i].companyNames
+                    for (var j in companyNames) {
+                        var company = {
+                            id: result[i].id,
+                            name: companyNames[j].name
+                        }
+                        vm.companies.push(company)
+                    }
+                }
+                console.log("vm.companies")
+                console.log(vm.companies)
+            });
+    }
+    };
 
   vm.addPerson = function(item, model){
     if(item.hasOwnProperty('isTag')) {
@@ -473,7 +493,17 @@ angular.module("MyApp").controller('UiSelectCtrl', function ($scope, $http, $tim
     {name: 'Zimbabwe', code: 'ZW'}*!/
   ];*/
 
+    vm.companiesList = [];
 
+    vm.refreshCompNames = function(input) {
+        console.log("vm.companiesList")
+        if(angular.isUndefined(input) || input == null) return [];
+        if(input.length < 2) return [];
+        vm.companiesList = vm.people
+        console.log("vm.companiesList")
+        console.log(vm.companiesList)
+        return vm.companiesList;
+    }
 
   var data = {"isoCode": "EN"};
   var config = {

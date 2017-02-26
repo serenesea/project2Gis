@@ -48,7 +48,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-sanitize.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.4.5/select2.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/css/selectize.default.css">
+<!--
     <script src="https://use.fontawesome.com/33d1981042.js"></script>
+-->
 
     <script>
         document.createElement('ui-select');
@@ -279,24 +281,26 @@
                                         <div class="form-group" >
                                             <div class="input-group">
 
-                                                <ui-select ng-model="ctrl.company.selected" theme="selectize">
+                                                <ui-select ng-model="ctrl.company.selected"
+                                                           theme="selectize"
+                                                           ng-disabled="ctrl.disabled"
+                                                           title="Choose a company">
+                                                    <!--
                                                     <ui-select-match placeholder="Company...">{{$select.selected.name}}</ui-select-match>
+                                                    -->
+                                                    <ui-select-match placeholder="Company...">{{$select.selected.name}}</ui-select-match>
+                                                    <!--ng-keyup="keyUpFunc(ctrl.region.selected, ctrl.city.selected, ctrl.street.selected,
+                                                    ctrl.building.selected, ctrl.category.selected, phonenumber, ctrl.company.selected)""-->
+                                                    <!--
+                                                    minimum-input-length="3"-->
 
-                                                    <ui-select-choices
-                                                            minimum-input-length="3"
-                                                            refresh="checkTitle($select.search)"
-                                                            ng-keyup="keyUpFunc(ctrl.region.selected, ctrl.city.selected, ctrl.street.selected, ctrl.building.selected, ctrl.category.selected, phonenumber, ctrl.company.selected)""
+                                                    <ui-select-choices repeat="company in ctrl.companies | filter: $select.search"
+                                                                       refresh="ctrl.refreshCompany($select.search)"
+                                                                       refresh-delay="0"
+                                                                       position='down'
+                                                                       minimum-input-length="3" >
+                                                        <div ng-bind-html="company.name | highlight: $select.search"></div>
 
-                                                            refresh-delay="1000"
-                                                            repeat="item in (companiesList | filter: $select.search | limitTo: limitTitleSearch) track by item.id"
-                                                            ng-keyup="keyUpFunc(ctrl.region.selected, ctrl.city.selected, ctrl.street.selected,
-                                                        ctrl.building.selected, ctrl.category.selected, phonenumber, ctrl.company.selected)"
-
-                                                    >
-                                                        <span ng-bind-html="item.name | highlight: $select.search"></span>
-<!--
-                                                        <small ng-bind-html="item.email | highlight: $select.search"></small>
--->
                                                     </ui-select-choices>
                                                     <!--<ui-select-no-choice>
                                                         Type at least 3 chars for options to load
@@ -317,20 +321,8 @@
 
                                 <div class="col-md-3">
                                     <form role="form">
-
                                         <div class="form-group" >
-                                           <!-- <input type="text" class="form-control" id="street_input"
-                                                   placeholder="street"/>-->
-
-                                           <!-- <select class="form-control" id="street_input"
-                                                    ng-model="selectedStreet"
-                                                    ng-options="g.name for g in streets | filter:{cityId: selectedCity.id}:true | orderBy: 'name'| limitTo:50">
-                                                <option ng-bind="lang.nameStreet" value = "" selected></option>
-                                            </select>-->
-
-
                                             <div class="input-group">
-
                                                 <ui-select ng-model="ctrl.street.selected" theme="selectize" ng-disabled="ctrl.disabled"
                                                            title="Choose a street">
                                                     <ui-select-match placeholder="Select or search a street...">{{$select.selected.name}}</ui-select-match>
@@ -345,16 +337,13 @@
                                                             <span class="glyphicon glyphicon-remove"></span>
                                                         </button>
                                                 </span>
-
                                             </div>
-
                                         </div>
+
                                         <div class="form-group">
                                             <input ng-bind="lang.numPhone" ng-model="ctrl.phone.selected" ui-mask="(999) 999-9999"  ui-mask-placeholder ui-mask-placeholder-char="_" type="text" class="form-control" id="telephone_input"
                                                    placeholder="" />
                                         </div>
-
-
 
                                     </form>
                                 </div>
@@ -458,6 +447,7 @@
                     <!-- Companies block -->
                     <div class="col-md-6 companies ">
 
+                        <div class="col-md-12 " ng-model="searchDescription" ></div>
                         <div class="col-md-12 " ng-model="companiesRes" ng-repeat="item in companiesArr">
                             <div class="">
                                 <div class="col-md-2">
@@ -465,14 +455,24 @@
                                 </div>
                                 <div class="col-md-10">
                                     <p ng-bind="item.name" class="company-name h3"></p>
+<!--
                                     <a href="#" style="color:brown">{{item.categories}}</a>
+-->
+<!--
+                                    <div ng-model="categories" ng-repeat="cat in companiesArr[itemIndex].categoriesList">Category : {{cat.name}}</div>
+-->
                                     <a href="#"><i class="fa fa-info-circle company-ad-info icons small"></i></a>
                                     <a href="#"><i class="fa fa-map-marker company-ad-info icons small"></i></a>
                                     <p class="company-info h7">
-                                    Адрес: <a href="#" ng-click="getMarker(item.position)">{{item.address}}</a> <br>
-                                    Телефон: {{item.tel}} <br>
-                                    Электропочта: {{item.email}} <br>
-                                    <a href="http:\\www.{{item.web}}">http:\\www.{{item.web}}</a><br>
+                                        <!--Category :<span ng-model="categories" ng-repeat="cat in item.categoriesList"> {{cat.name}} </span><br>-->
+                                        <!--<span ng-model="categories" ng-repeat="cat in item.categoriesList"> {{cat}} </span><br>-->
+                                        <span ng-repeat="cat in item.categories" ng-click="sendRequestOnCategory(cat)">
+                                            {{cat.name}} /
+                                        </span><br>
+                                        Address: <a href="#" ng-click="getMarker(item.position)">{{item.address}}</a> <br>
+                                        Phone: {{item.tel}} <br>
+                                        E-mail: {{item.email}} <br>
+                                        <a href="http:\\www.{{item.web}}">http:\\www.{{item.web}}</a><br>
 
                                     </p>
                                 </div>
@@ -619,23 +619,19 @@
         getPoints();
     }
 
-
-    function getMarker(position){
-        console.log("Get marker")
-        map.getMarker();
-    }/*{
+/*{
         var marker = new google.maps.Marker({
             position: new google.maps.LatLng(lat,lng),
             map: map,                            // Карта на которую нужно добавить маркер
             title: item.name // (Необязательно) Текст выводимый в момент наведения на маркер
         })*/
-        console.log("Marker")
+
 
 
 </script>
 
 <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXT4gsQJyClX3CSR_XBD0J1YEJ0VSbCs4&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXT4gsQJyClX3CSR_XBD0J1YEJ0VSbCs4&callback=initMap"        >
 </script>
 <script src="js/map.js"></script>
 
