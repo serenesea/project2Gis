@@ -57,6 +57,7 @@ angular.module("MyApp").controller("MyAppCtrl", function ($scope, $rootScope, La
         var elemNavRight = angular.element(document.querySelector(".navbarRight"));
         var elemDivLtrRtl = angular.element(document.querySelector("div.ltrRtl"));
         var elemDivCompanies = angular.element(document.querySelector(".elemDivCompanies"));
+        var elemLangUl = angular.element(document.querySelector(".langUl"));
         //alert("!!!" + elem.prop("dir"));
         //console.log("URA!");
         if(elem.prop("dir") == "rtl") {
@@ -73,6 +74,8 @@ angular.module("MyApp").controller("MyAppCtrl", function ($scope, $rootScope, La
             if(elemDivCompanies.hasClass("my_float_ltr")) elemDivCompanies.removeClass("my_float_ltr");
             elemDivLtrRtl.children().addClass("my_float_rtl");
             if(elemDivLtrRtl.children().hasClass("my_float_ltr")) elemDivLtrRtl.children().removeClass("my_float_ltr");
+            elemLangUl.addClass("my_float_rtl");
+            if(elemLangUl.hasClass("my_float_ltr")) elemLangUl.removeClass("my_float_ltr");
         //     elem.children().children().addClass("my_float_ltr");
         //     if(elem.children().children().hasClass("my_float_rtl")) {
         //         elem.children().children().removeClass("my_float_rtl");
@@ -91,6 +94,8 @@ angular.module("MyApp").controller("MyAppCtrl", function ($scope, $rootScope, La
             if(elemDivCompanies.hasClass("my_float_rtl")) elemDivCompanies.removeClass("my_float_rtl");
             elemDivLtrRtl.children().addClass("my_float_ltr");
             if(elemDivLtrRtl.children().hasClass("my_float_rtl")) elemDivLtrRtl.children().removeClass("my_float_rtl");
+            elemLangUl.addClass("my_float_ltr");
+            if(elemLangUl.hasClass("my_float_rtl")) elemLangUl.removeClass("my_float_rtl");
         //     elem.children().children().addClass("my_float_rtl");
         //     if(elem.children().children().hasClass("my_float_ltr")) {
         //         elem.children().children().removeClass("my_float_ltr");
