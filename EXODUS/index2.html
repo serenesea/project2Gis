@@ -12,52 +12,49 @@
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="css/stylesheets/font-awesome.min.css">
 
-<!--<<<<<<< HEAD
-    <link rel="stylesheet" href="css/style_new_for_index_2.css">
-    <link rel="stylesheet" href="css/style_for_registration.css">
-=======
 
->>>>>>> 39a6896bca4072c59ff147a5d02bc11a99805067-->
     <link rel="stylesheet" href="css/stylesheets/framework.css">
     <link rel="stylesheet" href="css/stylesheets/loader.css">
     <link rel="stylesheet" href="css/style_new_for_index_2.css">
     <link rel="stylesheet" href="css/style_for_registration.css">
     <link rel="stylesheet" href="css/ltrRtl.css">
 
-    <!--<link rel="stylesheet" href="css/style.css">-->
-
-   <!-- <script src="../Libraries/angular_route.js"></script>
-    <script src="../Libraries/angular_resource.js"></script>-->
     <script src="../Libraries/angular.js"></script>
     <script src="../EXODUS/js/MyApp.js"></script>
     <script src="../EXODUS/js/MyAppCtrl.js"></script>
     <script src="../Libraries/mask.js"></script>
     <script src="./js/select.js"></script>
     <link rel="stylesheet" href="./css/select.css">
+<!--
     <script src="./js/uiSelectCtrl.js"></script>
+-->
 
     <script src="./js/startsWith.js"></script>
 
+<!--
     <link rel="shortcut icon" href="favicon.ico">
-    <!-- -------------------------------------------------- -->
+-->
     <script type="text/javascript" src="../Libraries/jquery-2.1.4.min.js" ></script>
     <script type="text/javascript" src="../Libraries/jquery.mCustomScrollbar.concat.min.js"></script>
     <script type="text/javascript" src="../Libraries/angular-ui-router.min.js" ></script>
     <script type="text/javascript" src="../Libraries/angular-animate.js" ></script>
+    <script type="text/javascript" src="../Libraries/angular-route-min.js" ></script>
+
+<!--
     <script type="text/javascript" src="../Libraries/swiper.min.js" ></script>
+-->
+
+
     <script type="text/javascript" src="../Libraries/jquery.customSelect.min.js" ></script>
     <script type="text/javascript" src="../Libraries/ui-bootstrap-tpls-0.14.3.js" ></script>
     <script type="text/javascript" src="js/select-tpls.js"></script>
     <script type="text/javascript" src="js/LanguageService.js"></script>
-    <!--<script type="text/javascript" src="js/geoScript.js"></script>-->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/2.2.0/es5-shim.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-sanitize.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.4.5/select2.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/css/selectize.default.css">
-<!--
-    <script src="https://use.fontawesome.com/33d1981042.js"></script>
--->
+
 
     <script>
         document.createElement('ui-select');
@@ -91,31 +88,40 @@
         }
     </style>
 </head>
-<body style="padding-top: 70px" ng-app="MyApp" ng-controller="MyAppCtrl" ng-init="initApp()" dir="{{lang.dir}}">
+<body style="padding-top: 70px" ng-app="MyApp" ng-controller="MyAppCtrl as ctrl" ng-init="initApp()" dir="{{lang.dir}}">
 <!-- style="padding-top: 70px" -->
 <!-- Navbar -->
 
-<nav class="navbar navbar-inverse navbar-fixed-top navbar-static-top">                     <!-- navbar-fixed-top -->
+<nav class="navbar navbar-inverse navbar-fixed-top navbar-static-top">
     <div class="container">
-        <div class="navbar-header elemHeader">                                                             <!-- my_float_ltr-->
+        <div class="navbar-header elemHeader">
             <a class="navbar-brand" href="#"><img src="img/img2/exodus_logo.png" width="138" height="30"
-                                                  alt="logo" style="float: inherit"/></a>                             <!-- my_float_ltr-->
+                                                  alt="logo" style="float: inherit"/></a>
             <a class="navbar-brand" href="#"><img src="img/img2/thlg.png" width="128" height="30" alt="logo2"
                                                   style="float: inherit"/></a>
-                                                                                                <!-- my_float_ltr-->
+
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
-            <ul class="nav navbar-nav navbar-left navbarLeft">                     <!-- navbar-right; style="margin-right: 10px" style="float: right"-->                               <!--navbar-right-->
+           <!-- <ul class="nav navbar-nav navbar-left navbarLeft">
                 <li style="float: inherit"><a href="#" ng-click="goToView('home')">{{lang.home}} <span class="sr-only"></span></a></li>
                 <li style="float: inherit"><a href="#" ng-click="goToView('reg')">{{lang.registration}}</a></li>
                 <li style="float: inherit"><a href="#" ng-click="goToView('terms')">{{lang.terms}}</a></li>
                 <li style="float: inherit"><a href="#" ng-click="goToView('cat')">{{lang.rubricator}}</a></li>
                 <li style="float: inherit"><a href="#" ng-click="goToView('contacts')">{{lang.contacts}}</a></li>
                 <li style="float: inherit"><a href="#" ng-click="goToView('about')">{{lang.about}}</a></li>
+            </ul>-->
+            <ul class="nav navbar-nav navbar-left navbarLeft">
+                <li style="float: inherit"><a href="#" ng-click="goToView('home')">{{lang.home}} <span class="sr-only"></span></a></li>
+                <li style="float: inherit"><a href="#" ng-click="goToView('reg')">{{lang.registration}}</a></li>
+                <li style="float: inherit"><a href="#" ng-click="goToView('terms')">{{lang.terms}}</a></li>
+                <li style="float: inherit"><a href="#" ng-click="goToView('cat')">{{lang.rubricator}}</a></li>
+                <li style="float: inherit"><a href="#" ng-click="goToView('contacts')">{{lang.contacts}}</a></li>
+                <li style="float: inherit"><a href="#" ng-click="goToView('about')">{{lang.about}}</a></li>
+                <li ><a href="#admin">AdminPanel</a></li>
             </ul>
 
-            <ul class="nav navbar-nav navbar-right navbarRight">                                       <!-- navbar-left -->
+            <ul class="nav navbar-nav navbar-right navbarRight">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Language<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">                         <!-- style="text-align: right"-->
@@ -133,10 +139,6 @@
     </div>
 </nav>
 
-
-
-<!-- Main section -->
-
 <section>
     <div class="fixed-left centered">
         <img src="img/img2/adverdiv2.png" class="img-responsive img-hidden centered">
@@ -151,7 +153,7 @@
         <img src="img/img2/adverdiv2.png" class="img-responsive img-hidden centered">
     </div>
 
-    <div class="container">
+    <div class="container" >
         <div class="row ">
             <div class="col-md-12 ">
                 <div class="news ">
@@ -161,50 +163,29 @@
         </div>
 
 
-        <div class="container-fluid">
+        <div class="container-fluid" >
             <div class="row">
-                <div class="col-md-12 search" ng-controller="UiSelectCtrl as ctrl">
+                <div class="col-md-12 search" >
                     <div class="row">
                         <div class="col-md-11">
-<!--<<<<<<< HEAD
-                            <div class="row" >
 
-
-                                <div class="col-md-3 ">
-                                    <form role="form " >
-=======-->
                             <div class="row ltrRtl">
 
-
-                                <div class="col-md-3 ">                                    <!-- my_float_ltr -->
+                                <div class="col-md-3 ">
                                     <form role="form ">
-<!--&gt;>>>>>> 39a6896bca4072c59ff147a5d02bc11a99805067-->
 
                                         <div class="form-group" >
-                                            <!--<input type="text" class="form-control" id="region_input"
-                                                   placeholder="region"/>-->
-
-                                           <!-- <select class="form-control" id="region_input"
-                                                    ng-model="selectedRegion"
-                                                    ng-options="r.name for r in regions"
-
-                                                     >
-
-                                                <option ng-bind="lang.region" value = "" selected></option>
-
-                                            </select>-->
-
 
                                             <div class="input-group">
 
-                                                <ui-select ng-model="ctrl.region.selected" theme="selectize" ng-disabled="ctrl.disabled"
+                                                <ui-select multiple ng-model="ctrl.region.selected" theme="bootstrap" ng-disabled="ctrl.disabled"
                                                            title="Choose a region">
-                                                    <ui-select-match placeholder="Select or search a region...">{{$select.selected.name}}</ui-select-match>
+<!--
+                                                    on-select="onSelectCallback(ctrl.region.selected)
+-->
+                                                    <ui-select-match placeholder="Select or search a region...">{{$item.name}}</ui-select-match>
                                                     <ui-select-choices repeat="region in ctrl.regions | startsWith: $select.search ">
                                                         <span ng-bind-html="region.name | highlight: $select.search"></span>
-                                                        <!--
-                                                                                                                    <small ng-bind-html="city.region | highlight: $select.search"></small>
-                                                        -->
                                                     </ui-select-choices>
                                                 </ui-select>
 
@@ -214,29 +195,25 @@
                                                         </button>
                                                 </span>
 
-
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <!--<input type="text" class="form-control" id="city_input"
-                                                   placeholder="city"/>-->
 
-                                           <!-- <select class="form-control" id="city_input"
-                                                    ng-model="selectedCity"
-                                                    ng-options="c.name for c in cities | filter:{regionId: selectedRegion.id}:true | orderBy: 'name' | limitTo:50"
-                                            >
-                                                <option ng-bind="lang.city" value = "" selected></option>
-                                            </select>-->
                                                 <div class="input-group">
 
-                                                    <ui-select multiple ng-model="ctrl.city.selected" theme="bootstrap" close-on-select="true" ng-disabled="ctrl.disabled"
-                                                               title="Choose a city">
+                                                    <ui-select multiple ng-model="ctrl.city.selected"
+                                                               theme="bootstrap"
+                                                               close-on-select="true"
+                                                               ng-disabled="ctrl.disabled"
+                                                               title="Choose a city"
+                                                               id="selectedRegions"
+                                                               ng-select="checkTheParent(ctrl.region.selected)">
                                                         <ui-select-match placeholder="Select or search a city...">{{$item.name}}</ui-select-match>
-                                                        <ui-select-choices repeat="city in ctrl.cities |filter:$select.search | filter:{regionId: ctrl.region.selected.id}:true | orderBy:'name'">
+                                                        <ui-select-choices repeat="city in ctrl.cities |filter:$select.search | onParent: ctrl.region.selected
+                                                                                    | startsWith: $select.search | orderBy:'name'"
+                                                                           position='down'>
                                                             <span ng-bind-html="city.name | highlight: $select.search"></span>
-<!--
-                                                            <small ng-bind-html="city.region | highlight: $select.search"></small>
--->
+                                                            <!--<small ng-bind-html="city.region | highlight: $select.search"></small>-->
                                                         </ui-select-choices>
                                                     </ui-select>
 
@@ -252,34 +229,21 @@
                                     </form>
                                 </div>
 
-<!--<<<<<<< HEAD-->
                                 <div class="col-sm-3">
-<!--=======
-                                <div class="col-md-3 ">
->>>>>>> 39a6896bca4072c59ff147a5d02bc11a99805067-->
+
                                     <form role="form">
 
                                         <div class="form-group">
-                                            <!--<input type="text" class="form-control" id="classifier_input"
-                                                   placeholder="classifier"/>-->
-
-                                            <!--<select class="form-control" id="classifier_input"
-                                                    ng-model="selectedCategory"
-                                                    ng-options="cat.name for cat in categories">
-                                                <option ng-bind="lang.category" value = "" selected ></option>
-                                            </select>-->
 
                                             <div class="input-group">
 
-                                                <ui-select multiple ng-model="ctrl.category.selected" theme="bootstrap"  close-on-select="false" ng-disabled="ctrl.disabled"
+                                                <ui-select multiple ng-model="ctrl.category.selected" theme="bootstrap"  close-on-select="true" ng-disabled="ctrl.disabled"
                                                            title="Choose a category">
                                                     <ui-select-match placeholder="Select or search category...">{{$item.name}}</ui-select-match>
                                                     <ui-select-choices repeat="category in ctrl.categories | filter: $select.search "
                                                                        position="down">
                                                         <span ng-bind-html="category.name | highlight: $select.search"></span>
-                                                        <!--
-                                                                                                                    <small ng-bind-html="city.region | highlight: $select.search"></small>
-                                                        -->
+                                                        <!--<small ng-bind-html="city.region | highlight: $select.search"></small>-->
                                                     </ui-select-choices>
                                                 </ui-select>
 
@@ -305,15 +269,11 @@
                                                 <ui-select ng-model="ctrl.company.selected"
                                                            theme="selectize"
                                                            ng-disabled="ctrl.disabled"
+                                                           ng-keyup="keyUpFunc(ctrl.region.selected, ctrl.city.selected, ctrl.street.selected,
+                                                    ctrl.building.selected, ctrl.category.selected, phonenumber, $select.search)"
                                                            title="Choose a company">
-                                                    <!--
-                                                    <ui-select-match placeholder="Company...">{{$select.selected.name}}</ui-select-match>
-                                                    -->
-                                                    <ui-select-match placeholder="Company...">{{$select.selected.name}}</ui-select-match>
-                                                    <!--ng-keyup="keyUpFunc(ctrl.region.selected, ctrl.city.selected, ctrl.street.selected,
-                                                    ctrl.building.selected, ctrl.category.selected, phonenumber, ctrl.company.selected)""-->
-                                                    <!--
-                                                    minimum-input-length="3"-->
+
+                                                    <ui-select-match placeholder="Company..." >{{$select.selected.name}}</ui-select-match>
 
                                                     <ui-select-choices repeat="company in ctrl.companies | filter: $select.search"
                                                                        refresh="ctrl.refreshCompany($select.search)"
@@ -344,10 +304,15 @@
                                     <form role="form">
                                         <div class="form-group" >
                                             <div class="input-group">
-                                                <ui-select ng-model="ctrl.street.selected" theme="selectize" ng-disabled="ctrl.disabled"
+                                                <ui-select multiple
+                                                           ng-model="ctrl.street.selected"
+                                                           theme="bootstrap"
+                                                           ng-disabled="ctrl.disabled"
                                                            title="Choose a street">
-                                                    <ui-select-match placeholder="Select or search a street...">{{$select.selected.name}}</ui-select-match>
-                                                    <ui-select-choices repeat="street in ctrl.streets | filter: $select.search | filter:{cityId: ctrl.city.selected.id}:true | filter:{regionId: ctrl.region.selected.id}:true  ">
+                                                    <ui-select-match placeholder="Select or search a street...">{{$item.name}}</ui-select-match>
+                                                    <ui-select-choices repeat="street in ctrl.streets | filter: $select.search
+                                                                                | onParent: ctrl.city.selected | filter:$select.search | orderBy:'name'"
+                                                                       position='down'>
                                                         <span ng-bind-html="street.name | highlight: $select.search"></span>
                                                         <small ng-bind-html="street.city | highlight: $select.search" style="color:red"></small>
                                                     </ui-select-choices>
@@ -373,44 +338,29 @@
                                     <form role="form">
 
                                         <div class="form-group">
-                                          <!--  <input type="text" class="form-control" id="house_input"
-                                                   placeholder="house" disabled/>-->
-
-                                           <!-- <select class="form-control" id="house_input"
-                                                    ng-model="selectedBld"
-                                                    ng-options="b.name for b in buildings | filter:{streetId: selectedStreet.id}:true | orderBy: 'name'| limitTo:50">
-                                                <option ng-bind="lang.numHome" value = "" selected></option>
-                                            </select>-->
-
 
                                             <div class="input-group">
 
-                                                <ui-select multiple ng-model="ctrl.building.selected" theme="bootstrap" close-on-select="true" ng-disabled="!ctrl.street.selected">
+                                                <ui-select multiple
+                                                           ng-model="ctrl.building.selected"
+                                                           theme="bootstrap"
+                                                           close-on-select="true"
+                                                           position="down"
+                                                           ng-disabled="!ctrl.street.selected">
                                                     <ui-select-match placeholder="Select or search building...">{{$item.name}}</ui-select-match>
-                                                    <ui-select-choices repeat="item in ctrl.buildings | filter: $select.search | filter:{streetId: ctrl.street.selected.id}:true" value = "" selected>
+                                                    <ui-select-choices repeat="item in ctrl.buildings | filter: $select.search | onParent: ctrl.street.selected"
+                                                                       value = "" selected>
                                                         <span ng-bind-html="item.name | highlight: $select.search"></span>
-                                                        <small ng-bind-html="item.city | highlight: $select.search"></small>
+                                                        <small ng-bind-html="item.street | highlight: $select.search" style="color:red"></small>
+                                                        <small ng-bind-html="item.city | highlight: $select.search" style="color:blue"></small>
                                                     </ui-select-choices>
                                                 </ui-select>
-
-
 
                                                 <span class="input-group-btn">
                                                     <button type="button" ng-click="ctrl.building.selected = undefined" class="btn btn-default">
                                                          <span class="glyphicon glyphicon-remove"></span>
                                                     </button>
                                                 </span>
-
-                                               <!-- <ui-select multiple ng-model="ctrl.city.selected" theme="bootstrap" close-on-select="true" ng-disabled="ctrl.disabled"
-                                                           title="Choose a city">
-                                                    <ui-select-match placeholder="Select or search a city...">{{$item.name}}</ui-select-match>
-                                                    <ui-select-choices repeat="city in ctrl.cities |filter:$select.search | filter:{regionId: ctrl.region.selected.id}:true | orderBy:'name'">
-                                                        <span ng-bind-html="city.name | highlight: $select.search"></span>
-                                                        &lt;!&ndash;
-                                                                                                                    <small ng-bind-html="city.region | highlight: $select.search"></small>
-                                                        &ndash;&gt;
-                                                    </ui-select-choices>
-                                                </ui-select>-->
 
                                             </div>
 
@@ -466,72 +416,43 @@
             <div class="col-md-12 " ng-show="currentView=='home'">
                 <div class="row company-block ">
                     <!-- Companies block -->
-<!--<<<<<<< HEAD-->
                     <div class="col-md-6 companies elemDivCompanies">
-
-                        <div class="col-md-12 " ng-model="searchDescription" ></div>
-                        <div class="col-md-12 " ng-model="companiesRes" ng-repeat="item in companiesArr">
-                            <div class="">
-                                <div class="col-md-2">
-                                    <img src="http://188.166.79.122:8080/exodus/company/logo_image/get_by_id?isoCode=en&companyId={{item.id}}" alt="logo" class="logo company-logo" align="left" >
-                                </div>
-                                <div class="col-md-10">
-                                    <p ng-bind="item.name" class="company-name h3"></p>
 <!--
-                                    <a href="#" style="color:brown">{{item.categories}}</a>
--->
-<!--
-                                    <div ng-model="categories" ng-repeat="cat in companiesArr[itemIndex].categoriesList">Category : {{cat.name}}</div>
--->
-                                    <a href="#"><i class="fa fa-info-circle company-ad-info icons small"></i></a>
-                                    <a href="#"><i class="fa fa-map-marker company-ad-info icons small"></i></a>
-                                    <p class="company-info h7">
-                                        <!--Category :<span ng-model="categories" ng-repeat="cat in item.categoriesList"> {{cat.name}} </span><br>-->
-                                        <!--<span ng-model="categories" ng-repeat="cat in item.categoriesList"> {{cat}} </span><br>-->
-                                        <span ng-repeat="cat in item.categories" ng-click="sendRequestOnCategory(cat)">
-                                            {{cat.name}} /
-                                        </span><br>
-                                        Address: <span href="#" onclick="isMarker(this.innerText)">{{item.address}}</span> <br>
-                                        Phone: {{item.tel}} <br>
-                                        E-mail: {{item.email}} <br>
-                                        <a href="http:\\www.{{item.web}}">http:\\www.{{item.web}}</a><br>
 
-                                    </p>
-                                </div>
-<!--=======
-                    <div class="col-md-6 companies elemDivCompanies">                         &lt;!&ndash; my_float_ltr &ndash;&gt;
-
-                        <div ng-model="companiesRes" ng-repeat="item in companiesArr" class="col-md-12 ">
-                            <div class="">
-                                <img src="img/logo_dan.png" alt="logo" class="logo company-logo" align="left" >
-                                <p class="company-name h3">{{item.name}}</p>
-                                <a href="#"><i class="fa fa-info-circle company-ad-info icons small"></i></a>
-                                <a href="#"><i class="fa fa-map-marker company-ad-info icons small"></i></a>
-                                <p class="company-info h7">
-                                    Адрес: <span onclick="isMarker(this.innerText)"> {{item.address}}</span><br>
-                                    Телефон: {{item.tel}} <br>
-                                    Электропочта: {{item.email}} <br>
-                                    <a href="#">{{item.web}}</a><br>
-                                    Категории: <a href="#">{{item.categories}}</a>
-                                </p>
-                            </div>
+-->
+                        <div class="col-md-12 " style="background-color: #d9d9d9">
+                            <div style="text-align: center">Частный бизнес, предприятия, организации и государственные учреждения Израиля</div>
+                            <span ng-bind="searchDesc"></span>
                         </div>
+<!--
+                        ng-model="companiesRes"
+-->
+                        <div class="col-md-12 " ng-model="searchDescription"></div>
+                             <div class="col-md-12" ng-model = "companiesRes" >
+                                    <div class="" ng-repeat="item in companiesArr">
+                                        <div class="col-md-2">
+                                            <img src="{{item.logo}}" alt="logo" class="logo company-logo" align="left" >
+                                        </div>
+                                        <div class="col-md-10">
+                                            <p ng-bind="item.name" class="company-name h3"></p>
+                                            <a href="#"><i class="fa fa-info-circle company-ad-info icons small"></i></a>
+                                            <a href="#"><i class="fa fa-map-marker company-ad-info icons small"></i></a>
+                                            <p class="company-info h7">
 
+                                                <span ng-repeat="cat in item.categories" ng-click="sendRequestOnCategory(cat)">
+                                                    {{cat.name}} /
+                                                </span>
+                                            <div >
+                                                Address: <span href="#" onclick="isMarker(innerText)" ng-bind="item.address"><!--{{item.address}}--></span> <br>
+                                        </div>
+                                                Phone: {{item.tel}} <br>
+                                                E-mail: <a href ="#" ng-click = "sendEmail(item.email)" style="font-style: italic; text-decoration: underline">Send e-mail</a> <br>
+                                                <a href="http:\\www.{{item.web}}">http:\\www.{{item.web}}</a><br>
 
-                        <div class="col-md-12 ">
-                            <div class="">
-                            <img src="img/logo_dan.png" alt="logo" class="logo company-logo" align="left" >
-                            <p class="company-name h3">Company "DAN"</p>
-                                <a href="#"><i class="fa fa-info-circle company-ad-info icons small"></i></a>
-                                <a href="#"><i class="fa fa-map-marker company-ad-info icons small"></i></a>
-                            <p class="company-info h7">
-                            Адрес: Бейт-Даган | Сд. Менахем Бегин, 5 <br>
-                            Телефон: 03 - 9142237 <br>
-                            Электропочта: info@egged.co.il <br>
-                            <a href="#">http://www.egged.co.il/</a>
-                            </p>
->>>>>>> 39a6896bca4072c59ff147a5d02bc11a99805067-->
-                            </div>
+                                            </p>
+                                        </div>
+
+                                    </div>
                         </div>
 
                        <!-- <div class="col-md-12">
@@ -695,15 +616,15 @@
 </script>
 
 <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXT4gsQJyClX3CSR_XBD0J1YEJ0VSbCs4&callback=initMap"        >
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBXT4gsQJyClX3CSR_XBD0J1YEJ0VSbCs4&callback=initMap">
 </script>
-<!--<script src="js/map.js"></script>-->
+<script src="js/map.js"></script>
 <script type="text/javascript" src="js/geoScript.js"></script>
 
 
 <script type="text/javascript" src="js/navigation.js"></script>
-<script type="text/javascript" src="js/plugins.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
+<!--<script type="text/javascript" src="js/plugins.js"></script>
+<script type="text/javascript" src="js/main.js"></script>-->
 
 
 </body>

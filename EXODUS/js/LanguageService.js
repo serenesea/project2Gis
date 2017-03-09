@@ -7,12 +7,12 @@
 
 		return {
 			ENG : {
-				region: 'Region',
 				city:'City',
 				category:'Category',
 				dir:'ltr',
 				nameBus: 'Company name',
 				nameEmail: 'Email',
+                region: 'Region',
 				numHome: 'Building',
 				numPhone: 'Telephone',
 				nameStreet: 'Street',
@@ -22,6 +22,7 @@
 				rubricator: 'Rubricator',
 				contacts: 'Contacts',
 				about: 'About',
+				admin:'Admin Panel',
 
 			},
 			RUS : {
@@ -40,6 +41,7 @@
 				rubricator: 'Рубрикатор',
 				contacts: 'Контакты',
 				about: 'О нас',
+				admin:'Админка',
 
 			},
 			FRA : {
@@ -58,8 +60,8 @@
 				rubricator: 'RubricaFRA',
 				contacts: 'ContaFRA',
 				about: 'AboutFRA',
-
-			},
+                admin:'Admin Panel FRA',
+            },
 			HEB : {
 				region: 'HEB region',
 				city:'HEB city',
@@ -77,8 +79,9 @@
 				rubricator: 'RubricaHEB',
 				contacts: 'ContaHEB',
 				about: 'AboutHEB',
+                admin:'Admin Panel HEB',
 
-			}
+            }
 		};
 
 	}
