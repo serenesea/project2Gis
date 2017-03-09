@@ -343,6 +343,9 @@
                     </div>
                 </div>
                 <div class="col-md-3">
+<!--
+                    <div ng-repeat="el in inpAddresses">
+-->
                     <div ng-repeat="el in company.offeredAddresses">
                         <fieldset><legend>HE_Address {{$index+1}}</legend>
                             <input ng-model="heAddress" type="text" placeholder="HE_City, street, house" class="form-control input-sm"
@@ -369,6 +372,9 @@
                             <input ng-model="el.ruAdd" type="file" name="addvRus"><br>
                         </fieldset>
                     </div>
+<!--
+                    </div>
+-->
                 </div>
             </div>
             <div class="row">

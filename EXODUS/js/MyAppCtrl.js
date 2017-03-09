@@ -818,13 +818,13 @@ angular.module("MyApp").controller("MyAppCtrl", function ($scope, $rootScope, La
         ruAdd: "",
         address: ""/*$scope.inpAddresses.ruRegion + ", " + $scope.inpAddresses.ruCity+", "+ $scope.inpAddresses.ruStreet+", "+ $scope.inpAddresses.ruBuilding*/
     }]
-    if (angular.isDefined($scope.inpAddresses)) {
+    /*if (angular.isDefined($scope.inpAddresses)) {
         if (!$scope.inpAddresses.isEmpty) {
             console.log("$scope.inpAddresses[0]")
             console.log($scope.inpAddresses[0])
         }
     }
-
+*/
     var collectAddress=function(ruRegion){
         if(!angular.isDefined(ruRegion)){
             return ""
@@ -834,18 +834,52 @@ angular.module("MyApp").controller("MyAppCtrl", function ($scope, $rootScope, La
         return ruRegion+","
     }
     $scope.addAddr = function() {
-        $scope.inpAddresses.push({
-            ruRegion:"",
-            ruCity:"",
-            ruStreet:"",
-            ruBuilding:"",
-            ruOffice:"",
-            ruPhone:"",
-            ruWorkHours:"",
-            ruAdd:"",
-            address:""
+        console.log("entering into addAddr")
+        $scope.company.offeredAddresses.push(
+            {
+                email: "",
+                workingTime: "",
+                longitude: "",
+                latitude: "",
+                phone: "",
+                mainAddress: false,
+                addressLocales: {
+                    ru: {
+                        country: "",
+                        region: "",
+                        city: "",
+                        street: "",
+                        house: "",
+                        additionalInfo: ""
+                    },
+                    en: {
+                        country: "",
+                        region: "",
+                        city: "",
+                        street: "",
+                        house: "",
+                        additionalInfo: ""
+                    },
+                    he: {
+                        country: "",
+                        region: "",
+                        city: "",
+                        street: "",
+                        house: "",
+                        additionalInfo: ""
+                    },
+                    fr: {
+                        country: "",
+                        region: "",
+                        city: "",
+                        street: "",
+                        house: "",
+                        additionalInfo: ""
+                    }
+                }
+            }
 
-        });
+        );
     }
     $scope.image={
         image:[]
@@ -1164,7 +1198,7 @@ angular.module("MyApp").controller("MyAppCtrl", function ($scope, $rootScope, La
             console.log(response)
             var addresses = response.data.addresses
             console.log("addresses")
-             console.log(addresses.ru.addressLocales)
+             console.log(addresses.en.addressLocales)
             $scope.company.offeredAddresses[0].addressLocales.ru.country=addresses.ru.addressLocales[0].country
             $scope.company.offeredAddresses[0].addressLocales.ru.region=addresses.ru.addressLocales[0].region
             $scope.company.offeredAddresses[0].addressLocales.ru.city=addresses.ru.addressLocales[0].city
