@@ -15,7 +15,7 @@
 
 
     <div class="row">
-        <form id="row3col2form" action="server.js" method="post">
+        <!--<form id="row3col2form" action="server.js" method="post">
 
             <div class="col-md-12">
 
@@ -30,38 +30,46 @@
 
                         <div class="form-group">
 
-                            <input type="text" placeholder="company name" class="form-control input-sm"
-                                   name="comNameRus">
-                            <div class="row">
-                                <div class="col-sm-9">
-                                <input type="text" placeholder="region" class="form-control input-sm"
-                                       name="addressRus" aria-describedby="basic-addon2">
-                                <input type="text" placeholder="city" class="form-control input-sm"
-                                       name="addressRus" aria-describedby="basic-addon2">
-                                <input type="text" placeholder="street" class="form-control input-sm"
-                                       name="addressRus" aria-describedby="basic-addon2">
-                                <input type="text" placeholder="building" class="form-control input-sm"
-                                       name="addressRus" aria-describedby="basic-addon2">
-                                <input type="text" placeholder="office" class="form-control input-sm"
-                                       name="addressRus" aria-describedby="basic-addon2">
-                                </div>
-                                <div class="col-sm-3">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button" ng-click="addAddress()">+</button>
-                                </span>
-                                </div>
+                               &lt;!&ndash; <input ng-model="ruCompanyName"
+                                       ng-blur="transliteName(ruCompanyName, 'ru', 'en','fr','he')"
+                                       type="text" placeholder="company name" class="ru compName form-control input-sm" name="comNameRus"> &ndash;&gt;
+                            <input ng-model=model[0]
+                                       ng-blur="transliteName(model[0], 'ru', 'en','fr','he')"
+                                       type="text" placeholder="название компании" required class="ru compName form-control input-sm" name="comNameRus"><br>
+                                <p>Выберите логотип <input ng-model="ruLogo" type="file" name="logo"></p>
+                            <div ng-repeat="el in inpAddresses">
+                                <fieldset><legend>Адрес {{$index+1}}</legend>
 
+                                    <p>  <pre>{{el.ruRegion}}</pre><span ng-bind="el.address"></span>{{el.ruRegion+", "}} {{el.ruCity+", "}} {{el.ruStreet+", "}}, {{el.ruBuilding+", "}}</p>
+                                <input ng-model="el.ruRegion" type="text" placeholder="регион" class="form-control input-sm"
+                                       name="regionRus" aria-describedby="basic-addon2">
+                                <input ng-model="el.ruCity" type="text" required placeholder="город" class="form-control input-sm"
+                                       name="cityRus" aria-describedby="basic-addon2">
+                                <input ng-model="el.ruStreet" type="text" required placeholder="улица" class="form-control input-sm"
+                                       name="streetRus" aria-describedby="basic-addon2">
+                                <input ng-model="el.ruBuilding" type="text" required placeholder="дом" class="form-control input-sm"
+                                       name="buildingRus" aria-describedby="basic-addon2">
+                                <input ng-model="el.ruOffice" type="text" placeholder="офис/доп.информация" class="form-control input-sm"
+                                       name="officeRus" aria-describedby="basic-addon2">
+                                <input ng-model="el.ruPhone" type="text" required placeholder="телефон" class="form-control input-sm"
+                                       name="phoneRus">
+                                <input ng-model="el.ruWorkHours" type="text" required placeholder="время работы" class="form-control input-sm"
+                                       name="workHoursRus"><br>
+                                <p>Выберите рекламное объявление для этого адреса</p>
+                                <input ng-model="el.ruAdd" type="file" name="addvRus"><br>
+                                </fieldset>
                             </div>
 
-                            <input type="text" placeholder="phone" class="form-control input-sm"
-                                   name="phoneRus">
-                            <input type="url" placeholder="website" class="form-control input-sm"
-                                   name="webRus">
-                            <input type="email" placeholder="company email" class="form-control input-sm"
-                                   name="comEmailRus">
-                            <input type="text" placeholder="area business" class="form-control input-sm"
-                                   name="areaRus">
-                            <input type="file" name="f">
+                                <input type="button" value="Добавить адрес" ng-click="addAddr()" />
+                                <input ng-model="ruWeb" type="url" placeholder="web-сайт" class="form-control input-sm"
+                                       name="webRus">
+                                <input ng-model="ruEmail" type="email" placeholder="email" class="form-control input-sm"
+                                       name="comEmailRus">
+
+                                <input ng-model="ruCategory"
+                                       ng-blur="translateCat(ruCategory, 'ru', 'en','fr','he')"
+                                       type="text" required placeholder="категория" class="form-control input-sm" name="categoryRus">
+
                         </div>
                 </div>
 
@@ -72,18 +80,36 @@
                     <hr>
 
                     <div class="form-group">
-                        <input type="text" placeholder="company name" class="form-control input-sm"
-                               name="comNameEng">
-                        <input type="text" placeholder="address" class="form-control input-sm"
-                               name="addressEng">
-                        <input type="text" placeholder="phone" class="form-control input-sm"
+                        <input ng-model="enCompanyName"
+                               ng-blur="transliteName(enCompanyName, 'en', 'ru', 'he', 'fr')"
+                               type="text" placeholder="company name" class="en compName form-control input-sm" name="comNameEng">
+                        <p></p><br><br>
+                        &lt;!&ndash;<p>Choose logo</p>
+                        <input ng-model="enLogo" type="file" name="logoEng">&ndash;&gt;
+                        <input ng-model="enRegion" type="text" placeholder="region" class="form-control input-sm"
+                               name="regionEng" aria-describedby="basic-addon2">
+                        <input ng-model="enCity" type="text" placeholder="city" class="form-control input-sm"
+                               name="cityEng" aria-describedby="basic-addon2">
+                        <input ng-model="enStreet" type="text" placeholder="street" class="form-control input-sm"
+                               name="streetEng" aria-describedby="basic-addon2">
+                        <input ng-model="enBuilding" type="text" placeholder="building" class="form-control input-sm"
+                               name="buildingEng" aria-describedby="basic-addon2">
+                        <input ng-model="enOffice" type="text" placeholder="office/other info" class="form-control input-sm"
+                               name="officeEng" aria-describedby="basic-addon2">
+                        <input ng-model="enPhone" type="text" placeholder="phone" class="form-control input-sm"
                                name="phoneEng">
-                        <input type="text" placeholder="website" class="form-control input-sm"
+                        <input ng-model="enWeb" type="url" placeholder="website" class="form-control input-sm"
                                name="webEng">
-                        <input type="text" placeholder="company email" class="form-control input-sm"
+                        <input ng-model="enEmail" type="email" placeholder="company email" class="form-control input-sm"
                                name="comEmailEng">
-                        <input type="text" placeholder="area business" class="form-control input-sm"
-                               name="areaEng">
+                        <input ng-model="enWorkHours" type="text" placeholder="working hours" class="form-control input-sm"
+                               name="workHoursEng">
+                        <input ng-model="enCategory"
+                               ng-blur="translateCat(enCategory, 'en', 'ru', 'he', 'fr')"
+                               type="text" placeholder="category" class="form-control input-sm"
+                               name="categoryEng">
+                        <p>Choose advertisement</p>
+                        <input ng-model="enAdd" type="file" name="addvEng">
                     </div>
                 </div>
 
@@ -94,18 +120,37 @@
                     <hr>
 
                     <div class="form-group">
-                        <input type="text" placeholder="company name" class="form-control input-sm"
-                               name="comNameFra">
-                        <input type="text" placeholder="address" class="form-control input-sm"
-                               name="addressFra">
-                        <input type="text" placeholder="phone" class="form-control input-sm"
-                               name="phoneFra">
-                        <input type="text" placeholder="website" class="form-control input-sm"
-                               name="webFra">
-                        <input type="text" placeholder="company email" class="form-control input-sm"
-                               name="comEmailFra">
-                        <input type="text" placeholder="area business" class="form-control input-sm"
-                               name="areaFra">
+                        <input ng-model="frCompanyName"
+                               ng-blur="transliteName(frCompanyName,'fr','ru','en','he')"
+                               type="text" placeholder="company name" class="fr compName form-control input-sm"
+                               name="comNameEng">
+                        <p></p><br><br>
+                        &lt;!&ndash;<p>Sélectionnez le logo</p>
+                        <input ng-model="frLogo" type="file" name="logoEng">&ndash;&gt;
+                        <input ng-model="frRegion" type="text" placeholder="region" class="form-control input-sm"
+                               name="regionEng" aria-describedby="basic-addon2">
+                        <input ng-model="frCity" type="text" placeholder="city" class="form-control input-sm"
+                               name="cityEng" aria-describedby="basic-addon2">
+                        <input ng-model="frStreet" type="text" placeholder="street" class="form-control input-sm"
+                               name="streetEng" aria-describedby="basic-addon2">
+                        <input ng-model="frBuilding" type="text" placeholder="building" class="form-control input-sm"
+                               name="buildingEng" aria-describedby="basic-addon2">
+                        <input ng-model="frOffice" type="text" placeholder="office/other info" class="form-control input-sm"
+                               name="officeEng" aria-describedby="basic-addon2">
+                        <input ng-model="frPhone" type="text" placeholder="phone" class="form-control input-sm"
+                               name="phoneEng">
+                        <input ng-model="frWeb" type="url" placeholder="website" class="form-control input-sm"
+                               name="webEng">
+                        <input ng-model="frEmail" type="email" placeholder="company email" class="form-control input-sm"
+                               name="comEmailEng">
+                        <input ng-model="frWorkHours" type="text" placeholder="working hours" class="form-control input-sm"
+                               name="workHoursEng">
+                        <input ng-model="frCategory"
+                               ng-blur="translateCat(frCategory,'fr','ru','en','he')"
+                               type="text" placeholder="category" class="form-control input-sm"
+                               name="categoryEng">
+                        <p>Sélectionnez l'annonce</p>
+                        <input ng-model="frAdd" type="file" name="addvEng">
                     </div>
                 </div>
 
@@ -116,78 +161,328 @@
                     <hr>
 
                     <div class="form-group">
-                        <input type="text" placeholder="company name" class="form-control input-sm"
-                               name="comNameHeb" style="direction: rtl">
-                        <input type="text" placeholder="address" class="form-control input-sm"
-                               name="addressHeb" style="direction: rtl">
-                        <input type="text" placeholder="phone" class="form-control input-sm"
-                               name="phoneHeb" style="direction: rtl">
-                        <input type="text" placeholder="website" class="form-control input-sm"
-                               name="webHeb" style="direction: rtl">
-                        <input type="text" placeholder="company email" class="form-control input-sm"
-                               name="comEmailHeb" style="direction: rtl">
-                        <input type="text" placeholder="area business" class="form-control input-sm"
-                               name="areaHeb" style="direction: rtl">
+                        <input ng-model="heCompanyName"
+                               ng-blur="transliteName(heCompanyName,'he','ru','en','fr')"
+                               type="text" placeholder="company name" class="he compName form-control input-sm" name="comNameEng">
+                        <p></p><br><br>
+                        &lt;!&ndash;<p>HE_Choose logo</p>
+                        <input ng-model="heLogo" type="file" name="logoEng">&ndash;&gt;
+                        <input ng-model="heRegion" type="text" placeholder="region" class="form-control input-sm"
+                               name="regionEng" aria-describedby="basic-addon2">
+                        <input ng-model="heCity" type="text" placeholder="city" class="form-control input-sm"
+                               name="cityEng" aria-describedby="basic-addon2">
+                        <input ng-model="heStreet" type="text" placeholder="street" class="form-control input-sm"
+                               name="streetEng" aria-describedby="basic-addon2">
+                        <input ng-model="heBuilding" type="text" placeholder="building" class="form-control input-sm"
+                               name="buildingEng" aria-describedby="basic-addon2">
+                        <input ng-model="heOffice" type="text" placeholder="office/other info" class="form-control input-sm"
+                               name="officeEng" aria-describedby="basic-addon2">
+                        <input ng-model="hePhone" type="text" placeholder="phone" class="form-control input-sm"
+                               name="phoneEng">
+                        <input ng-model="heWeb" type="url" placeholder="website" class="form-control input-sm"
+                               name="webEng">
+                        <input ng-model="heEmail" type="email" placeholder="company email" class="form-control input-sm"
+                               name="comEmailEng">
+                        <input ng-model="heWorkHours" type="text" placeholder="working hours" class="form-control input-sm"
+                               name="workHoursEng">
+                        <input ng-model="heCategory"
+                               ng-blur="translateCat(heCategory,'he','ru','en','fr')"
+                               type="text" placeholder="category" class="form-control input-sm"
+                               name="categoryEng">
+                        <p>HE_Choose advertisement</p>
+                        <input ng-model="heAdd" type="file" name="addvEng">
                     </div>
                 </div>
 
             </div>
-        </form>
-    </div>
+        </form>-->
+        <form name="companyForm">
 
-    <hr>
+            <div class="row">
 
-    <div class="row">
-
-        <div class="col-md-12" style="text-align: center">
-            <h5>Please enter your private information. It will be seen only by our administrator. If it is necessary -
-                click "Order translate".</h5>
-        </div>
+                <div class="col-md-3">
 
 
+                    <img src="../EXODUS/img/flag/Russia.png" alt="Russian"
+                         class="img-responsive iconCountry img-center"
+                         style="text-align: center">
+                    <hr>
+                </div>
+                <div class="col-md-3">
 
 
-
-        <div class="form-group">
-            <div class="col-md-3"></div>
-
-            <!--<div class=" col-md-3">
-            <form novalidate  class=" css-form">
-                <label>Name: <input type="text" ng-model="user.name" placeholder="your name" class="form-control input-sm"
-                                    name="userName" required /></label><br />
-                <label>E-mail: <input type="email" ng-model="user.email" placeholder="your email" class="form-control input-sm"
-                                      name="userEmail" required /></label><br />
-                <label>Phone: <input type="phone" ng-model="user.phone" placeholder="your phone" class="form-control input-sm"
-                                      name="userPhone" required /></label><br />
-               &lt;!&ndash; <input type="submit" ng-click="update(user)" value="Save" />&ndash;&gt;
-            </form>
-            </div>-->
+                    <img src="../EXODUS/img/flag/United-Kingdom.png" alt="English"
+                         class="img-responsive iconCountry img-center"
+                         style="text-align: center">
+                    <hr>
+                </div>
+                <div class="col-md-3">
 
 
-            <div class="col-md-3">
-                <input type="text" placeholder="your name" class="form-control input-sm"
-                       name="userName">
-                <input type="email" placeholder="your email" class="form-control input-sm"
-                       name="userEmail">
-                <input type="tel" placeholder="your phone" class="form-control input-sm"
-                       name="userPhone">
+                    <img src="../EXODUS/img/flag/France.png" alt="French"
+                         class="img-responsive iconCountry img-center"
+                         style="text-align: center">
+                    <hr>
+                </div>
+                <div class="col-md-3">
+                    <img src="../EXODUS/img/flag/Israel.png" alt="Hebrew"
+                         class="img-responsive iconCountry img-center"
+                         style="text-align: center">
+                    <hr>
+                </div>
             </div>
+            <div class="row">
+                <div class="col-md-3">
+                <input ng-model=company.offeredCompanyName.ru
+                       ng-blur="transliteName(company.offeredCompanyName.ru, 'ru', 'en','fr','he')"
+                       type="text" placeholder="название компании" required class="ru compName form-control input-sm"
+                       name="comNameRus">
+                </div>
+                <div class="col-md-3">
+                    <input ng-model=company.offeredCompanyName.en
+                        ng-blur="transliteName(company.offeredCompanyName.en, 'en', 'ru', 'he', 'fr')"
+                        type="text" placeholder="company name" required class="en compName form-control input-sm"
+                           name="comNameEng">
+                </div>
+                <div class="col-md-3">
+                    <input ng-model=company.offeredCompanyName.fr
+                        ng-blur="transliteName(company.offeredCompanyName.fr,'fr','ru','en','he')"
+                        type="text" placeholder="company name" required class="fr compName form-control input-sm"
+                        name="comNameEng">
+                </div>
+                <div class="col-md-3">
+                    <input ng-model=company.offeredCompanyName.he
+                        ng-blur="transliteName(company.offeredCompanyName.he,'he','ru','en','fr')"
+                        type="text" placeholder="company name" class="he compName form-control input-sm" name="comNameEng">
+                </div>
+            </div>
+            <p>Выберите логотип <input ng-model="ruLogo" type="file" name="logo"></p>
+            <div class="row">
+                <div class="col-md-3">
+                    <div ng-repeat="el in company.offeredAddresses">
+                        <fieldset><legend>Адрес {{$index+1}}</legend>
+                            <input ng-model="ruAddress" type="text" placeholder="Город, улица, дом" class="form-control input-sm"
+                                   aria-describedby="basic-addon2"
+                                   ng-blur="getAddresses(ruAddress)">
+                           <!-- <p>  <pre>{{el.ruRegion}}</pre><span ng-bind="el.address"></span>{{el.ruRegion+", "}} {{el.ruCity+", "}} {{el.ruStreet+", "}}, {{el.ruBuilding+", "}}</p>
+                            <input ng-model="el.ruRegion" type="text" placeholder="регион" class="form-control input-sm"
+                                   name="regionRus" aria-describedby="basic-addon2">
+                            <input ng-model="el.ruCity" type="text" required placeholder="город" class="form-control input-sm"
+                                   name="cityRus" aria-describedby="basic-addon2">
+                            <input ng-model="el.ruStreet" type="text" required placeholder="улица" class="form-control input-sm"
+                                   name="streetRus" aria-describedby="basic-addon2">
+                            <input ng-model="el.ruBuilding" type="text" required placeholder="дом" class="form-control input-sm"
+                                   name="buildingRus" aria-describedby="basic-addon2">-->
+                            <input ng-model="el.addressLocales.ru.additionalInfo" type="text" placeholder="доп.информация" class="form-control input-sm"
+                                   aria-describedby="basic-addon2"
+                                   ng-blur="translateInfo(el.addressLocales.ru.additionalInfo, 'ru', 'en', 'fr', 'he')">
+                            <input ng-model="el.phone" type="text" required placeholder="телефон" class="form-control input-sm"
+                                   name="phoneRus">
+                            <input ng-model="el.email" type="email" placeholder="email" class="form-control input-sm">
+                            <input ng-model="el.workingTime" type="text" required placeholder="время работы" class="form-control input-sm"
+                                   name="workHoursRus"><br>
+                            <p>Выберите рекламное объявление для этого адреса</p>
+                            <input ng-model="el.ruAdd" type="file" name="addvRus"><br>
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div ng-repeat="el in company.offeredAddresses">
+                        <fieldset><legend>Address {{$index+1}}</legend>
+                            <input ng-model="enAddress" type="text" placeholder="City, street, house" class="form-control input-sm"
+                                   aria-describedby="basic-addon2"
+                                   ng-blur="getAddresses(enAddress)">
+                           <!-- <p>  <pre>{{el.ruRegion}}</pre><span ng-bind="el.address"></span>{{el.ruRegion+", "}} {{el.ruCity+", "}} {{el.ruStreet+", "}}, {{el.ruBuilding+", "}}</p>
+                            <input ng-model="el.ruRegion" type="text" placeholder="регион" class="form-control input-sm"
+                                   name="regionRus" aria-describedby="basic-addon2">
+                            <input ng-model="el.ruCity" type="text" required placeholder="город" class="form-control input-sm"
+                                   name="cityRus" aria-describedby="basic-addon2">
+                            <input ng-model="el.ruStreet" type="text" required placeholder="улица" class="form-control input-sm"
+                                   name="streetRus" aria-describedby="basic-addon2">
+                            <input ng-model="el.ruBuilding" type="text" required placeholder="дом" class="form-control input-sm"
+                                   name="buildingRus" aria-describedby="basic-addon2">-->
+                            <input ng-model="el.addressLocales.en.additionalInfo" type="text" placeholder="доп.информация" class="form-control input-sm"
+                                   aria-describedby="basic-addon2"
+                                   ng-blur="translateInfo(el.addressLocales.en.additionalInfo, 'en', 'ru', 'fr', 'he')">
+                            <input ng-model="el.phone" type="text" required placeholder="phone" class="form-control input-sm"
+                                   name="phoneRus">
+                            <input ng-model="el.email" type="email" placeholder="email" class="form-control input-sm">
+                            <input ng-model="el.workingtime" type="text" required placeholder="время работы" class="form-control input-sm"
+                                   name="workHoursRus"><br>
+                            <p>Choose addvertisement for this address</p>
+                            <input ng-model="el.ruAdd" type="file" name="addvRus"><br>
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div ng-repeat="el in company.offeredAddresses">
+                        <fieldset><legend>FR_Address {{$index+1}}</legend>
+                            <input ng-model="frAddress" type="text" placeholder="FR_City, street, house" class="form-control input-sm"
+                                   aria-describedby="basic-addon2"
+                                   ng-blur="getAddresses(frAddress)">
+                            <!--<p>  <pre>{{el.ruRegion}}</pre><span ng-bind="el.address"></span>{{el.ruRegion+", "}} {{el.ruCity+", "}} {{el.ruStreet+", "}}, {{el.ruBuilding+", "}}</p>
+                            <input ng-model="el.ruRegion" type="text" placeholder="регион" class="form-control input-sm"
+                                   name="regionRus" aria-describedby="basic-addon2">
+                            <input ng-model="el.ruCity" type="text" required placeholder="город" class="form-control input-sm"
+                                   name="cityRus" aria-describedby="basic-addon2">
+                            <input ng-model="el.ruStreet" type="text" required placeholder="улица" class="form-control input-sm"
+                                   name="streetRus" aria-describedby="basic-addon2">
+                            <input ng-model="el.ruBuilding" type="text" required placeholder="дом" class="form-control input-sm"
+                                   name="buildingRus" aria-describedby="basic-addon2">-->
+                            <input ng-model="el.addressLocales.fr.additionalInfo" type="text" placeholder="доп.информация" class="form-control input-sm"
+                                   aria-describedby="basic-addon2"
+                                   ng-blur="translateInfo(el.addressLocales.fr.additionalInfo, 'fr', 'ru', 'en', 'he')">
+                            <input ng-model="el.phone" type="text" required placeholder="FR_phone" class="form-control input-sm"
+                                   name="phoneRus">
+                            <input ng-model="el.email" type="email" placeholder="FR_email" class="form-control input-sm">
+                            <input ng-model="el.workingtime" type="text" required placeholder="время работы" class="form-control input-sm"
+                                   name="workHoursRus"><br>
+                            <p>FR_Choose addvertisement for this address</p>
+                            <input ng-model="el.ruAdd" type="file" name="addvRus"><br>
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="col-md-3">
+<!--
+                    <div ng-repeat="el in inpAddresses">
+-->
+                    <div ng-repeat="el in company.offeredAddresses">
+                        <fieldset><legend>HE_Address {{$index+1}}</legend>
+                            <input ng-model="heAddress" type="text" placeholder="HE_City, street, house" class="form-control input-sm"
+                                   aria-describedby="basic-addon2"
+                                   ng-blur="getAddresses(heAddress)">
+                            <!--<p>  <pre>{{el.ruRegion}}</pre><span ng-bind="el.address"></span>{{el.ruRegion+", "}} {{el.ruCity+", "}} {{el.ruStreet+", "}}, {{el.ruBuilding+", "}}</p>
+                            <input ng-model="el.ruRegion" type="text" placeholder="регион" class="form-control input-sm"
+                                   name="regionRus" aria-describedby="basic-addon2">
+                            <input ng-model="el.ruCity" type="text" required placeholder="город" class="form-control input-sm"
+                                   name="cityRus" aria-describedby="basic-addon2">
+                            <input ng-model="el.ruStreet" type="text" required placeholder="улица" class="form-control input-sm"
+                                   name="streetRus" aria-describedby="basic-addon2">
+                            <input ng-model="el.ruBuilding" type="text" required placeholder="дом" class="form-control input-sm"
+                                   name="buildingRus" aria-describedby="basic-addon2">-->
+                            <input ng-model="el.addressLocales.he.additionalInfo" type="text" placeholder="доп.информация" class="form-control input-sm"
+                                   aria-describedby="basic-addon2"
+                                   ng-blur="translateInfo(el.addressLocales.he.additionalInfo,'he','ru','en','fr')">
+                            <input ng-model="el.phone" type="text" required placeholder="HE_phone" class="form-control input-sm"
+                                   name="phoneRus">
+                            <input ng-model="el.email" type="email" placeholder="HE_email" class="form-control input-sm">
+                            <input ng-model="el.workingtime" type="text" required placeholder="время работы" class="form-control input-sm"><br>
 
-            <div class="form-group col-md-6" id="row2col2bottom">
-                <button type="submit" class="btn btn-primary btn-lg" id="btnSub">Submit</button>
-                <br>
-                <div class="checkbox" id="translateCheck" for="btnSub" checked>
-                    <label for="translateCheck">
-                        <input type="checkbox"> Order translate
+                            <p>HE_Choose addvertisement for this address</p>
+                            <input ng-model="el.ruAdd" type="file" name="addvRus"><br>
+                        </fieldset>
+                    </div>
+<!--
+                    </div>
+-->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <input type="button" value="Добавить адрес" ng-click="addAddr()" style="{align-items: left}"/>
+                    <input  type="button" value="Удалить адрес" ng-click="delAddr()" style="{align-items: left}"/>
+                </div>
+                <div class="col-md-9">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <input ng-model="ruCategory"
+                           ng-blur="translateCat(ruCategory, 'ru', 'en','fr','he')"
+                           type="text" required placeholder="категория" class="form-control input-sm">
+                </div>
+                <div class="col-md-3">
+                    <input ng-model="enCategory"
+                           ng-blur="translateCat(enCategory, 'en', 'ru', 'he', 'fr')"
+                           type="text" placeholder="category" class="form-control input-sm">
+                </div>
+                <div class="col-md-3">
+                    <input ng-model="frCategory"
+                           ng-blur="translateCat(frCategory,'fr','ru','en','he')"
+                           type="text" placeholder="category" class="form-control input-sm">
+                </div>
 
-                    </label>
+                <div class="col-md-3">
+                    <input ng-model="heCategory"
+                           ng-blur="translateCat(heCategory,'he','ru','en','fr')"
+                           type="text" placeholder="category" class="form-control input-sm">
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-3" style="{align-items: left}">
+                    <input ng-model="company.webpage" type="text" placeholder="web" class="form-control input-sm">
+                </div>
+                <div class="col-md-9">
                 </div>
             </div>
 
+            <div class="row">
+                <div class="col-md-3">
+                    <p>Выберите рекламное объявление</p>
+                    <input ng-model="el.ruAdd" type="file">
+                </div>
+                <div class="col-md-3">
+                    <p>Choose advertisement</p>
+                    <input ng-model="enAdd" type="file">
+                </div>
+                <div class="col-md-3">
+                    <p>Sélectionnez l'annonce</p>
+                    <input ng-model="frAdd" type="file" name="addvEng">
+                </div>
+                <div class="col-md-3">
+                    <p>HE_Choose advertisement</p>
+                    <input ng-model="heAdd" type="file" name="addvEng">
+                </div>
+            </div>
+
+            <pre>{{company | json:2}}</pre>
+        </form>
+        <hr>
+        <div class="row">
+
+            <div class="col-md-12" style="text-align: center">
+                <h4>Please enter your private information. It will be seen only by our administrator. If it is necessary -
+                    click "Order translate".</h4>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-9">
+                <div class="checkbox" id="confirmCheckbox" for="btnSub" checked>
+                    <label for="confirmCheckbox">
+                        <input ng-model="confirmCheckbox" type="checkbox" ng-click="check()">  By clicking Submit, I certify that I have read and agree to the Terms and Conditions,
+                        and to receive account-related communications from Exodus electronically. I also certify that above information
+                        is full and  reliable
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-3">
+                <input type="text" placeholder="your name" class="form-control input-sm"
+                    name="userName">
+                <input type="email" placeholder="your email" class="form-control input-sm"
+                    name="userEmail">
+                <input type="tel" placeholder="your phone" class="form-control input-sm"
+                    name="userPhone">
+            </div>
+
+            <div class="form-group col-md-6" id="row2col2bottom">
+                <button type="submit" class="btn btn-primary btn-lg" id="btnSub" ng-disabled="enabled">Submit</button>
+                <br>
+
+            </div>
+
         </div>
     </div>
-
-
 </div>
 
-<!-- End of Registration block -->
+
+
+<!--
+End of Registration block-->

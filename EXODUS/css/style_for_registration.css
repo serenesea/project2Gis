@@ -33,3 +33,7 @@
 
 .img-center
 {margin:0 auto;}
+
+fieldset {
+    border:1px #00BFFF solid
+}

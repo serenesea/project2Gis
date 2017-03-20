@@ -1,0 +1,422 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 ">
+            <div class="col-xs-1 fixed-left centered">
+                <img src="img/img2/adverdiv2.png" class="img-responsive">
+                <img src="img/img2/adverdiv2.png" class="img-responsive">
+                <img src="img/img2/adverdiv2.png" class="img-responsive">
+                <img src="img/img2/adverdiv2.png" class="img-responsive">
+            </div>
+            <div class="col-xs-10">
+                <div class="container" >
+                    <div class="row ">
+                        <div class="col-md-12 ">
+                            <div class="news ">
+                                <img src="img/img2/news.png" width=100%>
+                            </div>
+                        </div>
+                    </div>
+
+
+                        <div class="row">
+                            <div class="col-md-12 search" >
+                                <div class="row">
+                                    <div class="col-md-11">
+
+                                        <div class="row ltrRtl">
+
+                                            <div class="col-md-3 ">
+                                                <form role="form ">
+
+                                                    <div class="form-group" >
+
+                                                        <div class="input-group">
+
+                                                            <ui-select multiple ng-model="ctrl.region.selected" theme="bootstrap" ng-disabled="ctrl.disabled"
+                                                                       title="Choose a region">
+                                                                <!--
+                                                                                                                    on-select="onSelectCallback(ctrl.region.selected)
+                                                                -->
+                                                                <ui-select-match placeholder="Select or search a region...">{{$item.name}}</ui-select-match>
+                                                                <ui-select-choices repeat="region in ctrl.regions | startsWith: $select.search ">
+                                                                    <span ng-bind-html="region.name | highlight: $select.search"></span>
+                                                                </ui-select-choices>
+                                                            </ui-select>
+
+                                                            <span class="input-group-btn">
+                                                        <button type="button" ng-click="ctrl.region.selected = undefined" class="btn btn-default">
+                                                            <span class="glyphicon glyphicon-remove"></span>
+                                                        </button>
+                                                </span>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+
+                                                        <div class="input-group">
+
+                                                            <ui-select multiple ng-model="ctrl.city.selected"
+                                                                       theme="bootstrap"
+                                                                       close-on-select="true"
+                                                                       ng-disabled="ctrl.disabled"
+                                                                       title="Choose a city"
+                                                                       id="selectedRegions"
+                                                                       ng-select="checkTheParent(ctrl.region.selected)">
+                                                                <ui-select-match placeholder="Select or search a city...">{{$item.name}}</ui-select-match>
+                                                                <ui-select-choices repeat="city in ctrl.cities |filter:$select.search | onParent: ctrl.region.selected
+                                                                                    | startsWith: $select.search | orderBy:'name'"
+                                                                                   position='down'>
+                                                                    <span ng-bind-html="city.name | highlight: $select.search"></span>
+                                                                    <!--<small ng-bind-html="city.region | highlight: $select.search"></small>-->
+                                                                </ui-select-choices>
+                                                            </ui-select>
+
+                                                            <span class="input-group-btn">
+                                                        <button type="button" ng-click="ctrl.city.selected = undefined" class="btn btn-default">
+                                                            <span class="glyphicon glyphicon-remove"></span>
+                                                        </button>
+                                                    </span>
+
+                                                        </div>
+
+                                                    </div>
+                                                </form>
+                                            </div>
+
+                                            <div class="col-sm-3">
+
+                                                <form role="form">
+
+                                                    <div class="form-group">
+
+                                                        <div class="input-group">
+
+                                                            <ui-select multiple ng-model="ctrl.category.selected" theme="bootstrap"  close-on-select="true" ng-disabled="ctrl.disabled"
+                                                                       title="Choose a category">
+                                                                <ui-select-match placeholder="Select or search category...">{{$item.name}}</ui-select-match>
+                                                                <ui-select-choices repeat="category in ctrl.categories | filter: $select.search "
+                                                                                   position="down">
+                                                                    <span ng-bind-html="category.name | highlight: $select.search"></span>
+                                                                    <!--<small ng-bind-html="city.region | highlight: $select.search"></small>-->
+                                                                </ui-select-choices>
+                                                            </ui-select>
+
+                                                            <span class="input-group-btn">
+                                                        <button type="button" ng-click="ctrl.category.selected = undefined" class="btn btn-default">
+                                                            <span class="glyphicon glyphicon-remove"></span>
+                                                        </button>
+                                                    </span>
+
+                                                        </div>
+
+                                                    </div>
+                                                    <!--<div class="form-group">
+                                                        <input type="text" class="form-control" id="company_input"
+                                                               ng-model="company"
+                                                               ng-keyup="keyUpFunc(ctrl.region.selected, ctrl.city.selected, ctrl.street.selected, ctrl.building.selected, ctrl.category.selected, phonenumber, company)"
+                                                               ng-init=""
+                                                               placeholder={{lang.nameBus}} />
+                                                    </div>-->
+                                                    <div class="form-group" >
+                                                        <div class="input-group">
+
+                                                            <ui-select ng-model="ctrl.company.selected"
+                                                                       theme="selectize"
+                                                                       ng-disabled="ctrl.disabled"
+                                                                       ng-keyup="keyUpFunc(ctrl.region.selected, ctrl.city.selected, ctrl.street.selected,
+                                                    ctrl.building.selected, ctrl.category.selected, phonenumber, $select.search)"
+                                                                       title="Choose a company">
+
+                                                                <ui-select-match placeholder="Company..." >{{$select.selected.name}}</ui-select-match>
+
+                                                                <ui-select-choices repeat="company in ctrl.companies | filter: $select.search"
+                                                                                   refresh="ctrl.refreshCompany($select.search)"
+                                                                                   refresh-delay="0"
+                                                                                   position='down'
+                                                                                   minimum-input-length="3" >
+                                                                    <div ng-bind-html="company.name | highlight: $select.search"></div>
+
+                                                                </ui-select-choices>
+                                                                <!--<ui-select-no-choice>
+                                                                    Type at least 3 chars for options to load
+                                                                </ui-select-no-choice>-->
+                                                            </ui-select>
+
+                                                            <span class="input-group-btn">
+                                                    <button type="button" ng-click="ctrl.company.selected = undefined" class="btn btn-default">
+                                                         <span class="glyphicon glyphicon-remove"></span>
+                                                    </button>
+                                                </span>
+
+                                                        </div>
+                                                    </div>
+
+                                                </form>
+                                            </div>
+
+                                            <div class="col-md-3 ">
+                                                <form role="form">
+                                                    <div class="form-group" >
+                                                        <div class="input-group">
+                                                            <ui-select multiple
+                                                                       ng-model="ctrl.street.selected"
+                                                                       theme="bootstrap"
+                                                                       ng-disabled="ctrl.disabled"
+                                                                       title="Choose a street">
+                                                                <ui-select-match placeholder="Select or search a street...">{{$item.name}}</ui-select-match>
+                                                                <ui-select-choices repeat="street in ctrl.streets | filter: $select.search
+                                                                                | onParent: ctrl.city.selected | filter:$select.search | orderBy:'name'"
+                                                                                   position='down'>
+                                                                    <span ng-bind-html="street.name | highlight: $select.search"></span>
+                                                                    <small ng-bind-html="street.city | highlight: $select.search" style="color:red"></small>
+                                                                </ui-select-choices>
+                                                            </ui-select>
+
+                                                            <span class="input-group-btn">
+                                                        <button type="button" ng-click="ctrl.street.selected = undefined" class="btn btn-default">
+                                                            <span class="glyphicon glyphicon-remove"></span>
+                                                        </button>
+                                                </span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <input ng-bind="lang.numPhone" ng-model="ctrl.phone.selected" ui-mask="(999) 999-9999"  ui-mask-placeholder ui-mask-placeholder-char="_" type="text" class="form-control" id="telephone_input"
+                                                               placeholder="" />
+                                                    </div>
+
+                                                </form>
+                                            </div>
+
+                                            <div class="col-md-3 ">
+                                                <form role="form">
+
+                                                    <div class="form-group">
+
+                                                        <div class="input-group">
+
+                                                            <ui-select multiple
+                                                                       ng-model="ctrl.building.selected"
+                                                                       theme="bootstrap"
+                                                                       close-on-select="true"
+                                                                       position="down"
+                                                                       ng-disabled="!ctrl.street.selected">
+                                                                <ui-select-match placeholder="Select or search building...">{{$item.name}}</ui-select-match>
+                                                                <ui-select-choices repeat="item in ctrl.buildings | filter: $select.search | onParent: ctrl.street.selected"
+                                                                                   value = "" selected>
+                                                                    <span ng-bind-html="item.name | highlight: $select.search"></span>
+                                                                    <small ng-bind-html="item.street | highlight: $select.search" style="color:red"></small>
+                                                                    <small ng-bind-html="item.city | highlight: $select.search" style="color:blue"></small>
+                                                                </ui-select-choices>
+                                                            </ui-select>
+
+                                                            <span class="input-group-btn">
+                                                    <button type="button" ng-click="ctrl.building.selected = undefined" class="btn btn-default">
+                                                         <span class="glyphicon glyphicon-remove"></span>
+                                                    </button>
+                                                </span>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </form>
+                                                <div class="map-style">
+                                                    <div class="btn-group">
+                                                        <a id="default_btn" href="#" class="btn btn-dark">Change Map Style</a>
+                                                        <a href="#" class="btn btn-dark dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></a>
+                                                        <ul class="dropdown-menu dark" role="menu" aria-labelledby="dropdownMenu">
+                                                            <li><a id="retro_btn" href="#">Retro's view</a></li>
+                                                            <li><a id="night_btn" href="#">Night's view</a></li>
+                                                            <li><a id="auberg_btn" href="#">Aubergine's view</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-1 searchbutton">
+
+                                        <!--<a href="#" ng-click = "getObject(selectedRegion, selectedCity, selectedStreet, selectedBld,
+                                        selectedCategory, company, phonenumber)"><img src="img/img2/search.png" width="70" height="70" alt="logo"/></a>-->
+                                        <a href="#" ng-click = "getSearchResult(ctrl.region.selected, ctrl.city.selected, ctrl.street.selected, ctrl.building.selected,
+                            ctrl.category.selected, ctrl.phone.selected, ctrl.company.selected)"><img src="img/img2/search.png" width="70" height="70" alt="logo"></a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    <div class="container-fluid main" >
+
+                        <!--
+                                    <ng-include src="'home.html'" ng-show="currentView=='home'"></ng-include>
+                        -->
+                        <!--
+
+                                    <ng-include src="'registration.html'" ng-show="currentView=='reg'"></ng-include>
+                                    <ng-include src="'about.html'" ng-show="currentView=='about'"></ng-include>
+                                    <ng-include src="'rubricator.html'" ng-show="currentView=='cat'"></ng-include>
+                                    <ng-include src="'contacts.html'" ng-show="currentView=='contacts'"></ng-include>
+                                    <ng-include src="'terms.html'" ng-show="currentView=='terms'"></ng-include>
+
+
+                        -->
+
+
+                        <!-- Search result block -->
+
+
+                        <div class="col-md-12 " >
+                            <div class="row company-block ">
+                                <!-- Companies block -->
+                                <div class="col-md-6 companies elemDivCompanies">
+                                    <!--
+
+                                    -->
+                                    <div class="col-md-12 " style="background-color: #d9d9d9">
+                                        <div style="text-align: center">Частный бизнес, предприятия, организации и государственные учреждения Израиля</div>
+                                        <span ng-bind="searchDesc"></span>
+                                    </div>
+                                    <!--
+                                                            ng-model="companiesRes"
+                                    -->
+                                    <div class="col-md-12 " ng-model="searchDescription"></div>
+                                    <div class="col-md-12" ng-model = "companiesRes" >
+                                        <div class="" ng-repeat="item in companiesArr">
+                                            <div class="col-md-2">
+                                                <img src="{{item.logo}}" alt="logo" class="logo company-logo" align="left" >
+                                            </div>
+                                            <div class="col-md-10">
+                                                <p ng-bind="item.name" class="company-name h3"></p>
+                                                <a href="#"><i class="fa fa-info-circle company-ad-info icons small"></i></a>
+                                                <a href="#"><i class="fa fa-map-marker company-ad-info icons small"></i></a>
+                                                <p class="company-info h7">
+
+                                                <span ng-repeat="cat in item.categories" ng-click="sendRequestOnCategory(cat)">
+                                                    {{cat.name}} /
+                                                </span>
+                                                <div >
+                                                    Address: <span href="#" onclick="isMarker(innerText)" ng-bind="item.address"><!--{{item.address}}--></span> <br>
+                                                </div>
+                                                Phone: {{item.tel}} <br>
+                                                E-mail: <a href ="#" ng-click = "sendEmail(item.email)" style="font-style: italic; text-decoration: underline">Send e-mail</a> <br>
+                                                <a href="http:\\www.{{item.web}}">http:\\www.{{item.web}}</a><br>
+
+                                                </p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <!-- <div class="col-md-12">
+                                         <div>
+                                             <img src="img/logo_dan.png" alt="logo" class="logo company-logo" align="left" >
+                                             <p class="company-name h3">Company "DAN"</p>
+                                             <a href="#"><i class="fa fa-info-circle company-ad-info icons small"></i></a>
+                                             <a href="#"><i class="fa fa-map-marker company-ad-info icons small"></i></a>
+                                             <p class="company-info h7">
+                                                 Адрес: Бейт-Даган | Сд. Менахем Бегин, 5 <br>
+                                                 Телефон: 03 - 9142237 <br>
+                                                 Электропочта: info@egged.co.il <br>
+                                                 <a href="#">http://www.egged.co.il/</a>
+                                             </p>
+                                         </div>
+                                     </div>
+                                     <div class="col-md-12">
+                                         <div>
+                                             <img src="img/logo_dan.png" alt="logo" class="logo company-logo" align="left" >
+                                             <p class="company-name h3">Company "DAN"</p>
+                                             <a href="#"><i class="fa fa-info-circle company-ad-info icons small"></i></a>
+                                             <a href="#"><i class="fa fa-map-marker company-ad-info icons small"></i></a>
+                                             <p class="company-info h7">
+                                                 Адрес: Бейт-Даган | Сд. Менахем Бегин, 5 <br>
+                                                 Телефон: 03 - 9142237 <br>
+                                                 Электропочта: info@egged.co.il <br>
+                                                 <a href="#">http://www.egged.co.il/</a>
+                                             </p>
+                                         </div>
+                                     </div>
+                                     <div class="col-md-12">
+                                         <div>
+                                             <img src="img/logo_dan.png" alt="logo" class="logo company-logo" align="left" >
+
+                                             <p class="company-name h3">Company "DAN"</p>
+                                             <a href="#"><i class="fa fa-info-circle company-ad-info icons small"></i></a>
+                                             <a href="#"><i class="fa fa-map-marker company-ad-info icons small"></i></a>
+                                             <p class="company-info h7">
+                                                 Адрес: Бейт-Даган | Сд. Менахем Бегин, 5 <br>
+                                                 Телефон: 03 - 9142237 <br>
+                                                 Электропочта: info@egged.co.il <br>
+                                                 <a href="#">http://www.egged.co.il/</a>
+                                             </p>
+                                         </div>
+                                     </div>
+                                     <div class="col-md-12">
+                                         <div>
+                                             <img src="img/logo_dan.png" alt="logo" class="logo company-logo" align="left" >
+                                             <p class="company-name h3">Company "DAN"</p>
+                                             <a href="#"><i class="fa fa-info-circle company-ad-info icons small"></i></a>
+                                             <a href="#"><i class="fa fa-map-marker company-ad-info icons small"></i></a>
+                                             <p class="company-info h7">
+                                                 Адрес: Бейт-Даган | Сд. Менахем Бегин, 5 <br>
+                                                 Телефон: 03 - 9142237 <br>
+                                                 Электропочта: info@egged.co.il <br>
+                                                 <a href="#">http://www.egged.co.il/</a>
+                                             </p>
+                                         </div>
+                                     </div>
+                                     <div class="col-md-12">
+                                         <div>
+                                             <img src="img/logo_dan.png" alt="logo" class="logo company-logo" align="left" >
+                                             <p class="company-name h3">Company "DAN"</p>
+                                             <a href="#"><i class="fa fa-info-circle company-ad-info icons small"></i></a>
+                                             <a href="#"><i class="fa fa-map-marker company-ad-info icons small"></i></a>
+                                             <p class="company-info h7">
+                                                 Адрес: Бейт-Даган | Сд. Менахем Бегин, 5 <br>
+                                                 Телефон: 03 - 9142237 <br>
+                                                 Электропочта: info@egged.co.il <br>
+                                                 <a href="#">http://www.egged.co.il/</a>
+                                             </p>
+                                         </div>
+                                     </div>
+                                     <div class="col-md-12">
+                                         <div>
+                                             <img src="img/logo_dan.png" alt="logo" class="logo company-logo" align="left" >
+                                             <p class="company-name h3">Company "DAN"</p>
+                                             <a href="#"><i class="fa fa-info-circle company-ad-info icons small"></i></a>
+                                             <a href="#"><i class="fa fa-map-marker company-ad-info icons small"></i></a>
+                                             <p class="company-info h7">
+                                                 Адрес: Бейт-Даган | Сд. Менахем Бегин, 5 <br>
+                                                 Телефон: 03 - 9142237 <br>
+                                                 Электропочта: info@egged.co.il <br>
+                                                 <a href="#">http://www.egged.co.il/</a>
+                                             </p>
+                                         </div>
+                                     </div>-->
+                                </div>
+
+                                <!-- Map block -->
+                                <div class="col-md-6">
+                                    <div class="map img-responsive no-gutters" id="map"></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div  class="col-xs-1 fixed-right centered">
+                <img src="img/img2/adverdiv2.png" class="img-responsive">
+                <img src="img/img2/adverdiv2.png" class="img-responsive">
+                <img src="img/img2/adverdiv2.png" class="img-responsive">
+                <img src="img/img2/adverdiv2.png" class="img-responsive">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
