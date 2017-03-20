@@ -311,7 +311,7 @@
                                                            title="Choose a street">
                                                     <ui-select-match placeholder="Select or search a street...">{{$item.name}}</ui-select-match>
                                                     <ui-select-choices repeat="street in ctrl.streets | filter: $select.search
-                                                                                | onParent: ctrl.city.selected | filter:$select.search | orderBy:'name'"
+                                                                                | onParent: ctrl.city.selected | onGrandParent: ctrl.region.selected | filter:$select.search | orderBy:'name'"
                                                                        position='down'>
                                                         <span ng-bind-html="street.name | highlight: $select.search"></span>
                                                         <small ng-bind-html="street.city | highlight: $select.search" style="color:red"></small>

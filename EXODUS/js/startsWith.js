@@ -19,7 +19,9 @@ angular.module('MyApp')
             return matches;
         }
     })
+/*
 angular.module('MyApp')
+*/
     .filter('onParent', function() {
 
         return function (items, filters){
@@ -49,4 +51,36 @@ angular.module('MyApp')
             console.log(matches)*/
             return matches;
         }
-    });
+    })
+
+    .filter('onGrandParent', function() {
+
+        return function (items, filters){
+            /*console.log("items, filters")
+             console.log(items,filters)*/
+
+            var matches = [];
+
+            if(!angular.isUndefined(items) && !angular.isUndefined(filters) && filters.length>0) {
+                /*console.log("all is defined")*/
+                var filterId=[];
+                filters.forEach(function (filter) {
+                    filterId.push(filter.id)
+                });
+                /*console.log("filterId")
+                 console.log(filterId)*/
+
+                items.forEach(function (item) {
+                    if (filterId.indexOf(item.grandParentId) != -1) {
+                        matches.push(item);
+                    }
+                })
+            }else {
+                matches = items;
+            }
+            /*console.log("matches")
+             console.log(matches)*/
+            return matches;
+        }
+    })
+;

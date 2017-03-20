@@ -110,7 +110,7 @@ angular.module("MyApp").controller("MyAppCtrl", function ($scope, $rootScope, La
             elemDivCompanies.addClass("my_float_rtl");
             if (elemDivCompanies.hasClass("my_float_ltr")) elemDivCompanies.removeClass("my_float_ltr");
             elemDivLtrRtl.children().addClass("my_float_rtl");
-<<<<<<< HEAD
+/*<<<<<<< HEAD
             if(elemDivLtrRtl.children().hasClass("my_float_ltr")) elemDivLtrRtl.children().removeClass("my_float_ltr");
             elemLangUl.addClass("my_float_rtl");
             if(elemLangUl.hasClass("my_float_ltr")) elemLangUl.removeClass("my_float_ltr");
@@ -137,8 +137,10 @@ angular.module("MyApp").controller("MyAppCtrl", function ($scope, $rootScope, La
             if (elemNavRight.hasClass("navbar-left")) elemNavLeft.removeClass("navbar-left");
             elemDivCompanies.addClass("my_float_ltr");
             if (elemDivCompanies.hasClass("my_float_rtl")) elemDivCompanies.removeClass("my_float_rtl");
-            elemDivLtrRtl.children().addClass("my_float_ltr");
+            elemDivLtrRtl.children().addClass("my_float_ltr");*/
+/*
 <<<<<<< HEAD
+*/
             if(elemDivLtrRtl.children().hasClass("my_float_rtl")) elemDivLtrRtl.children().removeClass("my_float_rtl");
             elemLangUl.addClass("my_float_ltr");
             if(elemLangUl.hasClass("my_float_rtl")) elemLangUl.removeClass("my_float_rtl");
@@ -146,13 +148,17 @@ angular.module("MyApp").controller("MyAppCtrl", function ($scope, $rootScope, La
         //     if(elem.children().children().hasClass("my_float_ltr")) {
         //         elem.children().children().removeClass("my_float_ltr");
         //     }
+/*
 =======
+*/
             if (elemDivLtrRtl.children().hasClass("my_float_rtl")) elemDivLtrRtl.children().removeClass("my_float_rtl");
             //     elem.children().children().addClass("my_float_rtl");
             //     if(elem.children().children().hasClass("my_float_ltr")) {
             //         elem.children().children().removeClass("my_float_ltr");
             //     }
+/*
 >>>>>>> master
+*/
 
         }
     }
