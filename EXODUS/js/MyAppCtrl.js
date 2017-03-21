@@ -392,8 +392,14 @@ angular.module("MyApp").controller("MyAppCtrl", function ($scope, $rootScope, La
         console.log("$scope.companiesArr")
         console.log($scope.companiesArr)
     }
-
-
+    $scope.cityChanged="city";
+    $scope.checkChildren=function(model){
+        console.log("This is street")
+    if(model==$scope.streetSelected){
+        console.log($scope.streetSelected)
+    }
+    }
+$scope.description = "Частный бизнес, предприятия, организации и государственные учреждения Израиля"
     var collectFromFilters = function (selectedRegion, selectedCity, selectedStreet, selectedBld, selectedCategory, phoneN, selectedCompany) {
         var regionNames = ""
         var cityNames = ""
@@ -803,7 +809,7 @@ angular.module("MyApp").controller("MyAppCtrl", function ($scope, $rootScope, La
             });
         }
     };
-    $scope.checktheParent = function (selectedRegion) {
+    /*$scope.checktheParent = function (selectedRegion) {
 
         if (angular.isArray(selectedRegion)) {
             $scope.selectedRegionsIds = []
@@ -813,7 +819,7 @@ angular.module("MyApp").controller("MyAppCtrl", function ($scope, $rootScope, La
             console.log("<<<<<<<<<<<<<<<<<<$scope.selectedRegionsIds")
             console.log($scope.selectedRegionsIds)
         }
-    }
+    }*/
 
     $http.post("http://188.166.79.122:8080/exodus/init/categories", data, config)
         .then(fulfilledCategories)
@@ -1105,6 +1111,9 @@ angular.module("MyApp").controller("MyAppCtrl", function ($scope, $rootScope, La
             }
         }
     }
+
+    ////////////////////////////////////////////???????????????????????????????????
+
     $scope.enabled=true
 
     $scope.check=function(){

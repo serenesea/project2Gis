@@ -207,7 +207,11 @@
                                                                ng-disabled="ctrl.disabled"
                                                                title="Choose a city"
                                                                id="selectedRegions"
-                                                               ng-select="checkTheParent(ctrl.region.selected)">
+                                                               ng-select="checkTheParent(ctrl.region.selected)"
+                                                               ng-change="ctrl.street.selected = undefined; ctrl.building.selected = undefined">
+<!--
+                                                        ng-select="checkTheParent(ctrl.region.selected)"
+-->
                                                         <ui-select-match placeholder="Select or search a city...">{{$item.name}}</ui-select-match>
                                                         <ui-select-choices repeat="city in ctrl.cities |filter:$select.search | onParent: ctrl.region.selected
                                                                                     | startsWith: $select.search | orderBy:'name'"
@@ -308,7 +312,8 @@
                                                            ng-model="ctrl.street.selected"
                                                            theme="bootstrap"
                                                            ng-disabled="ctrl.disabled"
-                                                           title="Choose a street">
+                                                           title="Choose a street"
+                                                           ng-change="checkChildren(ctrl.street.selected)">
                                                     <ui-select-match placeholder="Select or search a street...">{{$item.name}}</ui-select-match>
                                                     <ui-select-choices repeat="street in ctrl.streets | filter: $select.search
                                                                                 | onParent: ctrl.city.selected | onGrandParent: ctrl.region.selected | filter:$select.search | orderBy:'name'"
@@ -319,7 +324,7 @@
                                                 </ui-select>
 
                                                 <span class="input-group-btn">
-                                                        <button type="button" ng-click="ctrl.street.selected = undefined" class="btn btn-default">
+                                                        <button type="button" ng-click="ctrl.street.selected = undefined; ctrl.building.selected = undefined" class="btn btn-default">
                                                             <span class="glyphicon glyphicon-remove"></span>
                                                         </button>
                                                 </span>
@@ -419,15 +424,21 @@
                     <div class="col-md-6 companies elemDivCompanies">
 <!--
 
--->
+--><!--
                         <div class="col-md-12 " style="background-color: #d9d9d9">
-                            <div style="text-align: center">Частный бизнес, предприятия, организации и государственные учреждения Израиля</div>
+                            <div style="text-align: center"></div>
+&lt;!&ndash;
                             <span ng-bind="searchDesc"></span>
-                        </div>
+&ndash;&gt;
+                            <span ng-bind="description"></span>-->
+<!--
+                            <span ng-model="ctrl.city.selected">is city changed? {{cityChanged}}</span>
+-->
+                       <!-- </div>-->
 <!--
                         ng-model="companiesRes"
 -->
-                        <div class="col-md-12 " ng-model="searchDescription"></div>
+                             <div class="col-md-12 " ng-bind="description" style="background-color: #d9d9d9"></div>
                              <div class="col-md-12" ng-model = "companiesRes" >
                                     <div class="" ng-repeat="item in companiesArr">
                                         <div class="col-md-2">
